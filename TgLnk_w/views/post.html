@@ -1,0 +1,65 @@
+<!-- Reveal Modals begin -->
+<div id="postModal" class="reveal-modal" data-reveal aria-labelledby="postModal" aria-hidden="true" role="dialog">
+    <div class="row">
+        <div class="large-12 columns">
+            <h2 id="postHeader" class="text-center">Post a Note</h2>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="large-12 columns">
+            <div class="panel">
+                <label>Title <span class="mandatory">*</span></label>
+                <input type="text" id="postDesc" placeholder="Enter a note title"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <label>Photo <span class="mandatory">*</span></label>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <img id="preViewImage" style="display: none;width: 100%;height:100%">
+                    </div>
+                </div>
+                <div style="height:3em;position: relative;">
+                    <input type="file" id="uploadedImageBtn" name="uploadedImageBtn"
+                           style="position: absolute;top: 0em;left: 0em;z-index: 1;opacity: 0;width: 50px;"/>
+                    <img id="uploadedImage" src="/images/sys/postUpload.png"
+                         style="position: absolute;top: 0;left: 0;width: 50px;height: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <label>Email <span class="mandatory">*</span></label>
+                <input type="text" id="postEmail" placeholder="Enter an email address"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="panel">
+                <label>Phone <span class="mandatory">*</span></label>
+                <input type="text" id="postPhone" placeholder="Enter a phone number"/>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row" id="postWrap">
+        <div class="small-12 columns">
+            <a style="width: 100%" id="postBtn" class="button tiny radius">Post</a>
+        </div>
+    </div>
+
+
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

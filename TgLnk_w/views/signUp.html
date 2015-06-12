@@ -1,0 +1,91 @@
+<!-- Reveal Modals begin -->
+<div id="signUpModal" class="reveal-modal" data-reveal aria-labelledby="SignUpTitle" aria-hidden="true" role="dialog">
+    <div class="row">
+        <div class="small-12 columns">
+            <h2 id="SignUpTitle">Join TgLnk Today</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 columns" style="position: relative;">
+            <input id="signUpFullName" type="text" placeholder="Full Name"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input id="signUpFullNameCorrect" type="hidden">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns" style="position: relative;">
+            <input id="signUpEmail" type="email" placeholder="Email Address"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input id="signUpEmailAddressCorrect" type="hidden">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 columns" style="position: relative;">
+            <input id="signUpPassword" type="password" placeholder="Password"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input id="passwordCorrect" type="hidden">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 columns" style="position: relative;">
+            <input id="signUpRePassword" type="password" placeholder="re-Password"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input id="rePasswordCorrect" type="hidden">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns" style="position: relative;">
+            <input id="signUpUserName" type="text" placeholder="Username"/>
+            <i id="usernameLoadingAnimation"
+               style="display:none;color:#c0c0c0;position: absolute;top: 10px;right: -11px;"
+               class="fa fa-spinner fa-spin"></i>
+            <i id="usernameTick" style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fa fa-check"></i>
+            <i id="usernameError" style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fa fa-times"></i>
+            <input id="signUpUserNameCorrect" type="hidden">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns" id="signUpSuggestedUserName">
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="small-12 columns" style="position: relative;">
+            <input id="readConditionCheckBox" type="checkbox"><label
+                style="position: absolute;top: 3px;left: 27px;font-size: 12px;"> I
+            have read Terms of Service and Privacy Policy</label>
+        </div>
+
+    </div>
+
+
+    <div class="row" style="margin-top: 1em;">
+        <div class="small-12 columns">
+            <a id="signUpBtn" style="width: 100%;" class="button tiny radius">Sign up</a>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" id="signUpModalClose" aria-label="Close">&#215;</a>
+</div>

@@ -1,0 +1,59 @@
+//
+//  PrefixHeader.pch
+//  TgLnk
+//  free icon from icons8.com/
+//  Created by shepard zhao on 9/04/2015.
+//  Copyright (c) 2015 com.xunzhao. All rights reserved.
+//
+
+#ifndef TgLnk_PrefixHeader_pch
+#define TgLnk_PrefixHeader_pch
+
+#define POSTID @"POSTID"
+#define UID @"UID"
+#define BOARDID @"BOARDID"
+//set global color
+#define RGB2UICOLOR(r, g, b,a)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:a]
+#define DOMAIN_NAME @"http://tglnk.cloudapp.net"  //default domain http://tglnk.cloudapp.net
+
+#define HTTP_REGEX @"\\bhttps?://[a-zA-Z0-9\\-.]+(?::(\\d+))?(?:(?:/[a-zA-Z0-9\\-._?,'+\\&%$=~*!():@\\\\]*)+)?" //http validation by regex
+#define EMAIL_REGEX @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}" //email regex
+
+#define USER_ID_REGEX @"^[a-zA-Z][a-zA-Z0-9_.-]{4,14}$" //user id regex
+
+#define REGISTER_URL DOMAIN_NAME@"/user/register"  //user register url
+
+#define USER_EMAIL_CHECK DOMAIN_NAME@"/user/userEmailCheck" //user email check
+
+#define USERID_CHECK_URL DOMAIN_NAME@"/user/userIDCheck" //userID check url
+
+#define USER_LOGIN_URL DOMAIN_NAME@"/user/login" //user sign in url
+
+#define NOTICESBOARD_DETAILVIEW_URL DOMAIN_NAME@"/noticeBoard/detailView" //noticeBoard detail view url
+
+#define NOTICESBOARD_URL DOMAIN_NAME@"/noticeBoard?requestType=json" //noticeBoard url
+
+#define NOTICESBOARD_POST DOMAIN_NAME@"/postNote" //post url
+
+#define INDENT() [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+
+#define DATABASE_FILENAME @"/tmp/tglnk.sqlite" //db name
+
+//set current iphone version
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+
+//set WEBSERVER_ERROR_MESSAGE
+#define WEBSERVER_ERROR_MESSAGE @"Network Error"
+
+
+
+//SQL CREATE TABLE
+#define SQL_CREATE_STATEMENT @"CREATE TABLE IF NOT EXISTS NOTICEBOARD_T(BID INTEGER PRIMARY KEY,BNAME TEXT,BIMAGE TEXT,BTIME TEXT,BGPS TEXT);CREATE TABLE IF NOT EXISTS USER_T(UID TEXT PRIMARY KEY,UNICKNAME TEXT,UEMAIL TEXT,PASSWORD TEXT,UAVATAR TEXT, ULOGIN_TIME TEXT,DOB TEXT,SOCID_F TEXT,SOC_F_NAME TEXT,SOCID_W TEXT,SOC_W_NAME TEXT,UCREDIT NUMERIC,UGENDER TEXT,LOGINSTATUS INTEGER);CREATE TABLE IF NOT EXISTS POST_T(PID TEXT PRIMARY KEY,UID TEXT, BID INTEGER,PNAME TEXT,PCONTENT TEXT,PIMG TEXT,PTIME TEXT,PTYPE TEXT,PEMAIL TEXT, PPHONE TEXT, PTOP INTEGER,PLIKE INTEGER,PDATE TEXT);"
+
+
+#endif

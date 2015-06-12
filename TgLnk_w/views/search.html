@@ -1,0 +1,60 @@
+<div id="searchModal" class="reveal-modal" style="  background-color: rgba(0,0,0,0.8); !important;" data-reveal aria-labelledby="searchTitle" aria-hidden="true" role="dialog">
+    <!--search-->
+
+    <div class="row" style="margin-top: 2em;">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                <div class="small-10 columns">
+                    <input class="noticeBoard_input_button" id="input_noticeBoard_search" type="text"
+                           placeholder="NoticeBoard code: i.e. 1000000000">
+                </div>
+                <div class="small-2 columns">
+                    <a id="noticeBoardGo" class="noticeBoard_input_button button postfix">Go</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="small-12 columns text-center searchContent">
+            <!--animated loading-->
+            <i id="animatedLoading" class="fa fa-spinner fa-spin fa-2x"
+               style="color: #eeeeee;display: none"></i>
+            <!--empty content-->
+            <h4 id="emptyContentMessage" style="color: #eeeeee;display: none">The
+                content cannot be empty</h4>
+            <!--none board id-->
+            <h4 id="noneBoardMessage" style="color: #eeeeee;display: none">Opps! This noticeboard ID
+                does
+                not exist.</h4>
+            <!--input the pass to active the qr-->
+            <div id="activeAnNewBoard" style="color: #eeeeee;display: none">
+                <div class="row">
+                    <div class="small-12 columns text-center">
+                        <h6 style="color: #eeeeee">This is a new noticeboard ID. Enter a security code
+                            to
+                            activate it.</h6>
+
+                        <div class="large-6 small-7 small-centered large-centered columns">
+                            <div class="row collapse postfix-round">
+                                <div class="small-8 columns">
+                                    <input type="text" id="activeCodeInput" placeholder="Active code">
+                                </div>
+                                <div class="small-4 columns">
+                                    <a id="activeCodeBtn" class="button alert round postfix">Active</a>
+                                </div>
+                            </div>
+                            <h7 id="errorSecurityCode" style="display: none;color:#eeeeee ">Incorrect
+                                security code
+                            </h7>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <a class="close-reveal-modal" id="signUpModalClose" aria-label="Close">&#215;</a>
+</div>

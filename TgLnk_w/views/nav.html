@@ -1,0 +1,76 @@
+<!--mobile nav-->
+
+<div class="off-canvas-wrap" data-offcanvas>
+    <div class="inner-wrap">
+        <nav class="tab-bar  hide-for-medium-up">
+            <!--left button-->
+            <section class="left-small">
+                <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+            </section>
+
+            <!--search-->
+            <a class="left-search fa fa-search fa-lg" data-reveal-id="searchModal" href="#" style="color: white;cursor: pointer;"></a>
+
+            <!--middle content-->
+            <section class="middle tab-bar-section ">
+                <h1 class="title">TgLnk</h1>
+            </section>
+
+            <!--right button-->
+            <section class="right-small text-center">
+                <a id="unlogin" style="color: #ffffff" class="right-off-canvas-toggle fa fa-user" href="#"><span></span></a>
+                <a id="loggedIn" style="display: none;" class="right-off-canvas-toggle" href="#"><img
+                        class="circleImage"></a>
+            </section>
+        </nav>
+
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="/noticeBoard?requestType=render">Boards</a></li>
+                <li><a href="#" data-reveal-id="termOfServiceModal">Terms of Service</a></li>
+                <li><a href="#" data-reveal-id="privacyPolicyModal">Privacy Policy</a></li>
+                <li><a href="/services/contactUs">Contact Us</a></li>
+
+
+                <!--
+                <li><a href="/noticeBoard/search">Search</a></li>
+                <li><a href="/noticeBoard">NoticeBoard</a></li>
+                <li><a href="/posts">Posts</a></li>
+                -->
+            </ul>
+        </aside>
+
+        <aside class="right-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li id="login"><a href="#" data-reveal-id="loginModal">Sign In</a></li>
+                <li id="signUp"><a href="#" data-reveal-id="signUpModal">Sign Up</a></li>
+
+                <li id="loginedUserName" style="display: none;"><a><i></i> </a></li>
+                <li id="logOut" style="display: none;"><a href="">Logout</a></li>
+
+            </ul>
+        </aside>
+
+
+        <section class="main-section" style="margin: 0 auto;height: 90%;width: 100%;position: absolute;">
+            <!--normal nav-->
+            <div class="nav hide-for-small-only">
+                <div class="row">
+                    <div class="large-5  medium-4 columns text-left"></div>
+                    <div class="large-7 medium-8 columns text-right ">
+                        <ul class="inline-list nav_h7">
+                            <li class="hvr-wobble-horizontal "><a href="/noticeBoard/search">Search</a></li>
+                            <li class="hvr-wobble-horizontal "><a href="/noticeBoard?requestType=render">NoticeBoard</a></li>
+                            <li class="hvr-wobble-horizontal "><a href="#">Post</a></li>
+                            <li class="hvr-wobble-horizontal "><a data-reveal-id="loginModal">Sign In/Sign Up</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- content goes here -->
+
+
+
+
+

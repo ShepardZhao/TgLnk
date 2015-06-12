@@ -1,0 +1,100 @@
+<%include header.html%>
+
+<div class="noticeBoardWrap" id="<%=noticeBoard.BID%>">
+    <!--notice board info part-->
+    <div class="row noticeBoardBasicInfoPart" style="margin-top: 9px">
+        <div class="small-12 columns noticeBoardBackground box-shadow">
+            <div class="row">
+                <div class="small-6 columns">
+                    <div id="mapPinned"></div>
+                    <div class="row">
+                        <div class="small-12 columns text-center">
+                            <div id="googleMapGps">
+
+
+                            </div>
+                            <span style="font-size: 0.7rem;color: #9B8D8D;"><i class="fa fa-info-circle"></i> John Smith
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="small-6 columns">
+                    <h6><%=noticeBoard.BNAME%></h6>
+
+                    <div class="buttonView text-left">
+                        <a class="button tiny radius">Follow</a>
+                        <a class="button tiny radius" data-reveal-id="postModal">Post</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--top-->
+    <%if(topPosts.length>0){%>
+
+    <div class="row noticeBoardTopInfoPart ">
+        <div class="small-12 columns noticeBoardBackground box-shadow">
+            <!--if top is empty-->
+
+            <div class="row">
+                <div class="small-12 columns text-right">
+                    <h8 style="color: #B0AFAF">Top</h8>
+                </div>
+            </div>
+            <!--if the top is able to scoll-->
+            <div class="scroll-clip">
+                <div class="scroll-container">
+                    <div class="placard">
+                        <ul class="clearing-thumbs">
+                            <% for (var i=0; i
+                            <topPosts.length
+                                    ;i++){%>
+                                <li><a href="#"><img class="scroll-img" style="width: 150px;height: 150px;"
+                                                     src="<%=topPosts[i].PIMG%>"></a><h6
+                                        class="scroll-title text-center"><%=topPosts[i].PNAME%></h6></li>
+                                <%}%>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <%}%>
+    <!--posts-->
+    <% for(var i=0; i
+    <relatedPosts.length
+            ;i++){%>
+
+        <div class="row noticeBoardTopInfoPart ">
+            <div class="small-12 columns  noticeBoardBackground box-shadow">
+                <!--
+                 <div class="row">
+                     <div class="small-12 columns text-right">
+                         <div class="switch small radius" style="position: relative;margin-bottom: 0;">
+                             <input id="exampleRadioSwitch2" type="radio" name="testGroup">
+                             <label for="exampleRadioSwitch2"></label>
+                             <h8 style="position: absolute;top: 2px;right: 4em;color: #B0AFAF">Me</h8>
+
+                         </div>
+                     </div>
+                 </div>
+                 -->
+                <h6><%=relatedPosts[i].PNAME%></h6>
+
+                <div class="row">
+                    <div class="small-12 columns">
+                        <img src="<%=relatedPosts[i].PIMG%>">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <%}%>
+</div>
+<%include footer.html%>
+

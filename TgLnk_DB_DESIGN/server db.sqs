@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SQLContainer>
+    <SQLTable>
+        <name><![CDATA[USER_T]]></name>
+        <schema><![CDATA[]]></schema>
+        <location>
+            <x>367.00</x>
+            <y>16.00</y>
+        </location>
+        <size>
+            <width>214.00</width>
+            <height>240.00</height>
+        </size>
+        <zorder>0</zorder>
+        <SQLField>
+            <name><![CDATA[UID]]></name>
+            <type><![CDATA[VARCHAR(15)]]></type>
+            <primaryKey>1</primaryKey>
+            <forcedUnique><![CDATA[1]]></forcedUnique>
+            <uid><![CDATA[251CD789-57E0-4D4C-BA5A-920332C7097C]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[UNICKNAME]]></name>
+            <type><![CDATA[VARCHAR(20)]]></type>
+            <forcedUnique><![CDATA[0]]></forcedUnique>
+            <uid><![CDATA[901AC93E-6E06-4544-ABAD-C409A0252431]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[UEMAIL]]></name>
+            <type><![CDATA[VARCHAR(100)]]></type>
+            <uid><![CDATA[6AD2B896-5331-4457-B8DE-9E06DB7718CB]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PASSWORD]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[E27659CC-6D69-466B-A3D4-20E474C8ED5B]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[ULOGIN_TIME]]></name>
+            <type><![CDATA[DATETIME]]></type>
+            <uid><![CDATA[000547B1-468F-458C-B2AC-7A1299479A29]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[DOB]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[5F6DEBF7-16FF-4FEE-A466-784544675B1A]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[SOCID_F]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[E9D9E215-7422-43A5-84C1-C0B03AB42C68]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[SOC_F_NAME]]></name>
+            <type><![CDATA[VARCHAR(255)]]></type>
+            <uid><![CDATA[1BA07825-B117-40B5-8F89-D242E2153CF7]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[SOCID_W]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[B01621FA-3E88-4292-BC22-BFF647C1E986]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[SOC_W_NAME]]></name>
+            <type><![CDATA[VARCHAR(255)]]></type>
+            <uid><![CDATA[ED630C04-331F-4190-9047-95171BBA4C01]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[UCREDIT]]></name>
+            <type><![CDATA[FLOAT]]></type>
+            <uid><![CDATA[F9AE5DDE-1648-4B8A-BD8D-4A73A4EECC90]]></uid>
+        </SQLField>
+        <labelWindowIndex><![CDATA[4]]></labelWindowIndex>
+        <uid><![CDATA[4EDF2D18-93A3-4892-BFB5-42CDD8F90872]]></uid>
+    </SQLTable>
+    <SQLTable>
+        <name><![CDATA[NOTICEBOARD_T]]></name>
+        <schema><![CDATA[]]></schema>
+        <location>
+            <x>353.00</x>
+            <y>392.00</y>
+        </location>
+        <size>
+            <width>260.00</width>
+            <height>200.00</height>
+        </size>
+        <zorder>2</zorder>
+        <SQLField>
+            <name><![CDATA[BID]]></name>
+            <type><![CDATA[INTEGER(10)]]></type>
+            <primaryKey>1</primaryKey>
+            <forcedUnique><![CDATA[1]]></forcedUnique>
+            <uid><![CDATA[D71BBA01-317C-40A5-9296-04D7D6EE0B88]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BNAME]]></name>
+            <type><![CDATA[VARCHAR(255)]]></type>
+            <uid><![CDATA[ABA8D023-0722-49BA-A661-7C1AD127CE1C]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BDESCR]]></name>
+            <type><![CDATA[TEXT]]></type>
+            <uid><![CDATA[AF42318D-DDEC-40E2-8333-11A25ACC9681]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BTIME]]></name>
+            <type><![CDATA[DATETIME]]></type>
+            <uid><![CDATA[69B6521C-58CC-413F-8900-3697148DA578]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BQR]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[56B4EDC3-7505-4050-A2FE-B6289587CD8E]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BOWNER]]></name>
+            <type><![CDATA[VARCHAR(20)]]></type>
+            <uid><![CDATA[AC6071BC-61C6-43A9-878F-CF34F652A0BD]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BLOCATION]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[FFA4BF6F-2FFD-4D3A-825F-61B432D9B379]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BVIEW_STATUS]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[E482C743-C431-4428-8D58-FD68D0B50916]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[B_ALLOWED_POST_STATUS]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[8062CDFB-D2B4-4E54-A706-A030B86F3724]]></uid>
+        </SQLField>
+        <labelWindowIndex><![CDATA[3]]></labelWindowIndex>
+        <uid><![CDATA[58C44F37-6DA0-4A96-A517-FAD0C1DCC3E9]]></uid>
+    </SQLTable>
+    <SQLTable>
+        <name><![CDATA[BOARD_ACCESS_PRIVILEGE_T]]></name>
+        <schema><![CDATA[]]></schema>
+        <location>
+            <x>83.00</x>
+            <y>322.00</y>
+        </location>
+        <size>
+            <width>217.00</width>
+            <height>100.00</height>
+        </size>
+        <zorder>3</zorder>
+        <SQLField>
+            <name><![CDATA[BID]]></name>
+            <type><![CDATA[INTEGER(10)]]></type>
+            <primaryKey>1</primaryKey>
+            <referencesField>BID</referencesField>
+            <referencesTable>NOTICEBOARD_T</referencesTable>
+            <referencesField><![CDATA[BID]]></referencesField>
+            <referencesTable><![CDATA[NOTICEBOARD_T]]></referencesTable>
+            <sourceCardinality>0</sourceCardinality>
+            <destinationCardinality>0</destinationCardinality>
+            <referencesFieldUID><![CDATA[D71BBA01-317C-40A5-9296-04D7D6EE0B88]]></referencesFieldUID>
+            <referencesTableUID><![CDATA[58C44F37-6DA0-4A96-A517-FAD0C1DCC3E9]]></referencesTableUID>
+            <uid><![CDATA[7E093DA4-F56D-4397-9AF4-E16631A4B82A]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[UID]]></name>
+            <type><![CDATA[VARCHAR(15)]]></type>
+            <primaryKey>1</primaryKey>
+            <referencesField>UID</referencesField>
+            <referencesTable>USER_T</referencesTable>
+            <referencesField><![CDATA[UID]]></referencesField>
+            <referencesTable><![CDATA[USER_T]]></referencesTable>
+            <sourceCardinality>0</sourceCardinality>
+            <destinationCardinality>0</destinationCardinality>
+            <referencesFieldUID><![CDATA[251CD789-57E0-4D4C-BA5A-920332C7097C]]></referencesFieldUID>
+            <referencesTableUID><![CDATA[4EDF2D18-93A3-4892-BFB5-42CDD8F90872]]></referencesTableUID>
+            <uid><![CDATA[1D913C47-6FD2-4075-B9B0-05FEED83C22F]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BACP_VIEW]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[AA7DF72B-E05E-4217-BD96-7CF603AAEFD8]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BACP_POST]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[92F8E82E-560A-440C-A6AC-9D998952C0DA]]></uid>
+        </SQLField>
+        <labelWindowIndex><![CDATA[1]]></labelWindowIndex>
+        <uid><![CDATA[C6EC00FE-579A-4F7C-BCB8-405DB8EE0574]]></uid>
+    </SQLTable>
+    <SQLTable>
+        <name><![CDATA[POST_T]]></name>
+        <schema><![CDATA[]]></schema>
+        <location>
+            <x>677.00</x>
+            <y>255.00</y>
+        </location>
+        <size>
+            <width>231.00</width>
+            <height>260.00</height>
+        </size>
+        <zorder>1</zorder>
+        <SQLField>
+            <name><![CDATA[PID]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <primaryKey>1</primaryKey>
+            <uid><![CDATA[C132BA2C-BA5C-4031-BCDF-70BE2A5830F2]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[UID]]></name>
+            <type><![CDATA[VARCHAR(15)]]></type>
+            <primaryKey>1</primaryKey>
+            <referencesField>UID</referencesField>
+            <referencesTable>USER_T</referencesTable>
+            <referencesField><![CDATA[UID]]></referencesField>
+            <referencesTable><![CDATA[USER_T]]></referencesTable>
+            <sourceCardinality>0</sourceCardinality>
+            <destinationCardinality>0</destinationCardinality>
+            <referencesFieldUID><![CDATA[251CD789-57E0-4D4C-BA5A-920332C7097C]]></referencesFieldUID>
+            <referencesTableUID><![CDATA[4EDF2D18-93A3-4892-BFB5-42CDD8F90872]]></referencesTableUID>
+            <uid><![CDATA[B7CCAC3A-7183-4BE7-BD1D-200B5996048D]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[BID]]></name>
+            <type><![CDATA[INTEGER(10)]]></type>
+            <primaryKey>1</primaryKey>
+            <referencesField>BID</referencesField>
+            <referencesTable>NOTICEBOARD_T</referencesTable>
+            <referencesField><![CDATA[BID]]></referencesField>
+            <referencesTable><![CDATA[NOTICEBOARD_T]]></referencesTable>
+            <sourceCardinality>0</sourceCardinality>
+            <destinationCardinality>0</destinationCardinality>
+            <referencesFieldUID><![CDATA[D71BBA01-317C-40A5-9296-04D7D6EE0B88]]></referencesFieldUID>
+            <referencesTableUID><![CDATA[58C44F37-6DA0-4A96-A517-FAD0C1DCC3E9]]></referencesTableUID>
+            <forcedUnique><![CDATA[0]]></forcedUnique>
+            <uid><![CDATA[BBB5B87B-0CC4-46F5-A59D-C0A6B915F218]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PNAME]]></name>
+            <type><![CDATA[VARCHAR(150)]]></type>
+            <uid><![CDATA[F24CED9E-F978-4746-81C7-74FEA1560193]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PCONTENT]]></name>
+            <type><![CDATA[TEXT]]></type>
+            <uid><![CDATA[469CF7C3-D629-4843-B85F-109AF5E65786]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PIMG]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[968380AC-05BF-4AAB-A468-E075AB282116]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PTIME]]></name>
+            <type><![CDATA[DATETIME]]></type>
+            <uid><![CDATA[A48B6942-8210-43B4-A784-471B2B92521C]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PTYPE]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[A69516A4-62EC-4B39-AD94-E5C471C97631]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PLIKE]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[653EB66A-2C21-48D4-82EF-DBC5AA4512C0]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PDISLIKE]]></name>
+            <type><![CDATA[INTEGER]]></type>
+            <uid><![CDATA[09227FBE-3971-4121-BED7-E34E4B1E611C]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PHIGHT]]></name>
+            <type><![CDATA[BOOLEAN]]></type>
+            <uid><![CDATA[D00E813A-E27E-4135-8A8E-D6BCF6167B8F]]></uid>
+        </SQLField>
+        <SQLField>
+            <name><![CDATA[PLOCATION]]></name>
+            <type><![CDATA[TINYTEXT]]></type>
+            <uid><![CDATA[4918B876-3FC7-445E-82C1-13D49F20C5BF]]></uid>
+        </SQLField>
+        <labelWindowIndex><![CDATA[0]]></labelWindowIndex>
+        <uid><![CDATA[C71FF987-30A9-47E9-899C-CFEF761F94D5]]></uid>
+    </SQLTable>
+    <SQLDocumentInfo>
+        <encodedPrintInfo><![CDATA[BAtzdHJlYW10eXBlZIHoA4QBQISEhAtOU1ByaW50SW5mbwGEhAhOU09iamVjdACF
+koSEhBNOU011dGFibGVEaWN0aW9uYXJ5AISEDE5TRGljdGlvbmFyeQCUhAFpDZKE
+hIQITlNTdHJpbmcBlIQBKw5OU1BNUGFnZUZvcm1hdIaShISEDU5TTXV0YWJsZURh
+dGEAhIQGTlNEYXRhAJSXgZUZhAdbNjU0OWNdPD94bWwgdmVyc2lvbj0iMS4wIiBl
+bmNvZGluZz0iVVRGLTgiPz4KPCFET0NUWVBFIHBsaXN0IFBVQkxJQyAiLS8vQXBw
+bGUvL0RURCBQTElTVCAxLjAvL0VOIiAiaHR0cDovL3d3dy5hcHBsZS5jb20vRFRE
+cy9Qcm9wZXJ0eUxpc3QtMS4wLmR0ZCI+CjxwbGlzdCB2ZXJzaW9uPSIxLjAiPgo8
+ZGljdD4KCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhZ2VGb3JtYXQuUE1Ib3Jpem9u
+dGFsUmVzPC9rZXk+Cgk8ZGljdD4KCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNr
+ZXQuY3JlYXRvcjwva2V5PgoJCTxzdHJpbmc+Y29tLmFwcGxlLmpvYnRpY2tldDwv
+c3RyaW5nPgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5pdGVtQXJyYXk8
+L2tleT4KCQk8YXJyYXk+CgkJCTxkaWN0PgoJCQkJPGtleT5jb20uYXBwbGUucHJp
+bnQuUGFnZUZvcm1hdC5QTUhvcml6b250YWxSZXM8L2tleT4KCQkJCTxyZWFsPjcy
+PC9yZWFsPgoJCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxh
+Zzwva2V5PgoJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJPC9kaWN0PgoJCTwv
+YXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0
+LlBNT3JpZW50YXRpb248L2tleT4KCTxkaWN0PgoJCTxrZXk+Y29tLmFwcGxlLnBy
+aW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJPHN0cmluZz5jb20uYXBwbGUuam9i
+dGlja2V0PC9zdHJpbmc+CgkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0
+ZW1BcnJheTwva2V5PgoJCTxhcnJheT4KCQkJPGRpY3Q+CgkJCQk8a2V5PmNvbS5h
+cHBsZS5wcmludC5QYWdlRm9ybWF0LlBNT3JpZW50YXRpb248L2tleT4KCQkJCTxp
+bnRlZ2VyPjE8L2ludGVnZXI+CgkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNr
+ZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJCQk8
+L2RpY3Q+CgkJPC9hcnJheT4KCTwvZGljdD4KCTxrZXk+Y29tLmFwcGxlLnByaW50
+LlBhZ2VGb3JtYXQuUE1TY2FsaW5nPC9rZXk+Cgk8ZGljdD4KCQk8a2V5PmNvbS5h
+cHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCTxzdHJpbmc+Y29tLmFw
+cGxlLmpvYnRpY2tldDwvc3RyaW5nPgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRp
+Y2tldC5pdGVtQXJyYXk8L2tleT4KCQk8YXJyYXk+CgkJCTxkaWN0PgoJCQkJPGtl
+eT5jb20uYXBwbGUucHJpbnQuUGFnZUZvcm1hdC5QTVNjYWxpbmc8L2tleT4KCQkJ
+CTxyZWFsPjE8L3JlYWw+CgkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQu
+c3RhdGVGbGFnPC9rZXk+CgkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJCQk8L2Rp
+Y3Q+CgkJPC9hcnJheT4KCTwvZGljdD4KCTxrZXk+Y29tLmFwcGxlLnByaW50LlBh
+Z2VGb3JtYXQuUE1WZXJ0aWNhbFJlczwva2V5PgoJPGRpY3Q+CgkJPGtleT5jb20u
+YXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQk8c3RyaW5nPmNvbS5h
+cHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQk8a2V5PmNvbS5hcHBsZS5wcmludC50
+aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJPGFycmF5PgoJCQk8ZGljdD4KCQkJCTxr
+ZXk+Y29tLmFwcGxlLnByaW50LlBhZ2VGb3JtYXQuUE1WZXJ0aWNhbFJlczwva2V5
+PgoJCQkJPHJlYWw+NzI8L3JlYWw+CgkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50
+aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJ
+CQk8L2RpY3Q+CgkJPC9hcnJheT4KCTwvZGljdD4KCTxrZXk+Y29tLmFwcGxlLnBy
+aW50LlBhZ2VGb3JtYXQuUE1WZXJ0aWNhbFNjYWxpbmc8L2tleT4KCTxkaWN0PgoJ
+CTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJPHN0
+cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJPGtleT5jb20uYXBw
+bGUucHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCTxhcnJheT4KCQkJPGRp
+Y3Q+CgkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LlBNVmVydGlj
+YWxTY2FsaW5nPC9rZXk+CgkJCQk8cmVhbD4xPC9yZWFsPgoJCQkJPGtleT5jb20u
+YXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxhZzwva2V5PgoJCQkJPGludGVnZXI+
+MDwvaW50ZWdlcj4KCQkJPC9kaWN0PgoJCTwvYXJyYXk+Cgk8L2RpY3Q+Cgk8a2V5
+PmNvbS5hcHBsZS5wcmludC5zdWJUaWNrZXQucGFwZXJfaW5mb190aWNrZXQ8L2tl
+eT4KCTxkaWN0PgoJCTxrZXk+UE1QUERQYXBlckNvZGVOYW1lPC9rZXk+CgkJPGRp
+Y3Q+CgkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+
+CgkJCTxzdHJpbmc+Y29tLmFwcGxlLmpvYnRpY2tldDwvc3RyaW5nPgoJCQk8a2V5
+PmNvbS5hcHBsZS5wcmludC50aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJCTxhcnJh
+eT4KCQkJCTxkaWN0PgoJCQkJCTxrZXk+UE1QUERQYXBlckNvZGVOYW1lPC9rZXk+
+CgkJCQkJPHN0cmluZz5BNDwvc3RyaW5nPgoJCQkJCTxrZXk+Y29tLmFwcGxlLnBy
+aW50LnRpY2tldC5zdGF0ZUZsYWc8L2tleT4KCQkJCQk8aW50ZWdlcj4wPC9pbnRl
+Z2VyPgoJCQkJPC9kaWN0PgoJCQk8L2FycmF5PgoJCTwvZGljdD4KCQk8a2V5PlBN
+UFBEVHJhbnNsYXRpb25TdHJpbmdQYXBlck5hbWU8L2tleT4KCQk8ZGljdD4KCQkJ
+PGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQkJPHN0
+cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+Y29tLmFw
+cGxlLnByaW50LnRpY2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJCQkJ
+PGRpY3Q+CgkJCQkJPGtleT5QTVBQRFRyYW5zbGF0aW9uU3RyaW5nUGFwZXJOYW1l
+PC9rZXk+CgkJCQkJPHN0cmluZz5BNDwvc3RyaW5nPgoJCQkJCTxrZXk+Y29tLmFw
+cGxlLnByaW50LnRpY2tldC5zdGF0ZUZsYWc8L2tleT4KCQkJCQk8aW50ZWdlcj4w
+PC9pbnRlZ2VyPgoJCQkJPC9kaWN0PgoJCQk8L2FycmF5PgoJCTwvZGljdD4KCQk8
+a2V5PlBNVGlvZ2FQYXBlck5hbWU8L2tleT4KCQk8ZGljdD4KCQkJPGtleT5jb20u
+YXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQkJPHN0cmluZz5jb20u
+YXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+Y29tLmFwcGxlLnByaW50
+LnRpY2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJCQkJPGRpY3Q+CgkJ
+CQkJPGtleT5QTVRpb2dhUGFwZXJOYW1lPC9rZXk+CgkJCQkJPHN0cmluZz5pc28t
+YTQ8L3N0cmluZz4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3Rh
+dGVGbGFnPC9rZXk+CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGlj
+dD4KCQkJPC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQu
+UGFnZUZvcm1hdC5QTUFkanVzdGVkUGFnZVJlY3Q8L2tleT4KCQk8ZGljdD4KCQkJ
+PGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNyZWF0b3I8L2tleT4KCQkJPHN0
+cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJpbmc+CgkJCTxrZXk+Y29tLmFw
+cGxlLnByaW50LnRpY2tldC5pdGVtQXJyYXk8L2tleT4KCQkJPGFycmF5PgoJCQkJ
+PGRpY3Q+CgkJCQkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFnZUZvcm1hdC5QTUFk
+anVzdGVkUGFnZVJlY3Q8L2tleT4KCQkJCQk8YXJyYXk+CgkJCQkJCTxpbnRlZ2Vy
+PjA8L2ludGVnZXI+CgkJCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJCQkJCTxy
+ZWFsPjc4MzwvcmVhbD4KCQkJCQkJPHJlYWw+NTU5PC9yZWFsPgoJCQkJCTwvYXJy
+YXk+CgkJCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LnN0YXRlRmxhZzwv
+a2V5PgoJCQkJCTxpbnRlZ2VyPjA8L2ludGVnZXI+CgkJCQk8L2RpY3Q+CgkJCTwv
+YXJyYXk+CgkJPC9kaWN0PgoJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhZ2VGb3Jt
+YXQuUE1BZGp1c3RlZFBhcGVyUmVjdDwva2V5PgoJCTxkaWN0PgoJCQk8a2V5PmNv
+bS5hcHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCQk8c3RyaW5nPmNv
+bS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJPGtleT5jb20uYXBwbGUucHJp
+bnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJyYXk+CgkJCQk8ZGljdD4K
+CQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYWdlRm9ybWF0LlBNQWRqdXN0ZWRQ
+YXBlclJlY3Q8L2tleT4KCQkJCQk8YXJyYXk+CgkJCQkJCTxyZWFsPi0xODwvcmVh
+bD4KCQkJCQkJPHJlYWw+LTE4PC9yZWFsPgoJCQkJCQk8cmVhbD44MjQ8L3JlYWw+
+CgkJCQkJCTxyZWFsPjU3NzwvcmVhbD4KCQkJCQk8L2FycmF5PgoJCQkJCTxrZXk+
+Y29tLmFwcGxlLnByaW50LnRpY2tldC5zdGF0ZUZsYWc8L2tleT4KCQkJCQk8aW50
+ZWdlcj4wPC9pbnRlZ2VyPgoJCQkJPC9kaWN0PgoJCQk8L2FycmF5PgoJCTwvZGlj
+dD4KCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYXBlckluZm8uUE1QYXBlck5hbWU8
+L2tleT4KCQk8ZGljdD4KCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LmNy
+ZWF0b3I8L2tleT4KCQkJPHN0cmluZz5jb20uYXBwbGUuam9idGlja2V0PC9zdHJp
+bmc+CgkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5pdGVtQXJyYXk8L2tl
+eT4KCQkJPGFycmF5PgoJCQkJPGRpY3Q+CgkJCQkJPGtleT5jb20uYXBwbGUucHJp
+bnQuUGFwZXJJbmZvLlBNUGFwZXJOYW1lPC9rZXk+CgkJCQkJPHN0cmluZz5pc28t
+YTQ8L3N0cmluZz4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3Rh
+dGVGbGFnPC9rZXk+CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGlj
+dD4KCQkJPC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQu
+UGFwZXJJbmZvLlBNVW5hZGp1c3RlZFBhZ2VSZWN0PC9rZXk+CgkJPGRpY3Q+CgkJ
+CTxrZXk+Y29tLmFwcGxlLnByaW50LnRpY2tldC5jcmVhdG9yPC9rZXk+CgkJCTxz
+dHJpbmc+Y29tLmFwcGxlLmpvYnRpY2tldDwvc3RyaW5nPgoJCQk8a2V5PmNvbS5h
+cHBsZS5wcmludC50aWNrZXQuaXRlbUFycmF5PC9rZXk+CgkJCTxhcnJheT4KCQkJ
+CTxkaWN0PgoJCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LlBhcGVySW5mby5QTVVu
+YWRqdXN0ZWRQYWdlUmVjdDwva2V5PgoJCQkJCTxhcnJheT4KCQkJCQkJPGludGVn
+ZXI+MDwvaW50ZWdlcj4KCQkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCQkJ
+PHJlYWw+NzgzPC9yZWFsPgoJCQkJCQk8cmVhbD41NTk8L3JlYWw+CgkJCQkJPC9h
+cnJheT4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFn
+PC9rZXk+CgkJCQkJPGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJ
+PC9hcnJheT4KCQk8L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFwZXJJ
+bmZvLlBNVW5hZGp1c3RlZFBhcGVyUmVjdDwva2V5PgoJCTxkaWN0PgoJCQk8a2V5
+PmNvbS5hcHBsZS5wcmludC50aWNrZXQuY3JlYXRvcjwva2V5PgoJCQk8c3RyaW5n
+PmNvbS5hcHBsZS5qb2J0aWNrZXQ8L3N0cmluZz4KCQkJPGtleT5jb20uYXBwbGUu
+cHJpbnQudGlja2V0Lml0ZW1BcnJheTwva2V5PgoJCQk8YXJyYXk+CgkJCQk8ZGlj
+dD4KCQkJCQk8a2V5PmNvbS5hcHBsZS5wcmludC5QYXBlckluZm8uUE1VbmFkanVz
+dGVkUGFwZXJSZWN0PC9rZXk+CgkJCQkJPGFycmF5PgoJCQkJCQk8cmVhbD4tMTg8
+L3JlYWw+CgkJCQkJCTxyZWFsPi0xODwvcmVhbD4KCQkJCQkJPHJlYWw+ODI0PC9y
+ZWFsPgoJCQkJCQk8cmVhbD41Nzc8L3JlYWw+CgkJCQkJPC9hcnJheT4KCQkJCQk8
+a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQuc3RhdGVGbGFnPC9rZXk+CgkJCQkJ
+PGludGVnZXI+MDwvaW50ZWdlcj4KCQkJCTwvZGljdD4KCQkJPC9hcnJheT4KCQk8
+L2RpY3Q+CgkJPGtleT5jb20uYXBwbGUucHJpbnQuUGFwZXJJbmZvLnBwZC5QTVBh
+cGVyTmFtZTwva2V5PgoJCTxkaWN0PgoJCQk8a2V5PmNvbS5hcHBsZS5wcmludC50
+aWNrZXQuY3JlYXRvcjwva2V5PgoJCQk8c3RyaW5nPmNvbS5hcHBsZS5qb2J0aWNr
+ZXQ8L3N0cmluZz4KCQkJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0Lml0ZW1B
+cnJheTwva2V5PgoJCQk8YXJyYXk+CgkJCQk8ZGljdD4KCQkJCQk8a2V5PmNvbS5h
+cHBsZS5wcmludC5QYXBlckluZm8ucHBkLlBNUGFwZXJOYW1lPC9rZXk+CgkJCQkJ
+PHN0cmluZz5BNDwvc3RyaW5nPgoJCQkJCTxrZXk+Y29tLmFwcGxlLnByaW50LnRp
+Y2tldC5zdGF0ZUZsYWc8L2tleT4KCQkJCQk8aW50ZWdlcj4wPC9pbnRlZ2VyPgoJ
+CQkJPC9kaWN0PgoJCQk8L2FycmF5PgoJCTwvZGljdD4KCQk8a2V5PmNvbS5hcHBs
+ZS5wcmludC50aWNrZXQuQVBJVmVyc2lvbjwva2V5PgoJCTxzdHJpbmc+MDAuMjA8
+L3N0cmluZz4KCQk8a2V5PmNvbS5hcHBsZS5wcmludC50aWNrZXQudHlwZTwva2V5
+PgoJCTxzdHJpbmc+Y29tLmFwcGxlLnByaW50LlBhcGVySW5mb1RpY2tldDwvc3Ry
+aW5nPgoJPC9kaWN0PgoJPGtleT5jb20uYXBwbGUucHJpbnQudGlja2V0LkFQSVZl
+cnNpb248L2tleT4KCTxzdHJpbmc+MDAuMjA8L3N0cmluZz4KCTxrZXk+Y29tLmFw
+cGxlLnByaW50LnRpY2tldC50eXBlPC9rZXk+Cgk8c3RyaW5nPmNvbS5hcHBsZS5w
+cmludC5QYWdlRm9ybWF0VGlja2V0PC9zdHJpbmc+CjwvZGljdD4KPC9wbGlzdD4K
+hpKEmZkLTlNQYXBlclNpemWGkoSEhAdOU1ZhbHVlAJSEASqEhAt7Q0dTaXplPWRk
+fZ+BUwKBSgOGkoSZmRZOU0hvcml6b250YWxseUNlbnRlcmVkhpKEhIQITlNOdW1i
+ZXIAn56EhAFjoQGGkoSZmRROU1ZlcnRpY2FsbHlDZW50ZXJlZIaSopKEmZkMTlNM
+ZWZ0TWFyZ2luhpKEo56EhAFkohKGkoSZmQ1OU1JpZ2h0TWFyZ2luhpKEo56oohKG
+koSZmQtOU1RvcE1hcmdpboaShKOeqKIehpKEmZkNTlNPcmllbnRhdGlvboaShKOe
+hIQBcaMAhpKEmZkVTlNIb3Jpem9uYWxQYWdpbmF0aW9uhpKukoSZmRROU1ZlcnRp
+Y2FsUGFnaW5hdGlvboaSrpKEmZkOTlNCb3R0b21NYXJnaW6GkoSjnqiiNYaShJmZ
+D05TU2NhbGluZ0ZhY3RvcoaShKOeqKIBhpKEmZkLTlNQYXBlck5hbWWGkoSZmQZp
+c28tYTSGhoY=
+]]></encodedPrintInfo>
+        <autoSizeTablesOption><![CDATA[0]]></autoSizeTablesOption>
+        <documentScaleFactor><![CDATA[1]]></documentScaleFactor>
+        <exportDialect><![CDATA[mysql]]></exportDialect>
+        <fileversion><![CDATA[3.1]]></fileversion>
+        <generator><![CDATA[com.malcolmhardie.sqleditor]]></generator>
+        <generatorVersion><![CDATA[2.0]]></generatorVersion>
+        <hideFieldIcons><![CDATA[0]]></hideFieldIcons>
+        <hideFieldTypes><![CDATA[0]]></hideFieldTypes>
+        <pageBoundariesVisible><![CDATA[0]]></pageBoundariesVisible>
+        <PageGridVisible><![CDATA[0]]></PageGridVisible>
+        <sidebarIndex><![CDATA[0]]></sidebarIndex>
+        <snapToGrid><![CDATA[0]]></snapToGrid>
+        <SourceSidebarWidth><![CDATA[276.000000]]></SourceSidebarWidth>
+        <uid><![CDATA[2940C07A-8B96-4D67-B510-D099D7BE3D57]]></uid>
+        <windowHeight><![CDATA[736.000000]]></windowHeight>
+        <windowLocationX><![CDATA[0.000000]]></windowLocationX>
+        <windowLocationY><![CDATA[41.000000]]></windowLocationY>
+        <windowScrollOrigin><![CDATA[{6, 0}]]></windowScrollOrigin>
+        <windowWidth><![CDATA[1280.000000]]></windowWidth>
+    </SQLDocumentInfo>
+    <AllowsIndexRenamingOnInsert><![CDATA[1]]></AllowsIndexRenamingOnInsert>
+    <containerName><![CDATA[model controller orginal container]]></containerName>
+</SQLContainer>

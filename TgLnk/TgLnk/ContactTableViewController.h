@@ -1,0 +1,19 @@
+//
+//  ContactTableViewController.h
+//  TgLnk
+//
+//  Created by shepard zhao on 9/04/2015.
+//  Copyright (c) 2015 com.xunzhao. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "QRCodeReaderDelegate.h"
+#import "QRCodeReaderViewController.h"
+#import "SystemUIViewControllerModel.h"
+#import "BoardWebViewViewController.h"
+#import "SysNsObject.h"
+
+
+@interface ContactTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate>
+@property (weak,nonatomic) NSString *qrAddress;
+@end

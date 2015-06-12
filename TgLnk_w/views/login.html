@@ -1,0 +1,56 @@
+<!-- Reveal Modals begin -->
+<div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="loginTitle" aria-hidden="true" role="dialog">
+    <div class="row">
+        <div class="large-12 columns">
+            <h2 id="loginTitle">Login</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns" style="position: relative;">
+            <input type="email" id="LoginEmail" placeholder="Email address"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input type="hidden" id="loginMailCorrect">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns" style="position: relative;">
+            <input type="password" id="loginPassword" placeholder="password"/>
+            <i style="display:none;color:#1ABC9C;position: absolute;top: 10px;right: -11px;"
+               class="fieldCheck fa fa-check"></i>
+            <i style="display:none;color:#E74C3C;position: absolute;top: 10px;right: -11px;"
+               class="fieldError fa fa-times"></i>
+            <input type="hidden" id="loginPasswordCorrect">
+
+        </div>
+    </div>
+
+
+    <div class="row" id="forgetPassword">
+        <div class="large-12 columns" style="margin-bottom: 19px">
+            <a href="#" data-reveal-id="forgetPasswordModal">
+                <h7 style="font-size: 11px;">Forget password?</h7>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="small-12 columns">
+            <a style="width: 100%" id="loginBtn" class="button success tiny radius">Login</a>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 1em;">
+        <div class="small-12 columns">
+            <a style="width: 100%;color: #ffffff;" class="button tiny radius"><i class="fa fa-facebook-square"></i>
+                Login With FaceBook</a>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" id="loginModalClose" aria-label="Close">&#215;</a>
+</div>

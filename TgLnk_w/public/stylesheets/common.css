@@ -1,0 +1,28 @@
+/***********************************************
+* this is common css file that can be inherited
+* by other css files
+***********************************************/
+
+/**
+* font style
+**/
+.fontColor_white{
+    color: white;
+}
+/**
+* footer list
+**/
+.footerNav {
+    display: table;
+    margin: 0 auto;
+}
+
+.footerNav > li > a {
+    font-size: 0.8rem;
+    color: #888888;
+}
+
+.footerNav > li > a:hover {
+    color: #ffffff;
+
+}

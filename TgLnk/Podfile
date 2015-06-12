@@ -1,0 +1,23 @@
+
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target 'TgLnk' do
+pod 'AFNetworking', '~> 2.5'
+pod 'MBProgressHUD', '~> 0.9.1'
+pod 'SDWebImage', '~>3.7'
+pod 'Facebook-iOS-SDK'
+pod 'QRCodeReaderViewController', '~> 3.2.3'
+pod 'AMScrollingNavbar'
+pod 'RegExCategories', '~> 1.0'
+pod 'UINavigationBar+Addition'
+pod 'FMDB'
+pod 'RSKImageCropper'
+pod 'MJRefresh'
+pod 'IDMPhotoBrowser'
+end
+
+target 'TgLnkTests' do
+
+end
+
