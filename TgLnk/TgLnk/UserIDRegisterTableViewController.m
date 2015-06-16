@@ -26,7 +26,7 @@
 
 
 - (IBAction)submit:(id)sender {
-  self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+  self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
 
       [WebServicesNsObject
@@ -38,7 +38,7 @@
             if ([getReuslt[@"success"] isEqualToString:@"true"]) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.parentViewController.view animated:YES];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [self performSegueWithIdentifier:@"successRegisterSegue" sender:self];
                     });
@@ -47,7 +47,7 @@
             } else {
               // error
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [MBProgressHUD hideHUDForView:self.parentViewController.view animated:YES];
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [SystemUIViewControllerModel aLertViewDisplay:@"register error, plase try it again" :@"Notices" :self :@"Got it" :nil];
                     });

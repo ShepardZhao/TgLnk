@@ -15,6 +15,8 @@
 #import "SysNsObject.h"
 #import "LoginViewController.h"
 
+
+
 @interface BoardWebViewViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>{
     SystemUIViewControllerModel *sysUICtr;
     NSURLRequest *requestLoad;

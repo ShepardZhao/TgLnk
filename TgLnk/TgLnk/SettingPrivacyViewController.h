@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SystemUIViewControllerModel.h"
 @interface SettingPrivacyViewController: UIViewController
 
 @end

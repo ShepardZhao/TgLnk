@@ -23,10 +23,6 @@ app.use(multer());
 app.use(session({ secret: 'oM_p3WWn6J7gCCgUeYsXsZPKPe',resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }}))
 
 
-
-
-
-
 /**
  * user router
  * @type {router|exports|module.exports}
@@ -37,6 +33,8 @@ app.get('/user/userEmailCheck',user_router);
 app.get('/user/userIDCheck',user_router);
 app.post('/user/login',user_router);
 app.get('/user/info',user_router);
+app.post('/user/avatar',user_router);
+app.put('/user/info',user_router);
 
 
 /**
@@ -46,7 +44,7 @@ app.get('/user/info',user_router);
 var board_router = require('./routes/noticeBoard_router');
 app.get('/noticeBoard',board_router);
 app.get('/noticeBoard/query',board_router);
-app.get('/noticeBoard/active',board_router);
+app.put('/noticeBoard/active',board_router);
 
 /**
  * post router

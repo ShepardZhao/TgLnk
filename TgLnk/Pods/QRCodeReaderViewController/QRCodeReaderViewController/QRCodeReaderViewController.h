@@ -27,6 +27,7 @@
 #import <UIKit/UIKit.h>
 #import "QRCodeReaderDelegate.h"
 #import "QRCodeReader.h"
+#import "MBProgressHUD.h"
 
 /**
  * Convenient controller to display a view to scan/read 1D or 2D bar codes like

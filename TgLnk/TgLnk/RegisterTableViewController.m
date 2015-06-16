@@ -21,8 +21,6 @@
 
 }
 
-
-
 - (IBAction)closeAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -37,8 +35,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
 
   [super viewWillDisappear:animated];
-  [self triggerHideKeyBoard];
+  [self.view endEditing:YES];
 }
+
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -116,19 +115,22 @@
              USER_EMAIL_CHECK:@{
                                 @"emailAddress" : textField.text//email check
                                 }:0 onCompletion:^(NSDictionary *getReuslt) {
-                                    NSLog(@"%@",getReuslt);
                                     [self.emialIndicator stopAnimating];
-                                    self.emialIndicator.hidden = YES;
-                                    
-                                    if ([getReuslt[@"success"] isEqualToString:@"true"]) {
+                                    self.emialIndicator.hidden = YES;                                    
+                                    if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
                                         [self.emailCheck setImage:[UIImage imageNamed:@"check"]];
                                         self.emailCheck.hidden = NO;
                                         waitforValidtaionSuccessed =YES;
                                     }
-                                    else{
+                                    else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
                                         [self.emailCheck setImage:[UIImage imageNamed:@"checkErr"]];
                                         self.emailCheck.hidden = NO;
-
+                                    }
+                                    
+                                    else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+                                         [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"]:@"Notices":self:@"OK":nil];
+                                     
+                                        self.emailCheck.hidden = NO;
                                     }
                                 }];
     

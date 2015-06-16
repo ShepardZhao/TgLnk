@@ -11,11 +11,11 @@
 @implementation DatabaseModel
 
 + (id)dbConnection {
-    //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    //NSString *documentsDirectory = [paths objectAtIndex:0];
-    //NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DATABASE_FILENAME];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DATABASE_FILENAME];
     //NSLog(@"%@",writableDBPath);
-  FMDatabase *db = [FMDatabase databaseWithPath:DATABASE_FILENAME];
+  FMDatabase *db = [FMDatabase databaseWithPath:writableDBPath];
 
     
   return db;
@@ -53,6 +53,11 @@
   return loginStatus;
 }
 
+/**
+ *  CREATE OR UPDATE USERTABLE
+ *
+ *  @param userInfo
+ */
 + (void)createOrUpdateUserTable:(NSDictionary *)userInfo {
   FMDatabase *db = [self dbConnection];
 
@@ -73,12 +78,12 @@
     if (existedUID) {
       // update
       if (![db executeUpdate:
-                   @"UPDATE USER_T SET " @"UNICKNAME=?,UEMAIL=?,ULOGIN_TIME=?, UAVATAR = ?"
-                   @"LOGINSTATUS=? WHERE UID=?",
+                   @"UPDATE USER_T SET UNICKNAME=?,UEMAIL=?,ULOGIN_TIME=?, UAVATAR = ?, LOGINSTATUS=?, UPHONE=? WHERE UID=?",
                    [NSString stringWithString:userInfo[@"UNICKNAME"]],
                    [NSString stringWithString:userInfo[@"UEMAIL"]],
                    [NSString stringWithString:userInfo[@"ULOGIN_TIME"]],
-                    userInfo[@"UAVATAR"],@"1",
+                    userInfo[@"UAVATAR"],[NSNumber numberWithInt:1],
+                    userInfo[@"UPHONE"],
                    [NSString stringWithString:userInfo[@"UID"]]]) {
         NSLog(@"%@", db.lastErrorMessage);
       }
@@ -88,14 +93,16 @@
       // insert new record
       if (![db executeUpdate:
                    @"INSERT INTO USER_T "
-                   @"(UID,UNICKNAME,UEMAIL,UAVATAR,ULOGIN_TIME,LOGINSTATUS) VALUES "
-                   @"(?,?,?,?,?,?)",
+                   @"(UID,UNICKNAME,UEMAIL,UAVATAR,ULOGIN_TIME,LOGINSTATUS,UPHONE) VALUES "
+                   @"(?,?,?,?,?,?,?)",
                    [NSString stringWithString:userInfo[@"UID"]],
                    [NSString stringWithString:userInfo[@"UNICKNAME"]],
                    [NSString stringWithString:userInfo[@"UEMAIL"]],
                     userInfo[@"UAVATAR"],
                    [NSString stringWithString:userInfo[@"ULOGIN_TIME"]],
-                   @"1"]) {
+                   [NSNumber numberWithInt:1],
+                    userInfo[@"UPHONE"]
+]) {
         NSLog(@"%@", db.lastErrorMessage);
       }
     }
@@ -312,12 +319,19 @@
     NSMutableDictionary *userQuery = [[NSMutableDictionary alloc] init];
     if ([db open]) {
         FMResultSet *s =
-        [db executeQuery:@"SELECT * FROM USER_T WHERE LOGINSTATUS = ?",@"1"];
+        [db executeQuery:@"SELECT * FROM USER_T WHERE LOGINSTATUS = ?",[NSNumber numberWithInt:1]];
         if ([s next]) {
             [userQuery setObject:[s stringForColumn:@"UID"] forKey:@"UID"];
             [userQuery setObject:[s stringForColumn:@"UNICKNAME"] forKey:@"UNICKNAME"];
             [userQuery setObject:[s stringForColumn:@"UEMAIL"] forKey:@"UEMAIL"];
             [userQuery setObject:[s stringForColumn:@"ULOGIN_TIME"] forKey:@"ULOGIN_TIME"];
+            [userQuery setObject:[s stringForColumn:@"UPHONE"] forKey:@"UPHONE"];
+            if ([s columnIsNull:@"UAVATAR"]) {
+                [userQuery setObject:@"None" forKey:@"UAVATAR"];
+            }
+            else{
+                [userQuery setObject:[s stringForColumn:@"UAVATAR"]forKey:@"UAVATAR"];
+            }
         }
     }
     [db close];
@@ -325,6 +339,61 @@
     return (NSDictionary*)userQuery;
 }
 
+
+
+
+/**
+ *  update current logined user status
+ *
+ *  @param userID
+ *
+ *  @return YES OR NO
+ */
++(BOOL) signOutCurrentUser:(NSString *)userID{
+    BOOL isSignOut = NO;
+    FMDatabase *db = [self dbConnection];
+
+    if ([db open]) {
+        
+        if ([db executeUpdate:@"UPDATE USER_T SET LOGINSTATUS =? WHERE UID =?",[NSNumber numberWithInt:0],[NSString stringWithString:userID]]) {
+            isSignOut = YES;
+        }
+        else{
+            NSLog(@"%@", db.lastErrorMessage);
+        }
+
+    }
+    
+    [db close];
+    return isSignOut;
+
+}
+
+/**
+ *  update the user Avatar
+ *
+ *  @param uiImageNSData update user avatar
+ *  @param userID        UID as the paramter that will keep the object unique identity
+ *  @return BOOL YES OR NO
+ */
++(BOOL) updateUserAvatar:(NSData *)uiImageNSData userID:(NSString *)userID{
+    BOOL isUpdated = NO;
+    FMDatabase *db = [self dbConnection];
+    if ([db open]) {
+        
+        if ([db executeUpdate:@"UPDATE USER_T SET UAVATAR =? WHERE UID =?",uiImageNSData,userID]) {
+            isUpdated = YES;
+        }
+        else{
+            NSLog(@"%@", db.lastErrorMessage);
+        }
+    }
+    
+    [db close];
+
+    return isUpdated;
+
+}
 
 
 @end

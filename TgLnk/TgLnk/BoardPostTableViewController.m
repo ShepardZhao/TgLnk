@@ -16,6 +16,8 @@
 
 @implementation BoardPostTableViewController
 
+@synthesize delegate;
+
 - (IBAction)postSubmitBtn:(id)sender {
    
     if([self.postTitle.text isEqualToString:@""]){
@@ -49,7 +51,7 @@
  
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     
-        [WebServicesNsObject postNote:self :selectImages :@{@"userID":[NsUserDefaultModel getUserIDFromCurrentSession],@"boardID":self.boardID,@"postDesc":self.postTitle.text,@"postEmail":self.posterEmail.text,@"postPhone":self.posterPhone.text,@"mode":@"mobile"} :NOTICESBOARD_POST onCompletion:^(NSDictionary *dictionary) {
+        [WebServicesNsObject uploadImageByProgressBar:self :selectImages :@{@"userID":[NsUserDefaultModel getUserIDFromCurrentSession],@"boardID":self.boardID,@"postDesc":self.postTitle.text,@"postEmail":self.posterEmail.text,@"postPhone":self.posterPhone.text,@"mode":@"mobile"} :NOTICESBOARD_POST onCompletion:^(NSDictionary *dictionary) {
             if ([dictionary[@"success"] isEqualToString:@"true"]) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
@@ -65,15 +67,29 @@
 
 }
 
+
+
 #pragma mark - JSImagePikcerViewControllerDelegate
+
+
 
 - (void)imagePickerDidSelectImage:(UIImage *)image {
     
     
-        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:[SystemUIViewControllerModel fixOrientation:image] cropMode:RSKImageCropModeSquare];
+        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:[SystemUIViewControllerModel fixOrientation:image] cropMode:RSKImageCropModeCustom];
     imageCropVC.delegate = self;
+    imageCropVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:imageCropVC animated:YES];
     [self.navigationController hidesBottomBarWhenPushed];
+    
+
+    
+}
+
+-(CGRect)imageCropViewControllerCustomMaskRect:(RSKImageCropViewController *)controller{
+
+    return CGRectMake(0, 0, POST_IMAGE_WIDTH, POST_IMAGE_HEIGHT);
+
 }
 
 #pragma mark - RSKImageCropViewController 
@@ -88,7 +104,44 @@
                    didCropImage:(UIImage *)croppedImage
                   usingCropRect:(CGRect)cropRect
 {
-    self.postImage.image = croppedImage;
+    
+    
+    //here to resize and compress the uiimage
+    
+    NSData *tmpData = [SystemUIViewControllerModel compressUIImage:croppedImage quality:0.5 scaledToSize:CGSizeMake(POST_IMAGE_WIDTH, POST_IMAGE_HEIGHT)];
+    
+    NSDictionary* nsDictTemp = [[NSDictionary alloc] initWithObjectsAndKeys:self.userInfo[@"UID"],@"UID", nil];
+    
+    self.postImage.image = [[UIImage alloc] initWithData:tmpData];
+    
+    //here to upload the user avatar
+    
+    [WebServicesNsObject uploadImageNormal:tmpData paramters:nsDictTemp baseUrl:USER_AVATAR_URL onCompletion:^(NSDictionary *getReuslt) {
+        if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
+            // if remote image has been upload successfully
+            [delegate completePost:self.postTitle.text postUIImage:self.postImage.image postEmail:self.posterEmail.text postPhone:self.posterPhone.text];
+        
+        
+        }
+        else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
+            // if the remote upload failure
+            // alert
+            [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :@"Cancel":@"Try it again"];
+            
+            
+            
+        }
+        else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+            // if the network error
+            // alert
+            [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :@"Cancel":@"Try it again"];
+            
+        }
+        
+    }];
+
+    
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -116,12 +169,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.userInfo = [DatabaseModel queryUserInfo];
+    
+    
     [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectImage)];
     tapGesture.numberOfTapsRequired=1;
     [self.postImage addGestureRecognizer:tapGesture];
+    
+    
+    
 }
     
 

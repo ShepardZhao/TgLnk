@@ -45,21 +45,17 @@
              onCompletion:^(NSDictionary *getReuslt) {
                  self.HUD.mode = MBProgressHUDModeText;
                  self.HUD.margin = 10.f;
-                 NSLog(@"%@",getReuslt);
-
-                 if ([getReuslt[@"success"] isEqualToString:@"true"]) {
+                 
+                 /**
+                  *  if success is true and returned statusCode is 1
+                  */
+                 if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
                      
-                     //save the login user information into NSDefault and sqlite db
+                     //save the login user information into NSDefault and sqlite db, call sqlite db set and created
                      
-                     //call sqlite db set and created
-                     NSLog(@"%@",getReuslt[@"user"]);
+                     [DatabaseModel createOrUpdateUserTable:getReuslt[@"message"]];
                      
-                     
-                     //[DatabaseModel createOrUpdateUserTable:getReuslt[@"user"]];
-                     
-                     //NSLog(@"%@",getReuslt[@"user"]);
-                     //call NSDefault
-                     //[NsUserDefaultModel setUserDefault:getReuslt[@"user"] :@"userInfoLibrary"];
+                     [NsUserDefaultModel setUserDefault:getReuslt[@"message"] :@"userInfoLibrary"];
                      
                      
                      self.HUD.labelText = @"Login Completed!";
@@ -69,14 +65,38 @@
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                          
                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                             [self dismissViewControllerAnimated:YES completion:nil];
+                             
+                             [self loginDeleteFunction];
                              
                          });
                         
                      });
                  }
-                 else if([getReuslt[@"success"] isEqualToString:@"false"] && ![getReuslt[@"message"] isEqualToString:@""]){
-                     self.HUD.labelText =getReuslt[@"message"];
+                 /**
+                  *  if success is false and returned statusCode is 0
+                  *
+                  */
+                 else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
+                     dispatch_async(dispatch_get_main_queue(), ^(void){
+                         [self.HUD hide:YES];
+                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                             [self.view endEditing:YES];
+                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                   [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"]:@"Notices":self:@"OK":nil];
+                             });
+                           
+                         });
+                     });
+                     
+                 }
+                 
+                 /**
+                  *  if success is false and returned statusCode is 3
+                  *
+                  */
+                 
+                 else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+                     self.HUD.labelText = getReuslt[@"message"];
                      dispatch_async(dispatch_get_main_queue(), ^(void){
                          [self.HUD hide:YES afterDelay:3];
                      });
@@ -101,12 +121,18 @@
   [self performSegueWithIdentifier:@"registerSegue" sender:self];
 }
 - (IBAction)close:(id)sender {
+    [self loginDeleteFunction];
 
+}
+
+- (void)loginDeleteFunction{
     [self dismissViewControllerAnimated:YES completion:^(void){
         [delegate loginDismissed];
     }];
-    
+
 }
+
+
 - (IBAction)userName:(id)sender {
   // self.userNameTextField.delegate = self;
 }

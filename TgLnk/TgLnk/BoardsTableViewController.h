@@ -20,8 +20,10 @@
 #import "BoardDetailTableViewController.h"
 #import "IDMPhotoBrowser.h"
 #import "NetworkCheckModel.h"
+#import "QRAnalysisNSObject.h"
+#import "BoardActiveViewController.h"
 
-@interface BoardsTableViewController : UITableViewController<IDMPhotoBrowserDelegate,QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+@interface BoardsTableViewController : UITableViewController<IDMPhotoBrowserDelegate,QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,BoardPostTableViewController>
 @property (weak,nonatomic) NSString *qrAddress;
 @property DatabaseModel *db;
 @property (strong, nonatomic) NSMutableArray *dataSource;

@@ -44,5 +44,9 @@
 //radius button
 + (UIButton*) styleButton:(UIButton*)button cornerRadius:(CGFloat)radius  borderWidth:(CGFloat)borderWidth borderColor:(CGColorRef)borderColor;
 
+//return circle image
++(UIImageView*) circleImage:(UIImageView*) uiImageView : (int) boardRequest;
 
+//return scaled and compressed image
++(NSData*) compressUIImage:(UIImage*)image quality:(double)quality scaledToSize:(CGSize)newSize;
 @end

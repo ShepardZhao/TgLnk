@@ -25,11 +25,9 @@
  */
 
 #import "QRCodeReaderViewController.h"
-#import "QRCameraSwitchButton.h"
 #import "QRCodeReaderView.h"
 
 @interface QRCodeReaderViewController ()
-@property (strong, nonatomic) QRCameraSwitchButton *switchCameraButton;
 @property (strong, nonatomic) QRCodeReaderView     *cameraView;
 @property (strong, nonatomic) UIButton             *cancelButton;
 @property (strong, nonatomic) QRCodeReader         *codeReader;
@@ -188,12 +186,7 @@
     _codeReader.previewLayer.connection.videoOrientation = [QRCodeReader videoOrientationFromInterfaceOrientation:orientation];
   }
   
-  if ([_codeReader hasFrontDevice]) {
-    _switchCameraButton = [[QRCameraSwitchButton alloc] init];
-    [_switchCameraButton setTranslatesAutoresizingMaskIntoConstraints:false];
-    [_switchCameraButton addTarget:self action:@selector(switchCameraAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_switchCameraButton];
-  }
+  
   
   self.cancelButton                                       = [[UIButton alloc] init];
   _cancelButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -206,15 +199,7 @@
     self.placeText = [[UILabel alloc] init];
     _placeText.translatesAutoresizingMaskIntoConstraints = NO;
     _placeText.text = cancelButtonTitle;
-    [self.view addSubview:_placeText];
-
-    
-    
-    
-    
-    
-    
-    
+    [self.view addSubview:_placeText];    
 }
 
 - (void)setupAutoLayoutConstraints
@@ -237,20 +222,10 @@
   [self.view addConstraints:
    [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[_cancelButton]-|" options:0 metrics:nil views:views]];
   
-  if (_switchCameraButton) {
-    NSDictionary *switchViews = NSDictionaryOfVariableBindings(_switchCameraButton);
-    
-    [self.view addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_switchCameraButton(100)]" options:0 metrics:nil views:switchViews]];
-    [self.view addConstraints:
-     [NSLayoutConstraint constraintsWithVisualFormat:@"H:[_switchCameraButton(60)]|" options:0 metrics:nil views:switchViews]];
-  }
+  
 }
 
-- (void)switchDeviceInput
-{
-  [_codeReader switchDeviceInput];
-}
+
 
 #pragma mark - Catching Button Events
 
@@ -267,9 +242,6 @@
   }
 }
 
-- (void)switchCameraAction:(UIButton *)button
-{
-  [self switchDeviceInput];
-}
+
 
 @end

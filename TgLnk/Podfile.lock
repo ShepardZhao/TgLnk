@@ -51,6 +51,7 @@ PODS:
   - MBProgressHUD (0.9.1)
   - MJRefresh (1.4.5)
   - pop (1.0.7)
+  - PureLayout (2.0.6)
   - QRCodeReaderViewController (3.2.3)
   - RegExCategories (1.0)
   - RSKImageCropper (1.1.3)
@@ -58,6 +59,8 @@ PODS:
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
   - UINavigationBar+Addition (1.0.0)
+  - VGParallaxHeader (0.0.6):
+    - PureLayout
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
@@ -72,6 +75,7 @@ DEPENDENCIES:
   - RSKImageCropper
   - SDWebImage (~> 3.7)
   - UINavigationBar+Addition
+  - VGParallaxHeader
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
@@ -84,10 +88,12 @@ SPEC CHECKSUMS:
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MJRefresh: 4b24394e577ea399fbc926e5b6072317aae2c152
   pop: 628ffc631644601567ee8bfaaaea493ebd7d0923
+  PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
   QRCodeReaderViewController: 875032a407082d9c598794aa1433e7013c9ac468
   RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
   RSKImageCropper: 283bb4f39ced96cc9023ad3b7bc7bc68755845bb
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   UINavigationBar+Addition: c633d66af2245dfdc97a917c3b20a6db02089f2b
+  VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.37.2

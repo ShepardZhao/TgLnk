@@ -67,8 +67,10 @@
 
 -(void)tapBoardImageDetected{
     NSMutableArray *photos = [NSMutableArray new];
-
-    IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]]];
+    NSLog(@"%@",self.noticeBoradsAndPostsDictionary[@"BIMAGE"]);
+    
+    
+    IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DOMAIN_NAME,[NSURL URLWithString:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]]]]];
 
     photo.caption = self.noticeBoradsAndPostsDictionary[@"BNAME"];
     

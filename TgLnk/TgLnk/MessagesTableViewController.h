@@ -13,8 +13,13 @@
 #import "BoardWebViewViewController.h"
 #import "SysNsObject.h"
 #import "MJRefresh.h"
+#import "MBProgressHUD.h"
+#import "QRAnalysisNSObject.h"
+#import "BoardActiveViewController.h"
+#import "BoardDetailTableViewController.h"
 
-@interface MessagesTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate>
+@interface MessagesTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 @property (weak,nonatomic) NSString *qrAddress;
+@property (retain ,nonatomic) MBProgressHUD *HUD;
 
 @end

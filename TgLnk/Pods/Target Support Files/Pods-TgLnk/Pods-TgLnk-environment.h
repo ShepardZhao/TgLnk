@@ -132,6 +132,12 @@
 #define COCOAPODS_VERSION_MINOR_MJRefresh 4
 #define COCOAPODS_VERSION_PATCH_MJRefresh 5
 
+// PureLayout
+#define COCOAPODS_POD_AVAILABLE_PureLayout
+#define COCOAPODS_VERSION_MAJOR_PureLayout 2
+#define COCOAPODS_VERSION_MINOR_PureLayout 0
+#define COCOAPODS_VERSION_PATCH_PureLayout 6
+
 // QRCodeReaderViewController
 #define COCOAPODS_POD_AVAILABLE_QRCodeReaderViewController
 #define COCOAPODS_VERSION_MAJOR_QRCodeReaderViewController 3
@@ -167,6 +173,12 @@
 #define COCOAPODS_VERSION_MAJOR_UINavigationBar_Addition 1
 #define COCOAPODS_VERSION_MINOR_UINavigationBar_Addition 0
 #define COCOAPODS_VERSION_PATCH_UINavigationBar_Addition 0
+
+// VGParallaxHeader
+#define COCOAPODS_POD_AVAILABLE_VGParallaxHeader
+#define COCOAPODS_VERSION_MAJOR_VGParallaxHeader 0
+#define COCOAPODS_VERSION_MINOR_VGParallaxHeader 0
+#define COCOAPODS_VERSION_PATCH_VGParallaxHeader 6
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

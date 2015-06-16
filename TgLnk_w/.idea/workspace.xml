@@ -1,7 +1,168 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8435fa10-172d-4961-a5c9-2cc5fb103db7" name="Default" comment="" />
+    <list default="true" id="8435fa10-172d-4961-a5c9-2cc5fb103db7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardActiveViewController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/Images.xcassets/personalSettingHeader.imageset/26APlv50lC.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/QRAnalysisNSObject.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/QRAnalysisNSObject.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/HeaderView.xib" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/qr/1000000000.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/HeaderView.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/HeaderView.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/AccountManagementTableViewController.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/qr/1000000003.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardActiveViewController.m" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/qr/1000000002.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/images/qr/1000000001.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/AccountManagementTableViewController.m" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Headers/Public/QRCodeReaderViewController/QRCameraSwitchButton.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/OTCover.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/GenderTableViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCameraSwitchButton.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/qr/1000010000.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/OTCover.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/qr/1000010001.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/qr/1000010002.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Headers/Private/QRCodeReaderViewController/QRCameraSwitchButton.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCameraSwitchButton.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/DOBTableViewController.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/Images.xcassets/personalSettingHeader.imageset/personalSettingHeader.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/images/qr/1000010003.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/DOBTableViewController.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/GenderTableViewController.m" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/rules/lib/core.js" afterPath="$PROJECT_DIR$/node_modules/rules/lib/core.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-RegExCategories.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-RegExCategories.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/ContactTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/ContactTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-MBProgressHUD.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-MBProgressHUD.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Manifest.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/WebServicesNsObject.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/WebServicesNsObject.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/MessagesTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/MessagesTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-acknowledgements.markdown" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-acknowledgements.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/PrefixHeader.pch" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/PrefixHeader.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingPrivacyViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingPrivacyViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-resources.sh" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-resources.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-MJRefresh.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-MJRefresh.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardWebViewViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardWebViewViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-Facebook-iOS-SDK.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-Facebook-iOS-SDK.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTermOfServicesViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTermOfServicesViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SysNsObject.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SysNsObject.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/noticeBoard_router.js" afterPath="$PROJECT_DIR$/routes/noticeBoard_router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCodeReaderViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCodeReaderViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-Bolts.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-Bolts.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-pop.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-pop.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/AboutTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/AboutTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RSKImageCropper/Pods-TgLnk-RSKImageCropper-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-QRCodeReaderViewController.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-QRCodeReaderViewController.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-RSKImageCropper.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-RSKImageCropper.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-acknowledgements.plist" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-acknowledgements.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/PersonalDetailSettingsTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/PersonalDetailSettingsTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTermOfServicesViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTermOfServicesViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-AMScrollingNavbar.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-AMScrollingNavbar.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardsTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardsTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/PersonalDetailSettingsTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/PersonalDetailSettingsTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SystemUIViewControllerModel.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SystemUIViewControllerModel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-FMDB/Pods-TgLnk-FMDB-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/RegisterTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/RegisterTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/user_router.js" afterPath="$PROJECT_DIR$/routes/user_router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk.xcworkspace/xcuserdata/Shepard.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk.xcworkspace/xcuserdata/Shepard.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/DatabaseModel.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/DatabaseModel.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk.xcworkspace/xcuserdata/Shepard.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk.xcworkspace/xcuserdata/Shepard.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/UserIDRegisterTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/UserIDRegisterTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-FMDB.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-FMDB.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardPostTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardPostTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/AboutTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/AboutTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-SDWebImage/Pods-TgLnk-SDWebImage-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/LoginViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/LoginViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardWebViewViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardWebViewViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardsTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/BoardsTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AFNetworking/Pods-TgLnk-AFNetworking-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-DACircularProgress.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-DACircularProgress.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Podfile.lock" afterPath="$PROJECT_DIR$/../TgLnk/Podfile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/Base.lproj/Main.storyboard" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTableViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTableViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MBProgressHUD/Pods-TgLnk-MBProgressHUD.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk.debug.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk.debug.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-RegExCategories/Pods-TgLnk-RegExCategories-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-UINavigationBar+Addition/Pods-TgLnk-UINavigationBar+Addition-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCodeReaderViewController.h" afterPath="$PROJECT_DIR$/../TgLnk/Pods/QRCodeReaderViewController/QRCodeReaderViewController/QRCodeReaderViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Podfile" afterPath="$PROJECT_DIR$/../TgLnk/Podfile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-IDMPhotoBrowser/Pods-TgLnk-IDMPhotoBrowser-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/WebServicesNsObject.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/WebServicesNsObject.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SuccessRegisterViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SuccessRegisterViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/ContactTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/ContactTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-AMScrollingNavbar/Pods-TgLnk-AMScrollingNavbar-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Bolts/Pods-TgLnk-Bolts-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/DatabaseModel.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/DatabaseModel.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/MessagesTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/MessagesTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/Images.xcassets/personalSettingHeader.imageset/Contents.json" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/Images.xcassets/personalSettingHeader.imageset/Contents.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-SDWebImage.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-SDWebImage.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-UINavigationBar+Addition.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-UINavigationBar+Addition.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-IDMPhotoBrowser.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-IDMPhotoBrowser.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-AFNetworking.xcscheme" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Pods.xcodeproj/xcuserdata/Shepard.xcuserdatad/xcschemes/Pods-TgLnk-AFNetworking.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SystemUIViewControllerModel.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SystemUIViewControllerModel.m" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingPrivacyViewController.h.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingPrivacyViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-dummy.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-Facebook-iOS-SDK/Pods-TgLnk-Facebook-iOS-SDK-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-DACircularProgress/Pods-TgLnk-DACircularProgress-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-Private.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-pop/Pods-TgLnk-pop-Private.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-environment.h" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk-environment.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTableViewController.m" afterPath="$PROJECT_DIR$/../TgLnk/TgLnk/SettingTableViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-prefix.pch" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-MJRefresh/Pods-TgLnk-MJRefresh-prefix.pch" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk.release.xcconfig" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk.release.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-dummy.m" afterPath="$PROJECT_DIR$/../TgLnk/Pods/Target Support Files/Pods-TgLnk-QRCodeReaderViewController/Pods-TgLnk-QRCodeReaderViewController-dummy.m" />
+    </list>
     <ignored path="TgLnk_w.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,16 +184,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="landingPage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/landingPage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="common.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/stylesheets/common.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,17 +198,27 @@
         <entry file="file://$PROJECT_DIR$/routes/noticeBoard_router.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+              <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="user_router.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="user_router.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/user_router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.73655915">
-              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -73,41 +234,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="postNote_router.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="target_router.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/target_router.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="postNote_router.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/postNote_router.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.2354788">
+              <caret line="96" column="60" selection-start-line="96" selection-start-column="60" selection-end-line="96" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/stylesheets/style.css">
+      <file leaf-file-name="webServicesReturnMessages.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/webServicesReturnMessages.json">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/footer.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="13" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="36" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -152,7 +303,6 @@
         <option value="$PROJECT_DIR$/views/tag.html" />
         <option value="$PROJECT_DIR$/node_modules/rules/lib/regex.js" />
         <option value="$PROJECT_DIR$/routes/webServicesReturnMessages.json" />
-        <option value="$PROJECT_DIR$/node_modules/rules/lib/core.js" />
         <option value="$PROJECT_DIR$/public/javascripts/jqueryBoard.js" />
         <option value="$PROJECT_DIR$/views/boards.html" />
         <option value="$PROJECT_DIR$/views/register.html" />
@@ -179,15 +329,16 @@
         <option value="$PROJECT_DIR$/public/javascripts/jqueryPost.js" />
         <option value="$PROJECT_DIR$/public/javascripts/jqueryGlobal.js" />
         <option value="$PROJECT_DIR$/views/nav.html" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/routes/postNote_router.js" />
         <option value="$PROJECT_DIR$/node_modules/mysqlConnectionPool/lib/dbConf.js" />
         <option value="$PROJECT_DIR$/public/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/views/landingPage.html" />
         <option value="$PROJECT_DIR$/public/stylesheets/landingPageStyle.css" />
         <option value="$PROJECT_DIR$/public/stylesheets/common.css" />
-        <option value="$PROJECT_DIR$/routes/noticeBoard_router.js" />
+        <option value="$PROJECT_DIR$/node_modules/rules/lib/core.js" />
         <option value="$PROJECT_DIR$/routes/user_router.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/noticeBoard_router.js" />
       </list>
     </option>
   </component>
@@ -226,6 +377,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -242,20 +394,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="TgLnk_w" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TgLnk_w" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TgLnk_w" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -286,8 +424,22 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -304,10 +456,71 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="qr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="TgLnk_w" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="node_modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -322,18 +535,18 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
     <property name="FullScreen" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../eBay/spa_nodejs/spa_beta (V2.1)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/images/qr" />
       <recent name="$PROJECT_DIR$/node_modules" />
       <recent name="$PROJECT_DIR$/public/sdk/javascripts" />
       <recent name="$PROJECT_DIR$/public/stylesheets" />
       <recent name="$PROJECT_DIR$/public/images/asserts" />
-      <recent name="$PROJECT_DIR$/public/javascripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/images/sys" />
@@ -414,28 +627,28 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.184375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21875" sideWeight="0.5" order="0" side_tool="true" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32605305" sideWeight="0.5129241" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31428573" sideWeight="0.48707592" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37801206" sideWeight="0.4644588" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.02647975" sideWeight="0.48707592" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.184375" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21875" sideWeight="0.5" order="0" side_tool="true" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39660493" sideWeight="0.49030694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32605305" sideWeight="0.5129241" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31278196" sideWeight="0.48707592" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32605305" sideWeight="0.49030694" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32605305" sideWeight="0.49030694" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39660493" sideWeight="0.49030694" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37801206" sideWeight="0.4644588" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32970452" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -456,13 +669,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/postNote_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/user_router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -547,13 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/webServicesReturnMessages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03311258">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -680,32 +879,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/target_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.44474393">
-          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/rules/lib/core.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.606469">
-          <caret line="23" column="52" selection-start-line="23" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="93" selection-start-line="22" selection-start-column="93" selection-end-line="22" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/mysqlConnectionPool/lib/dbConf.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="21" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -713,7 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="36" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -721,7 +897,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="13" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -729,7 +904,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -737,7 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="23" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -778,6 +951,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/webServicesReturnMessages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/images/qr/1000000000.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/user_router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="57" column="37" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/noticeBoard_router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="117" column="70" selection-start-line="117" selection-start-column="70" selection-end-line="117" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/rules/lib/core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66433567">
+          <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/target_router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="55" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/search_router.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -786,26 +1003,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/postNote_router.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/noticeBoard_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/user_router.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.73655915">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.2354788">
+          <caret line="96" column="60" selection-start-line="96" selection-start-column="60" selection-end-line="96" selection-end-column="60" />
           <folding />
         </state>
       </provider>

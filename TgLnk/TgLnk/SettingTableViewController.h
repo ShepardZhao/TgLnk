@@ -10,6 +10,7 @@
 #import "SystemUIViewControllerModel.h"
 #import "DatabaseModel.h"
 #import "LoginViewController.h"
+#import "PersonalDetailSettingsTableViewController.h"
 
 @interface SettingTableViewController : UITableViewController<LoginViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *userName;

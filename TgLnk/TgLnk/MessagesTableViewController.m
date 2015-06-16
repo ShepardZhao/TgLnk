@@ -8,8 +8,14 @@
 
 #import "MessagesTableViewController.h"
 
-@interface MessagesTableViewController ()
+@interface MessagesTableViewController (){
+
+    NSDictionary *boardArray;
+
+
+}
 @property (strong, nonatomic) NSMutableArray *data;
+
 
 @end
 
@@ -102,7 +108,18 @@
         (BoardWebViewViewController *)segue.destinationViewController;
         boardCtr.address = self.qrAddress;
     }
+    
+    if ([segue.identifier isEqualToString:@"activeBoardSegue"]) {
+        BoardActiveViewController *bAContr = (BoardActiveViewController *) segue.destinationViewController;
+        bAContr.boardArray = boardArray;
+    }
 
+    
+    
+    if ([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]) {
+        BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
+        bDContr.noticeBoradsAndPostsDictionary = boardArray;
+    }
 }
 
 
@@ -131,19 +148,31 @@
 
 - (void)reader:(QRCodeReaderViewController *)reader
  didScanResult:(NSString *)result {
+   
     [self dismissViewControllerAnimated:
      YES completion:^{
+         self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
+         self.HUD.delegate = self;
+         self.HUD.labelText = @"Scan Completed";
+         [self.HUD hide:YES afterDelay:2];
          
          self.qrAddress = result;
          
-         if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
-             [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              
-         } else {
-             [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
-         }
+             if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
+                 [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
+                 
+             } else {
+                 [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
+             }
+             
+         });
+         
          
      }];
+
+
 }
 
 
@@ -152,7 +181,34 @@
 - (void)alertView:(UIAlertView *)alertView
 clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Go"]) {
-        [self performSegueWithIdentifier:@"qrWebViewSegue" sender:self];
+        
+        [WebServicesNsObject
+         GET_HTTP_METHOD:
+         NOTICESBOARD_STATUS_QUERY:@{@"queryID":[QRAnalysisNSObject QRUrlAnalysis:self.qrAddress]}:0
+         onCompletion:^(NSDictionary *getReuslt) {
+             if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
+                 if ([getReuslt[@"message"][@"BVIEW_STATUS"] isEqualToNumber:[NSNumber numberWithInt:0]]) {
+                     //jump to active page
+                     boardArray = getReuslt[@"message"];
+                     
+                     [self performSegueWithIdentifier:@"activeBoardSegue" sender:self];
+                 }
+                 else if ([getReuslt[@"message"][@"BVIEW_STATUS"] isEqualToNumber:[NSNumber numberWithInt:1]]){
+                     //jump to detail page
+                     self.data = getReuslt[@"message"];
+                     [self performSegueWithIdentifier:@"showDetailNoticeBoardSegue" sender:self];
+                     
+                 }
+                 
+                 
+             }
+             else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
+                 [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :nil :@"Ok"];
+             }
+             else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+                 [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :nil:@"Ok"];
+             }
+         }];
     }
     else if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Copy"]){
         
@@ -160,7 +216,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
         
         [SystemUIViewControllerModel aLertViewDisplay:@"Copyed" :@"Notices" :self :@"OK" :@"nil"];
     }
-    
+
 }
 
 

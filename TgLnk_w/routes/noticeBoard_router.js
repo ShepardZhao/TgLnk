@@ -32,7 +32,7 @@ router.get('/noticeBoard', function (req, res, next) {
                     else if (result.success == 1) {
                         console.log('Has successfully fetch the posts');
 
-                            postsArray.push(result.getresult);
+                        postsArray.push(result.getresult);
 
                     }
                     ep.emit('syn');
@@ -41,25 +41,26 @@ router.get('/noticeBoard', function (req, res, next) {
 
 
             ep.after('syn', noticeBoardArray.length, function () {
-                var merged = postsArray.reduce(function(prev, next) {
-                    return prev.concat(next);
-                });
+                if (noticeBoardArray.length > 0) {
+                    var merged = postsArray.reduce(function (prev, next) {
+                        return prev.concat(next);
+                    });
 
-                //append the posts into noticeboard
-                for (var i = 0; i < noticeBoardArray.length; i++) {
-                    noticeBoardArray[i].POSTS = [];
+                    //append the posts into noticeboard
+                    for (var i = 0; i < noticeBoardArray.length; i++) {
+                        noticeBoardArray[i].POSTS = [];
 
-                    for (var x = 0; x < merged.length; x++) {
-                        if (noticeBoardArray[i].BID === merged[x].BID) {
-                            noticeBoardArray[i].POSTS.push(merged[x]);
+                        for (var x = 0; x < merged.length; x++) {
+                            if (noticeBoardArray[i].BID === merged[x].BID) {
+                                noticeBoardArray[i].POSTS.push(merged[x]);
+                            }
                         }
                     }
                 }
 
 
                 if (getRequestType === 'json') {
-                    res.json({success: 'true', noticeBoard: noticeBoardArray});
-
+                    res.json(rules.getResponseJson('true',noticeBoardArray,'1'));
                 } else if (getRequestType === 'render') {
                     res.render('noticeBoardPage', {noticeBoard: noticeBoardArray});
 
@@ -87,9 +88,9 @@ router.get('/noticeBoard/query', function (req, res, next) {
         else if (result.success == 1) {
             console.log('Has successfully fetch the board from %s', getQueryID);
             if (result.getresult.length > 0) {
-                res.json({success: 1, noticeBoard: result.getresult[0]});
+                res.json(rules.getResponseJson('true',result.getresult[0],'1'));
             } else {
-                res.json({success: 0});
+                res.json(rules.getResponseJson('false','It looks like this QR code does not exist!','0'));
             }
 
         }
@@ -100,9 +101,9 @@ router.get('/noticeBoard/query', function (req, res, next) {
 });
 
 //board active
-router.get('/noticeBoard/active', function (req, res, next) {
-    var getBoardID = req.query.noticeBoardID,
-        getActiveCode = req.query.activeCode;
+router.put('/noticeBoard/active', function (req, res, next) {
+    var getBoardID = req.body.noticeBoardID,
+        getActiveCode = req.body.activeCode;
 
     connectionPool.CRUD('UPDATE NOTICEBOARD_T SET BVIEW_STATUS=? WHERE BID=? AND BACTIVE_CODE=?', ['1', getBoardID, getActiveCode], function (result) {
         if (result.success == 0) {
@@ -110,11 +111,11 @@ router.get('/noticeBoard/active', function (req, res, next) {
         }
         else if (result.success == 1) {
             if (result.getresult.affectedRows > 0) {
-                res.json({success: 1});
+                res.json(rules.getResponseJson('true','be successfully active','1'));
 
             }
             else {
-                res.json({success: 0});
+                res.json(rules.getResponseJson('false','active failure','0'));
 
             }
 

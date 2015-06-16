@@ -10,11 +10,20 @@
 
 @interface BoardsTableViewController (){
     int selectNoticeBoradIndex;
+    NSDictionary *boardArray;
+    BOOL isQR;
 }
 
 @end
 
 @implementation BoardsTableViewController
+
+
+-(void) completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone{
+    NSLog(@"%@",@"1");
+
+
+}
 
 
 - (void)loadNewData
@@ -74,25 +83,33 @@
      GET_HTTP_METHOD:
      NOTICESBOARD_URL:nil:0
      onCompletion:^(NSDictionary *getReuslt) {
+         NSLog(@"%@",getReuslt);
          
          dispatch_async(dispatch_get_main_queue(), ^(void){
-             if ([getReuslt[@"success"] isEqualToString:@"true"]) {
+             if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
                  
                  //use the restful server API first
-                 self.dataSource = getReuslt[@"noticeBoard"];
+                 self.dataSource = getReuslt[@"message"];
                 
                  //dispatch the data second
                   dispatch_async(dispatch_get_main_queue(), ^{
-                  [DatabaseModel createOrUpdateBoardTable:getReuslt[@"noticeBoard"]];
+                  [DatabaseModel createOrUpdateBoardTable:getReuslt[@"message"]];
+                  [self.tableView reloadData];
+
                   });
              }
-             else if([getReuslt[@"success"] isEqualToString:@"false"]){
+             else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"]isEqualToString:@"0"]){
                  self.HUD.labelText = getReuslt[@"message"];
              }
+             
+             else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+                 self.HUD.labelText = getReuslt[@"message"];
+             
+             }
+             
+             
              dispatch_async(dispatch_get_main_queue(), ^{
                  [self.HUD hide:YES afterDelay:3];
-                 [self.tableView reloadData];
-
              });
 
 
@@ -143,9 +160,10 @@ forIndexPath:indexPath];
 }
 
 
-- (void)tapDetected:(UIGestureRecognizer *)sender
-{
-    NSLog(@"%lu", sender.view.tag);   // imageview
+
+
+
+- (void)tapDetected:(UIGestureRecognizer *)sender{
 
     
     // Create an array to store IDMPhoto objects
@@ -174,19 +192,6 @@ forIndexPath:indexPath];
     
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -248,24 +253,24 @@ array, and add a new row to the table view
 // In a storyboard-based application, you will often want to do a little
 // preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-  if ([segue.identifier isEqualToString:@"qrWebViewSegue"]) {
-    BoardWebViewViewController *boardCtr =
-        (BoardWebViewViewController *)segue.destinationViewController;
-   // boardCtr.address = self.qrAddress;
-      boardCtr.address = @"http://chaseme.cloudapp.net/1000000000";
-  }
+
     
     if([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]){
-    
         BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
+        if (isQR) {
+            bDContr.noticeBoradsAndPostsDictionary = self.dataSource[selectNoticeBoradIndex];
+        }
+        else{
+            bDContr.noticeBoradsAndPostsDictionary = boardArray;
+        }
         
-        bDContr.noticeBoradsAndPostsDictionary = self.dataSource[selectNoticeBoradIndex];
-        
-    
-    
     }
     
-    
+    if ([segue.identifier isEqualToString:@"activeBoardSegue"]) {
+        BoardActiveViewController *bAContr = (BoardActiveViewController *) segue.destinationViewController;
+        bAContr.boardArray = boardArray;
+        
+    }
 }
 
 #pragma login button action
@@ -275,9 +280,6 @@ array, and add a new row to the table view
 #pragma qr button action
 - (IBAction)qrScanAction:(id)sender {
     
-    [self performSegueWithIdentifier:@"qrWebViewSegue" sender:self];
-
-    /*
   if ([QRCodeReader
           supportsMetadataObjectTypes:@[ AVMetadataObjectTypeQRCode ]]) {
     static QRCodeReaderViewController *reader = nil;
@@ -295,29 +297,36 @@ array, and add a new row to the table view
 
   }
      
-     */
+    
 }
 
 #pragma mark - QRCodeReader Delegate Methods
 
 - (void)reader:(QRCodeReaderViewController *)reader
     didScanResult:(NSString *)result {
-
+        
+        [self dismissViewControllerAnimated:
+         YES completion:^{
+             self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
+             self.HUD.delegate = self;
+             self.HUD.labelText = @"Scan Completed";
+             [self.HUD hide:YES afterDelay:2];
     
-  [self dismissViewControllerAnimated:
-            YES completion:^{
-    
-    self.qrAddress = result;
-
-    if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
-        [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
-
-    } else {
-        [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
-    }
-
-  }];
-    
+             self.qrAddress = result;
+             
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                 
+                 if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
+                     [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
+                     
+                 } else {
+                     [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
+                 }
+                 
+             });
+           
+             
+         }];
 }
 
 
@@ -326,7 +335,35 @@ array, and add a new row to the table view
 - (void)alertView:(UIAlertView *)alertView
     clickedButtonAtIndex:(NSInteger)buttonIndex {
     if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Go"]) {
-        [self performSegueWithIdentifier:@"qrWebViewSegue" sender:self];
+        
+        [WebServicesNsObject
+         GET_HTTP_METHOD:
+         NOTICESBOARD_STATUS_QUERY:@{@"queryID":[QRAnalysisNSObject QRUrlAnalysis:self.qrAddress]}:0
+         onCompletion:^(NSDictionary *getReuslt) {
+             if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
+                 if ([getReuslt[@"message"][@"BVIEW_STATUS"] isEqualToNumber:[NSNumber numberWithInt:0]]) {
+                     //jump to active page
+                     boardArray = getReuslt[@"message"];
+                     [self performSegueWithIdentifier:@"activeBoardSegue" sender:self];
+                 }
+                 else if ([getReuslt[@"message"][@"BVIEW_STATUS"] isEqualToNumber:[NSNumber numberWithInt:1]]){
+                     //jump to detail page
+                     boardArray = getReuslt[@"message"];
+                     isQR = YES;
+                     [self performSegueWithIdentifier:@"showDetailNoticeBoardSegue" sender:self];
+                 
+                 }
+                 
+             
+             }
+             else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
+                 [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :nil :@"Ok"];
+             }
+             else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
+                 [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :nil:@"Ok"];
+             }
+         }];
+    
     }
     else if([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Copy"]){
         

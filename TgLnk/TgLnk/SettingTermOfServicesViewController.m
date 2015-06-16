@@ -24,7 +24,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
+
 }
 
 - (void)didReceiveMemoryWarning {

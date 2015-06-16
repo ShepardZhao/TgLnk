@@ -229,5 +229,86 @@
 
 
 
+/**
+ *  return circle image
+ *
+ *  @param uiImageView
+ *  @param boardRequest
+ *
+ *  @return UIImageView
+ */
+
++(UIImageView*) circleImage:(UIImageView*) uiImageView : (int) boardRequest{
+    
+    dispatch_async(dispatch_get_main_queue(),^{
+        
+        uiImageView.layer.cornerRadius = uiImageView.frame.size.height /2;
+        uiImageView.layer.masksToBounds = YES;
+        uiImageView.alpha=1.0;
+        if (boardRequest==1) {
+            uiImageView.layer.borderWidth = 2;
+            uiImageView.layer.borderColor = [ RGB2UICOLOR(255,255,255,1.0) CGColor];
+        }
+        
+    });
+    return uiImageView;
+}
+
+/**
+ *  return scaled and compressed UIImage
+ *
+ *  @param image   Source UIImage
+ *  @param quality The quality of compress by default should be 0.5, but you can custom
+ *  @param newSize The CGSize for crop
+ *
+ *  @return UIImage - NSData
+ */
+
+
++(NSData*) compressUIImage:(UIImage*)image quality:(double)quality scaledToSize:(CGSize)newSize{
+    double ratio;
+    double delta;
+    CGPoint offset;
+    
+    //make a new square size, that is the resized imaged width
+    CGSize sz = CGSizeMake(newSize.width, newSize.width);
+    
+    //figure out if the picture is landscape or portrait, then
+    //calculate scale factor and offset
+    if (image.size.width > image.size.height) {
+        ratio = newSize.width / image.size.width;
+        delta = (ratio*image.size.width - ratio*image.size.height);
+        offset = CGPointMake(delta/2, 0);
+    } else {
+        ratio = newSize.width / image.size.height;
+        delta = (ratio*image.size.height - ratio*image.size.width);
+        offset = CGPointMake(0, delta/2);
+    }
+    
+    //make the final clipping rect based on the calculated values
+    CGRect clipRect = CGRectMake(-offset.x, -offset.y,
+                                 (ratio * image.size.width) + delta,
+                                 (ratio * image.size.height) + delta);
+    
+    
+    //start a new context, with scale factor 0.0 so retina displays get
+    //high quality image
+    if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
+        UIGraphicsBeginImageContextWithOptions(sz, YES, 0.0);
+    } else {
+        UIGraphicsBeginImageContext(sz);
+    }
+    UIRectClip(clipRect);
+    [image drawInRect:clipRect];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //compress
+    NSData *imageData = UIImageJPEGRepresentation(newImage, quality);
+ 
+    return imageData;
+}
+
+
 
 @end

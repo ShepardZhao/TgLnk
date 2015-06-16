@@ -119,17 +119,27 @@
  didScanResult:(NSString *)result {
     [self dismissViewControllerAnimated:
      YES completion:^{
+         self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
+         self.HUD.delegate = self;
+         self.HUD.labelText = @"Scan Completed";
+         [self.HUD hide:YES afterDelay:2];
          
          self.qrAddress = result;
          
-         if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
-             [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              
-         } else {
-             [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
-         }
+             if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
+                 [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
+                 
+             } else {
+                 [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
+             }
+             
+         });
+         
          
      }];
+
 }
 
 

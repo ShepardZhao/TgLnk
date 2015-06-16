@@ -8,56 +8,66 @@
 
 #import "SettingTableViewController.h"
 
-@interface SettingTableViewController ()
+@interface SettingTableViewController (){
+    NSDictionary *userQuery;
+    BOOL actionStatus;
+}
 
 @end
 
 @implementation SettingTableViewController
 
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
 
 -(void)loginDismissed{
-    
     if ([DatabaseModel queryUserLoginStatus]) {
-    
-        NSDictionary *userQuery = [[NSDictionary alloc] init];
-        userQuery = [DatabaseModel queryUserInfo];
-        self.userName.text = userQuery[@"UNICKNAME"];
-        self.userID.text = userQuery[@"UID"];
         
+        userQuery = [DatabaseModel queryUserInfo];
+        
+        self.userName.text = userQuery[@"UNICKNAME"];
+        self.userID.text = [NSString stringWithFormat:@"User ID: %@",userQuery[@"UID"]];
         //use once dispatch
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            // [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@""]];
-            
+            [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]];
         });
-
+        
     }
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
-    [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
+    userQuery = [DatabaseModel queryUserInfo];
     
     //if currently there is not user login
     if (![DatabaseModel queryUserLoginStatus]) {
-        
         //if the current is guest login
         self.userName.text = @"Guest";
         self.userID.text = @"No login";
-        [self performSegueWithIdentifier:@"loginAndSegue" sender:self];
+        self.userAvatar.image = [UIImage imageNamed:@"Avatar"];
+        if (!actionStatus) {
+            [self performSegueWithIdentifier:@"loginAndSegue" sender:self];
+        }
     }
     else{
-        NSDictionary *userQuery = [[NSDictionary alloc] init];
-        userQuery = [DatabaseModel queryUserInfo];
         self.userName.text = userQuery[@"UNICKNAME"];
+        self.userID.text = [NSString stringWithFormat:@"User ID: %@",userQuery[@"UID"]];
+        [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]];
 
     }
     
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    actionStatus = YES;
+    
+
+    self.userAvatar = [SystemUIViewControllerModel circleImage:self.userAvatar :0];
+    [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
 
 }
 
@@ -106,6 +116,11 @@
     if ([segue.identifier isEqualToString:@"loginAndSegue"]) {
         LoginViewController *lognCtl = (LoginViewController *)segue.destinationViewController;
         lognCtl.delegate = self;
+    }
+    
+    if ([segue.identifier isEqualToString:@"personalSettingSegue"]) {
+        PersonalDetailSettingsTableViewController *perCtl = (PersonalDetailSettingsTableViewController *)segue.destinationViewController;
+        perCtl.navTitle = userQuery[@"UNICKNAME"];
     }
 
 

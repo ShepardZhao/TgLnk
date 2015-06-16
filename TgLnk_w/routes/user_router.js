@@ -5,8 +5,8 @@ var express = require('express'),
     router = express.Router(),
     connectionPool = require('mysqlConnectionPool'),
     rules = require('rules'),
-    eventProxy = require('eventproxy');
-
+    fs = require('fs'),
+    path = require("path");
 
 /* POST users register. */
 router.post('/user/register', function (req, res, next) {
@@ -48,10 +48,7 @@ router.post('/user/login', function (req, res, next) {
     var getUserEmail = req.body.email,
         gePass = req.body.pass,
         getLoginTime = rules.getCurrentTime(),
-        setUserLoginArray = [],
-        setQueryStatus = false,
-        setUpdateLoginTimeStatus = false,
-        ep = new eventProxy();
+        setUserLoginArray = [];
 
     //query user
     connectionPool.CRUD('SELECT * FROM USER_T WHERE UEMAIL =? AND PASSWORD=?', [getUserEmail, gePass], function (result) {
@@ -59,37 +56,23 @@ router.post('/user/login', function (req, res, next) {
             console.log('Error happens on fetching user login data : %s', result.error);
         }
         else if (result.success == 1) {
-            console.log('Has successfully get user login data');
-            setUserLoginArray = result.getresult[0];
             if(result.getresult.length>0){
-                setQueryStatus = true;
+                setUserLoginArray = result.getresult[0];
+                //update the user login time
+                connectionPool.CRUD('UPDATE USER_T SET ULOGIN_TIME =? WHERE UEMAIL =?', [getLoginTime, getUserEmail], function (result) {
+                    if (result.success == 0) {
+                        console.log('Error happens on fetching user login data : %s', result.error);
+                    }
+                    else if (result.success == 1) {
+                        console.log('Has successfully get user login data');
+                        res.json(rules.getResponseJson('true',setUserLoginArray,'1'));
+                    }
+                });
+            } else{
+                res.json(rules.getResponseJson('false','wrong username or password','0'));
+
             }
         }
-        ep.emit('syn');
-    });
-
-
-    //update the user login time
-    connectionPool.CRUD('UPDATE USER_T SET ULOGIN_TIME =? WHERE UEMAIL =?', [getLoginTime, getUserEmail], function (result) {
-        if (result.success == 0) {
-            console.log('Error happens on fetching user login data : %s', result.error);
-        }
-        else if (result.success == 1) {
-            console.log('Has successfully get user login data');
-            setUpdateLoginTimeStatus = true;
-        }
-        ep.emit('syn');
-    });
-
-    ep.after('syn', 2, function () {
-
-        if (setQueryStatus && setUpdateLoginTimeStatus) {
-            res.json({success: 'true', user: setUserLoginArray});
-        }
-        else {
-            res.json({success: 'false', message:'user does not match'});
-        }
-
     });
 
 });
@@ -108,6 +91,7 @@ router.get('/user/info', function (req, res, next) {
         else if (result.success == 1) {
             console.log('Has successfully get user info data');
             res.json({success: true, userInfo: result.getresult[0]});
+
         }
     });
 
@@ -150,28 +134,100 @@ router.get('/user/userIDCheck', function (req, res, next) {
 
 router.get('/user/userEmailCheck', function (req, res, next) {
     var getUserEmailCheck = req.query.emailAddress;
-
     //check user is existed
-    connectionPool.CRUD('SELECT COUNT(*) AS COUNTS FROM USER_T WHERE UEMAIL =?', [getUserEmailCheck], function (result) {
+    connectionPool.CRUD('SELECT * FROM USER_T WHERE UEMAIL =?', [getUserEmailCheck], function (result) {
         if (result.success == 0) {
             console.log('Error happens on fetching user email data : %s', result.error);
         }
         else if (result.success == 1) {
             console.log('Has successfully fetching user email data');
-            if (result.getresult[0]['COUNTS'] == 0) {
-                res.json({success: 'true'});
+            if (result.getresult.length > 0) {
+                res.json(rules.getResponseJson('false','email has been taken','0'));
             }
             else {
-                res.json({
-                    success: 'false'
-                });
-
+                res.json(rules.getResponseJson('true','email is available','1'));
             }
 
 
         }
     });
 
+
+});
+
+
+
+//user information update
+
+router.put('/user/info',function(req,res,next){
+    var getUserID = req.body.UID,
+        getUserUserName = req.body.UNICKNAME,
+        getUserEmail = req.body.UEMAIL,
+        getUserPHONE = req.body.UPHONE;
+
+    console.log(getUserID,getUserUserName,getUserEmail,getUserPHONE);
+
+
+    connectionPool.CRUD('SELECT * FROM USER_T WHERE UEMAIL =? AND UID !=?', [getUserEmail,getUserID], function (result) {
+        if (result.success == 0) {
+            res.json(rules.getResponseJson('false','Error happens on fetching user email data : '+result.error,'0'));
+        }
+        else if (result.success == 1) {
+            if (result.getresult.length > 0) {
+                console.log(rules.getResponseJson('false','This Email already been used, please change to another one!','0'));
+                res.json(rules.getResponseJson('false','This Email already been used, please change to another one!','0'));
+            }
+            else {
+                connectionPool.CRUD('UPDATE USER_T SET UNICKNAME=?, UEMAIL=?, UPHONE=? WHERE UID =?', [getUserUserName,getUserEmail,getUserPHONE,getUserID], function (result) {
+                    if (result.success == 0){
+                        console.log(rules.getResponseJson('false','Error happens on update user information','0'));
+                        res.json(rules.getResponseJson('false','Error happens on update user information'  +result.error,'0'));
+                    }
+                    else if (result.success == 1) {
+                        console.log(rules.getResponseJson('true','Has successfully fetching user email data','1'));
+                        res.json(rules.getResponseJson('true','Has successfully fetching user email data','1'));
+                    }
+                });
+
+            }
+        }
+    });
+
+});
+
+
+//user avatar upload
+
+
+router.post('/user/avatar',function(req,res,next){
+    var getUID = req.body.UID;
+    console.log(req);
+    var tmp_path = req.files.avatar.path,
+        newFileName = getUID+'.' + req.files.avatar.extension,
+        target_path = path.join(__dirname, '../public/images/userAvatars/' + newFileName);
+
+    // move file
+    fs.rename(tmp_path, target_path, function (err) {
+        if (err) throw err;
+        // delete temp file,
+        fs.unlink(tmp_path, function () {
+            if (err) {
+                throw err;
+            } else {
+                //update the avatar for current user
+                connectionPool.CRUD('UPDATE USER_T SET UAVATAR=? WHERE UID =?', ['/images/userAvatars/' + newFileName,getUID], function (result) {
+                    if (result.success == 0){
+                        console.log(rules.getResponseJson('false','Error happens on update user avatar','0'));
+                        res.json(rules.getResponseJson('false','Error happens on update user avatar'  +result.error,'0'));
+                    }
+                    else if (result.success == 1) {
+                        console.log(rules.getResponseJson('true','Has successfully update user avatar','1'));
+                        res.json(rules.getResponseJson('true','/images/userAvatars/' + newFileName,'1'));
+                    }
+                });
+            }
+        });
+    });
 
 });
 

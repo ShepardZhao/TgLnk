@@ -73,4 +73,24 @@
  */
 + (NSDictionary *)queryUserInfo;
 
+
+/**
+ *  update current logined user status
+ *
+ *  @param userID
+ *
+ *  @return YES OR NO
+ */
++(BOOL) signOutCurrentUser:(NSString *)userID;
+
+
+/**
+ *  update the user Avatar
+ *
+ *  @param uiImageNSData update user avatar
+ *  @param userID        UID as the paramter that will keep the object unique identity
+ *  @return BOOL YES OR NO
+ */
++(BOOL) updateUserAvatar:(NSData *)uiImageNSData userID:(NSString *)userID;
+
 @end

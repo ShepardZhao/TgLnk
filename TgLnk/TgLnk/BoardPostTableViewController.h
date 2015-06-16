@@ -12,12 +12,24 @@
 #import "RSKImageCropViewController.h"
 #import "WebServicesNsObject.h"
 #import "SysNsObject.h"
-@interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate>
+#import "DatabaseModel.h"
+
+@protocol BoardPostTableViewController <NSObject>
+
+-(void)completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone;
+
+@end
+@interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate,RSKImageCropViewControllerDataSource>{
+    __unsafe_unretained id<BoardPostTableViewController> delegate;
+}
+@property (assign,nonatomic) id delegate;
 @property (weak, nonatomic) IBOutlet UITextField *postTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *postImage;
 @property (weak, nonatomic) IBOutlet UITextField *posterEmail;
 @property (weak, nonatomic) IBOutlet UITextField *posterPhone;
 @property (strong,nonatomic) NSString *boardID;
+@property (weak, nonatomic)  NSDictionary *userInfo;
+
 
 
 @end

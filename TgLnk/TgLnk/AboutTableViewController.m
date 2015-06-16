@@ -16,7 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"About";
+    [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
