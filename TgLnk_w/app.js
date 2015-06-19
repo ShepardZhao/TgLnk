@@ -10,6 +10,45 @@ var cookieSession = require('cookie-session');
 var session =require('express-session');
 
 
+
+// here to temp use array prototype
+Array.prototype.equals = function (array) {
+  // if the other array is a falsy value, return
+  if (!array)
+    return false;
+
+  // compare lengths - can save a lot of time
+  if (this.length != array.length)
+    return false;
+
+  for (var i = 0, l=this.length; i < l; i++) {
+    // Check if we have nested arrays
+    if (this[i] instanceof Array && array[i] instanceof Array) {
+      // recurse into the nested arrays
+      if (!this[i].equals(array[i]))
+        return false;
+    }
+    else if (this[i] != array[i]) {
+      // Warning - two different object instances will never be equal: {x:20} != {x:20}
+      return false;
+    }
+  }
+  return true;
+};
+
+Array.prototype.uniqueArray = function()
+{
+  var n = {},r=[]; //n为hash表，r为临时数组
+  for(var i = 0; i < this.length; i++) //遍历当前数组
+  {
+    if (!n[this[i]]) //如果hash表中没有当前项
+    {
+      n[this[i]] = true; //存入hash表
+      r.push(this[i]); //把当前数组的当前项push到临时数组里面
+    }
+  }
+  return r;
+}
 app.engine('.html', ejs.__express); //chang the ejs engine that identified as html
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -62,6 +101,20 @@ app.post('/postNote/submitImage',postNote_router);
 var target_router = require('./routes/target_router');
 app.get('/',target_router);//landing page
 app.get('/:id',target_router);
+
+
+/**
+ * contact router
+ * @type {router|exports|module.exports}
+ */
+var contact_router = require('./routes/contact_router');
+app.get('/user/contact',contact_router);
+app.post('/user/contact',contact_router);
+app.put('/user/contact',contact_router);
+app.delete('/user/contact',contact_router);
+
+
+
 
 
 // catch 404 and forward to error handler

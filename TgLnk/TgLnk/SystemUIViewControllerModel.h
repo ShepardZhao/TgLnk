@@ -28,12 +28,10 @@
 //hiden the navigationBar hair line
 +(void)hideBottomHairline:(UINavigationBar*)navigationBar;
 
-//pull down and refresh
-+(void)pullDownAndRefresh:(NSObject*)getbject : (id)getid;
 
 //cache images
 +(void)imageCache:(UIImageView *)objectUiImageView
-                 :(NSString*) imageUrl;
+                 :(NSString*) imageUrl :(int)placerHolderType;
 
 //fix rotate issue
 + (UIImage *)fixOrientation:(UIImage *)aImage;

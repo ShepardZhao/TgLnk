@@ -12,11 +12,14 @@
 #import "SystemUIViewControllerModel.h"
 #import "BoardWebViewViewController.h"
 #import "SysNsObject.h"
+#import "DatabaseModel.h"
+#import "ContactTableViewCell.h"
 #import "MBProgressHUD.h"
 
 
 @interface ContactTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
 @property (weak,nonatomic) NSString *qrAddress;
 @property (retain ,nonatomic) MBProgressHUD *HUD;
+
 
 @end

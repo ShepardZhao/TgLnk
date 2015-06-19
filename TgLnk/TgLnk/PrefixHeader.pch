@@ -15,9 +15,9 @@
 //set global color
 #define RGB2UICOLOR(r, g, b,a)  [UIColor colorWithRed:((r) / 255.0) green:((g) / 255.0) blue:((b) / 255.0) alpha:a]
 
-#define POST_IMAGE_WIDTH 384 //default width for post image
+#define POST_IMAGE_WIDTH 760 //default width for post image
 
-#define POST_IMAGE_HEIGHT 223 //default height for post image
+#define POST_IMAGE_HEIGHT 446 //default height for post image
 
 //this should be the prodcut url
 #define DOMAIN_NAME_QR @"http://www.tglnk.com/"  //default domain http://tglnk.cloudapp.net
@@ -55,6 +55,10 @@
 #define INDENT() [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
 
 #define DATABASE_FILENAME @"tglnk.sqlite" //db name
+
+#define CONTACT_SEARCH DOMAIN_NAME@"user/contact" //CRUD the contact list
+
+
 
 //set current iphone version
 #define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)

@@ -67,16 +67,26 @@
   [navigationBar hideBottomHairline];
 }
 
-+ (void)pullDownAndRefresh:(NSObject *)getbject : (id)getid {
-}
 
 // impletement image cache
-+ (void)imageCache:(UIImageView *)objectUiImageView :(NSString *)imageUrl {
++ (void)imageCache:(UIImageView *)objectUiImageView :(NSString *)imageUrl :(int)placerHolderType{
+    UIImage *placeHodler;
+
+    if (placerHolderType ==0) {
+        //normal placeholder
+        placeHodler = [UIImage imageNamed:@"placeHolder"];
+    }
+    else if (placerHolderType ==1){
+        //user avatar place holder
+        placeHodler = [UIImage imageNamed:@"Avatar"];
+    }
+    
+    
+    
   [objectUiImageView
-      sd_setImageWithURL:
-          [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", DOMAIN_NAME,
-                                                          imageUrl]]
-        placeholderImage:[UIImage imageNamed:@"placeHolder"]];
+      sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@", DOMAIN_NAME,
+        imageUrl]]
+        placeholderImage:placeHodler];
 }
 
 /**

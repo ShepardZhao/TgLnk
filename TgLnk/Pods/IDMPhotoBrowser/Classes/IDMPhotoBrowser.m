@@ -295,7 +295,7 @@ NSLocalizedStringFromTableInBundle((key), nil, [NSBundle bundleWithPath:[[NSBund
     [scrollView setCenter:translatedPoint];
     
     float newY = scrollView.center.y - viewHalfHeight;
-    float newAlpha = 1 - abs(newY)/viewHeight; //abs(newY)/viewHeight * 1.8;
+    float newAlpha = 1 - fabsf(newY)/viewHeight; //abs(newY)/viewHeight * 1.8;
     
     self.view.opaque = YES;
     

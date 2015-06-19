@@ -76,7 +76,7 @@
 - (void)imagePickerDidSelectImage:(UIImage *)image {
     
     
-        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:[SystemUIViewControllerModel fixOrientation:image] cropMode:RSKImageCropModeCustom];
+        RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:[SystemUIViewControllerModel fixOrientation:image] cropMode:RSKImageCropModeSquare];
     imageCropVC.delegate = self;
     imageCropVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:imageCropVC animated:YES];
@@ -86,11 +86,6 @@
     
 }
 
--(CGRect)imageCropViewControllerCustomMaskRect:(RSKImageCropViewController *)controller{
-
-    return CGRectMake(0, 0, POST_IMAGE_WIDTH, POST_IMAGE_HEIGHT);
-
-}
 
 #pragma mark - RSKImageCropViewController 
 

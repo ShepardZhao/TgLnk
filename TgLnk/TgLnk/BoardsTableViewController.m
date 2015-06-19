@@ -61,7 +61,9 @@
    
     [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
     [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];//pull down to refresh
-    //here we go for initial the database instance
+
+    
+    //initial the tablview
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
@@ -83,7 +85,6 @@
      GET_HTTP_METHOD:
      NOTICESBOARD_URL:nil:0
      onCompletion:^(NSDictionary *getReuslt) {
-         NSLog(@"%@",getReuslt);
          
          dispatch_async(dispatch_get_main_queue(), ^(void){
              if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
@@ -146,7 +147,7 @@ forIndexPath:indexPath];
     cell.noticeBoradName.text = self.dataSource[indexPath.row][@"BNAME"];
     cell.noticeBoardNumber.text = [NSString stringWithFormat:@"%@",self.dataSource[indexPath.row][@"BID"]];
     cell.posterNumber.text =  [NSString stringWithFormat:@"Posts: %lu",(unsigned long)[self.dataSource[indexPath.row][@"POSTS"] count] ];
-    [SystemUIViewControllerModel imageCache:cell.noticeBoardQRImage :self.dataSource[indexPath.row][@"BIMAGE"]];
+    [SystemUIViewControllerModel imageCache:cell.noticeBoardQRImage :self.dataSource[indexPath.row][@"BIMAGE"]:0];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
     
@@ -164,10 +165,8 @@ forIndexPath:indexPath];
 
 
 - (void)tapDetected:(UIGestureRecognizer *)sender{
-
-    
     // Create an array to store IDMPhoto objects
-    NSMutableArray *photos = [NSMutableArray new];
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
     
     for (int i=0;i<[self.dataSource count];i++) {
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",DOMAIN_NAME,self.dataSource[i][@"BIMAGE"]];
@@ -188,9 +187,7 @@ forIndexPath:indexPath];
     
     [self presentViewController:browser animated:YES completion:nil];
 
-    
-    
-    
+
 }
 
 
@@ -258,11 +255,15 @@ array, and add a new row to the table view
     if([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]){
         BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
         if (isQR) {
-            bDContr.noticeBoradsAndPostsDictionary = self.dataSource[selectNoticeBoradIndex];
-        }
-        else{
             bDContr.noticeBoradsAndPostsDictionary = boardArray;
         }
+        else{
+            bDContr.noticeBoradsAndPostsDictionary = self.dataSource[selectNoticeBoradIndex];
+
+        }
+        
+        
+     
         
     }
     

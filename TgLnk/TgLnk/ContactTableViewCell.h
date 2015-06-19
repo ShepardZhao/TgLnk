@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SystemUIViewControllerModel.h"
 
 @interface ContactTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *contactImage;
+@property (weak, nonatomic) IBOutlet UILabel *contactUsername;
+@property (weak, nonatomic) IBOutlet UILabel *contactUserID;
 
 @end

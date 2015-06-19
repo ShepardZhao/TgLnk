@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.contactImage = [SystemUIViewControllerModel circleImage:self.contactImage :1];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

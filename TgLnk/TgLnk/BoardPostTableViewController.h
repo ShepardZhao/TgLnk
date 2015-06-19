@@ -19,7 +19,7 @@
 -(void)completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone;
 
 @end
-@interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate,RSKImageCropViewControllerDataSource>{
+@interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate>{
     __unsafe_unretained id<BoardPostTableViewController> delegate;
 }
 @property (assign,nonatomic) id delegate;

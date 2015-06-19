@@ -53,6 +53,8 @@
 		87D4ABD31ADAA51A00924362 /* SystemUIViewControllerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D4ABD21ADAA51A00924362 /* SystemUIViewControllerModel.m */; };
 		87E8DCBF1B14BDDE00B70164 /* BoardDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87E8DCBE1B14BDDE00B70164 /* BoardDetailTableViewController.m */; };
 		8D51EFCE429573CC82E185F1 /* libPods-TgLnk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B134BF81D4C5C12B5D5F207 /* libPods-TgLnk.a */; };
+		DEC6746E1B3140EE005C7DDB /* ContactSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC6746D1B3140EE005C7DDB /* ContactSearchTableViewController.m */; };
+		DEC674711B3141FC005C7DDB /* ContactSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DEC674701B3141FC005C7DDB /* ContactSearchTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -155,6 +157,10 @@
 		87E8DCBE1B14BDDE00B70164 /* BoardDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardDetailTableViewController.m; sourceTree = "<group>"; };
 		8B134BF81D4C5C12B5D5F207 /* libPods-TgLnk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TgLnk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEBFBDBA79C04823F9E48AF4 /* Pods-TgLnk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TgLnk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TgLnk/Pods-TgLnk.debug.xcconfig"; sourceTree = "<group>"; };
+		DEC6746C1B3140EE005C7DDB /* ContactSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSearchTableViewController.h; sourceTree = "<group>"; };
+		DEC6746D1B3140EE005C7DDB /* ContactSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSearchTableViewController.m; sourceTree = "<group>"; };
+		DEC6746F1B3141FC005C7DDB /* ContactSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSearchTableViewCell.h; sourceTree = "<group>"; };
+		DEC674701B3141FC005C7DDB /* ContactSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSearchTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,6 +431,7 @@
 		878880B11AD6B34200807E8F /* ContactController */ = {
 			isa = PBXGroup;
 			children = (
+				DEC6746B1B3140C3005C7DDB /* ContactSearchController */,
 				878880B21AD6B36000807E8F /* ContactTableViewController.h */,
 				878880B31AD6B36000807E8F /* ContactTableViewController.m */,
 				878880B51AD6B37000807E8F /* ContactTableViewCell.h */,
@@ -554,6 +561,17 @@
 				8B134BF81D4C5C12B5D5F207 /* libPods-TgLnk.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DEC6746B1B3140C3005C7DDB /* ContactSearchController */ = {
+			isa = PBXGroup;
+			children = (
+				DEC6746C1B3140EE005C7DDB /* ContactSearchTableViewController.h */,
+				DEC6746D1B3140EE005C7DDB /* ContactSearchTableViewController.m */,
+				DEC6746F1B3141FC005C7DDB /* ContactSearchTableViewCell.h */,
+				DEC674701B3141FC005C7DDB /* ContactSearchTableViewCell.m */,
+			);
+			name = ContactSearchController;
 			sourceTree = "<group>";
 		};
 		FF96B858AC5FE90A8E98F33F /* Pods */ = {
@@ -729,6 +747,7 @@
 				8759498B1AC6FF6F00C81DB3 /* AppDelegate.m in Sources */,
 				87A55ED91AECF1A5006FBEE7 /* BoardPostTableViewController.m in Sources */,
 				87A55ECA1AEB7668006FBEE7 /* DatabaseModel.m in Sources */,
+				DEC6746E1B3140EE005C7DDB /* ContactSearchTableViewController.m in Sources */,
 				878880B71AD6B37000807E8F /* ContactTableViewCell.m in Sources */,
 				8715285B1B14B831009899BD /* BoardDetailTableViewCell.m in Sources */,
 				871E6CB41AE3E28600A94234 /* RegisterTableViewController.m in Sources */,
@@ -741,6 +760,7 @@
 				875949881AC6FF6F00C81DB3 /* main.m in Sources */,
 				874875C01B2D44F500BC4627 /* AccountManagementTableViewController.m in Sources */,
 				871E6CB01AE3ADAE00A94234 /* SysNsObject.m in Sources */,
+				DEC674711B3141FC005C7DDB /* ContactSearchTableViewCell.m in Sources */,
 				878EE74F1B2EC45400D106B4 /* BoardActiveViewController.m in Sources */,
 				87B344F81B29226100A82DAB /* NetworkCheckModel.m in Sources */,
 				87C2859D1AEFC2D900A3F461 /* NsUserDefaultModel.m in Sources */,
@@ -884,7 +904,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xunzhao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e18cb3c7-1970-4fd3-98ff-081e6ca22611";
 			};
 			name = Debug;
 		};
@@ -894,8 +914,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TgLnk/TgLnk.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xun  zhao (Y9LBEQ4C8T)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: xun  zhao (Y9LBEQ4C8T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xun  zhao (Y9LBEQ4C8T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -910,7 +931,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xunzhao.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "e18cb3c7-1970-4fd3-98ff-081e6ca22611";
 			};
 			name = Release;
 		};

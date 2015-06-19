@@ -35,7 +35,7 @@
         [uiImageView setImage:[UIImage imageNamed:@"Avatar"]];
     }
     else{
-        [SystemUIViewControllerModel imageCache:uiImageView :self.userInfo[@"UAVATAR"]];
+        [SystemUIViewControllerModel imageCache:uiImageView :self.userInfo[@"UAVATAR"]:1];
     }
 
     
@@ -149,7 +149,7 @@
             [DatabaseModel updateUserAvatar:tmpData userID:self.userInfo[@"UID"]];
             
             //add to cache
-            [SystemUIViewControllerModel imageCache:uiImageView :getReuslt[@"message"]];
+            [SystemUIViewControllerModel imageCache:uiImageView :getReuslt[@"message"]:1];
             
             
         }

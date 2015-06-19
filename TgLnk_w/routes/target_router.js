@@ -7,13 +7,14 @@ var express = require('express'),
 
 
 /*landing page*/
-router.get('/',function(req,res,next){
+router
+    .get('/',function(req,res,next){
     res.render('landingPage');
-});
+})
 
 
 /* get target. */
-router.get('/:id', function (req, res, next) {
+    .get('/:id', function (req, res, next) {
     if (rules.getValidationOf_QR_code(req.params.id)) {
         var getNoticeBoards = [],
             getAllPosts = [],

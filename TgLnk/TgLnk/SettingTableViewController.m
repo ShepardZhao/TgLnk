@@ -29,7 +29,7 @@
         //use once dispatch
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]];
+            [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]:1];
         });
         
     }
@@ -54,7 +54,7 @@
     else{
         self.userName.text = userQuery[@"UNICKNAME"];
         self.userID.text = [NSString stringWithFormat:@"User ID: %@",userQuery[@"UID"]];
-        [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]];
+        [SystemUIViewControllerModel imageCache:self.userAvatar :userQuery[@"UAVATAR"]:1];
 
     }
     
@@ -64,7 +64,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     actionStatus = YES;
-    
 
     self.userAvatar = [SystemUIViewControllerModel circleImage:self.userAvatar :0];
     [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];

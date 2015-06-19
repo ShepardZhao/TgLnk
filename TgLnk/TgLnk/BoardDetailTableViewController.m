@@ -46,8 +46,7 @@
   self.boardCode.text = [NSString
       stringWithFormat:@"%@", self.noticeBoradsAndPostsDictionary[@"BID"]];
   [SystemUIViewControllerModel
-      imageCache:self.
-      boardImage:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]];
+   imageCache:self.boardImage:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]:0];
   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     UITapGestureRecognizer *tapGesture =
@@ -66,8 +65,8 @@
 
 
 -(void)tapBoardImageDetected{
-    NSMutableArray *photos = [NSMutableArray new];
-    NSLog(@"%@",self.noticeBoradsAndPostsDictionary[@"BIMAGE"]);
+    NSMutableArray *photos = [[NSMutableArray alloc] init];
+    NSLog(@"%@",@"1");
     
     
     IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DOMAIN_NAME,[NSURL URLWithString:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]]]]];
@@ -75,6 +74,7 @@
     photo.caption = self.noticeBoradsAndPostsDictionary[@"BNAME"];
     
     [photos addObject:photo];
+    
     
     IDMPhotoBrowser *browser = [[IDMPhotoBrowser alloc] initWithPhotos:photos];
 
@@ -118,7 +118,7 @@
   [SystemUIViewControllerModel
       imageCache:cell.
        postImage:self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][
-                     @"PIMG"]];
+                                                                              @"PIMG"]:0];
 
   cell.postTitle.text =
       self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][@"PNAME"];
@@ -140,20 +140,19 @@
 }
 
 - (void)tapDetected:(UIGestureRecognizer *)sender {
-  NSLog(@"%lu", sender.view.tag);  // imageview
 
   // Create an array to store IDMPhoto objects
-  NSMutableArray *photos = [NSMutableArray new];
-
+  NSMutableArray *photos = [[NSMutableArray alloc] init];
+    
+    NSLog(@"%@",self.noticeBoradsAndPostsDictionary[@"POSTS"]);
   for (int i = 0; i < [self.noticeBoradsAndPostsDictionary[@"POSTS"] count];
        i++) {
     NSString *urlStr =
         [NSString stringWithFormat:@"%@%@", DOMAIN_NAME,
                                    self.noticeBoradsAndPostsDictionary[
-                                       @"POSTS"][i][@"BIMAGE"]];
-
+                                       @"POSTS"][i][@"PIMG"]];
     IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:urlStr]];
-    photo.caption = self.noticeBoradsAndPostsDictionary[@"POSTS"][i][@"BNAME"];
+    photo.caption = self.noticeBoradsAndPostsDictionary[@"POSTS"][i][@"PNAME"];
 
     [photos addObject:photo];
   }
