@@ -10,11 +10,12 @@
 #import "QRCodeReaderDelegate.h"
 #import "QRCodeReaderViewController.h"
 #import "SystemUIViewControllerModel.h"
-#import "BoardWebViewViewController.h"
+#import "WebViewViewController.h"
 #import "SysNsObject.h"
 #import "DatabaseModel.h"
 #import "ContactTableViewCell.h"
 #import "MBProgressHUD.h"
+#import "WebServicesNsObject.h"
 
 
 @interface ContactTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>

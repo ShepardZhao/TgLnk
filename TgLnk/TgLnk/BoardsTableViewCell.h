@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DatabaseModel.h"
 #import "SystemUIViewControllerModel.h"
+#import "LoginViewController.h"
 @interface BoardsTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *noticeBoradName;
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *posterNumber;
 @property (weak, nonatomic) IBOutlet UIButton *followOrUnFollowBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *noticeBoardQRImage;
-
+@property (strong,nonatomic) NSDictionary *cellContent;
 @property DatabaseModel *db;
 
 @end

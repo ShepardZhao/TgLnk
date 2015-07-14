@@ -103,9 +103,9 @@
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    if ([segue.identifier isEqualToString:@"qrWebViewSegue"]) {
-        BoardWebViewViewController *boardCtr =
-        (BoardWebViewViewController *)segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"contactsWebViewSegue"]) {
+        WebViewViewController *boardCtr =
+        (WebViewViewController *)segue.destinationViewController;
         boardCtr.address = self.qrAddress;
     }
     
@@ -118,7 +118,6 @@
     
     if ([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]) {
         BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
-        bDContr.noticeBoradsAndPostsDictionary = boardArray;
     }
 }
 

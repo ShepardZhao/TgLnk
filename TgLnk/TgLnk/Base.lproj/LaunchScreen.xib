@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,37 +10,74 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bring Noticeboards Online" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYX-Qp-IKX">
-                    <rect key="frame" x="140" y="441" width="201" height="22"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="StartUpScreen" translatesAutoresizingMaskIntoConstraints="NO" id="JbQ-CJ-lPh">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TgLnk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VF8-64-U7n">
+                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="201" id="Ehx-XA-SUe"/>
-                        <constraint firstAttribute="height" constant="22" id="gyq-Lx-WXh"/>
+                        <constraint firstAttribute="width" constant="196" id="d8J-uh-z3T"/>
+                        <constraint firstAttribute="height" constant="72" id="zid-6A-agT"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="36"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TgLnk" textAlignment="center" lineBreakMode="headTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vA-9y-abG">
-                    <rect key="frame" x="162" y="379" width="157" height="54"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="157" id="95X-k5-KMP"/>
-                        <constraint firstAttribute="height" constant="54" id="D3W-Pc-oAF"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="39"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="d8J-uh-z3T"/>
+                            <exclude reference="zid-6A-agT"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="d8J-uh-z3T"/>
+                            <include reference="zid-6A-agT"/>
+                        </mask>
+                    </variation>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.15686274510000001" green="0.2156862745" blue="0.30196078430000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="5vA-9y-abG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9iO-Rt-j1T"/>
-                <constraint firstAttribute="bottom" secondItem="xYX-Qp-IKX" secondAttribute="bottom" constant="17" id="Nee-Bm-HL7"/>
-                <constraint firstItem="xYX-Qp-IKX" firstAttribute="centerX" secondItem="5vA-9y-abG" secondAttribute="centerX" id="WY6-au-3on"/>
-                <constraint firstItem="xYX-Qp-IKX" firstAttribute="top" secondItem="5vA-9y-abG" secondAttribute="bottom" constant="8" symbolic="YES" id="dIu-Wc-obv"/>
+                <constraint firstAttribute="trailing" secondItem="JbQ-CJ-lPh" secondAttribute="trailing" id="7KB-Vv-ju8"/>
+                <constraint firstItem="VF8-64-U7n" firstAttribute="centerY" secondItem="JbQ-CJ-lPh" secondAttribute="centerY" id="OiR-X4-v4Q"/>
+                <constraint firstItem="VF8-64-U7n" firstAttribute="centerX" secondItem="JbQ-CJ-lPh" secondAttribute="centerX" id="QSX-kp-7PI"/>
+                <constraint firstItem="JbQ-CJ-lPh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZU0-c2-YXY"/>
+                <constraint firstAttribute="bottom" secondItem="JbQ-CJ-lPh" secondAttribute="bottom" id="js8-gz-oQa"/>
+                <constraint firstItem="JbQ-CJ-lPh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nNr-wO-9kK"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="subviews">
+                    <exclude reference="JbQ-CJ-lPh"/>
+                    <exclude reference="VF8-64-U7n"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="7KB-Vv-ju8"/>
+                    <exclude reference="ZU0-c2-YXY"/>
+                    <exclude reference="js8-gz-oQa"/>
+                    <exclude reference="nNr-wO-9kK"/>
+                    <exclude reference="OiR-X4-v4Q"/>
+                    <exclude reference="QSX-kp-7PI"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="JbQ-CJ-lPh"/>
+                    <include reference="VF8-64-U7n"/>
+                </mask>
+                <mask key="constraints">
+                    <include reference="7KB-Vv-ju8"/>
+                    <include reference="ZU0-c2-YXY"/>
+                    <include reference="js8-gz-oQa"/>
+                    <include reference="nNr-wO-9kK"/>
+                    <include reference="OiR-X4-v4Q"/>
+                    <include reference="QSX-kp-7PI"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="StartUpScreen" width="2560" height="1600"/>
+    </resources>
 </document>

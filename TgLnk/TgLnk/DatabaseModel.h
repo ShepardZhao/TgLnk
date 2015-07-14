@@ -93,4 +93,7 @@
  */
 +(BOOL) updateUserAvatar:(NSData *)uiImageNSData userID:(NSString *)userID;
 
+
+
+
 @end

@@ -13,7 +13,6 @@ router
     .post('/user/contact', function (req, res, next) {
         var getSourceUser = req.body.sUser,
             getTargetUser = req.body.tUser;
-            console.log(getSourceUser,getTargetUser);
 
         //check the repeat user in contact list first
         connectionPool.CRUD('SELECT * FROM CONTACT_T WHERE CID =? AND UID =? ', [getSourceUser, getTargetUser], function (result) {
@@ -31,7 +30,6 @@ router
                         if (result.success == 0) {
                             console.log('Error to insert the record into the contact table, reason %s', result.error);
                             res.json(rules.getResponseJson('false', 'Error to insert the record into the contact table, reason %s', result.error, '0'));
-
                         }
                         else if (result.success == 1) {
                             res.json(rules.getResponseJson('true', 'Successfully added new contact to your list', '1'));
@@ -84,7 +82,6 @@ router
             });
 
             //search the user by user name from the user list
-
             connectionPool.CRUD('SELECT UID,UNICKNAME,UPHONE,UEMAIL,UAVATAR FROM USER_T WHERE UNICKNAME =?', [getSourceUser], function (result) {
                 if (result.success == 0) {
                     console.log('Error to query the user, the reason is %s', result.error);

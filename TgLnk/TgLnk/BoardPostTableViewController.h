@@ -14,13 +14,13 @@
 #import "SysNsObject.h"
 #import "DatabaseModel.h"
 
-@protocol BoardPostTableViewController <NSObject>
+@protocol BoardPostTableViewControllerDelegate <NSObject>
 
 -(void)completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone;
 
 @end
 @interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate>{
-    __unsafe_unretained id<BoardPostTableViewController> delegate;
+    __unsafe_unretained id<BoardPostTableViewControllerDelegate> delegate;
 }
 @property (assign,nonatomic) id delegate;
 @property (weak, nonatomic) IBOutlet UITextField *postTitle;
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *posterEmail;
 @property (weak, nonatomic) IBOutlet UITextField *posterPhone;
 @property (strong,nonatomic) NSString *boardID;
-@property (weak, nonatomic)  NSDictionary *userInfo;
+@property (strong, nonatomic)  NSDictionary *userInfo;
 
 
 

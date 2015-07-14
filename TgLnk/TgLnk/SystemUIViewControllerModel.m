@@ -7,6 +7,7 @@
 //
 
 #import "SystemUIViewControllerModel.h"
+#import "LoginViewController.h"
 
 @interface SystemUIViewControllerModel ()
 
@@ -74,12 +75,13 @@
 
     if (placerHolderType ==0) {
         //normal placeholder
-        placeHodler = [UIImage imageNamed:@"placeHolder"];
+        placeHodler = [UIImage imageNamed:@"Post_placeholder"];
     }
     else if (placerHolderType ==1){
         //user avatar place holder
         placeHodler = [UIImage imageNamed:@"Avatar"];
     }
+    
     
     
     
@@ -318,6 +320,68 @@
  
     return imageData;
 }
+
+
+/**
+ *  AlertBanner
+ *
+ *  @param viewController
+ */
++(void) setAlertBanner:(UIViewController *)viewController message : (NSString *)message selector : (SEL)selector {
+    
+    //for loop the view and find the view's tag that if it equals to 1 then remove it from superview by the animation
+    for (UIView *view in viewController.parentViewController.view.subviews) {
+        if (view.tag == 1) {
+            //here to use animation to remove the view from superview
+            [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                view.frame = CGRectMake(0, viewController.view.frame.size.height+89, viewController.view.frame.size.width, 40.00f);
+                
+            } completion:^(BOOL finished) {
+                [view removeFromSuperview];
+            }];
+        }
+    }
+
+    if (![message isEqualToString:@""]) {
+        
+   
+    //inital the title and post it to alertView
+    UILabel *alertTitle = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, viewController.view.frame.size.width, 40.00f)];
+    [alertTitle setFont:[UIFont systemFontOfSize:12]];
+    [alertTitle setTextColor:[UIColor darkGrayColor]];
+    [alertTitle setText:message];
+    
+    
+    //if there is not any subivew existed before then add a new view for it
+    UIView *alertView = [[UIView alloc] initWithFrame:CGRectMake(0, viewController.view.frame.size.height, viewController.view.frame.size.width, 40.00f)];
+    
+    //set the tag
+    alertView.tag = 1;
+    
+    //add the alertTitle to alertView
+    [alertView addSubview:alertTitle];
+    
+    //set the alertView background
+    [alertView setBackgroundColor:RGB2UICOLOR(244, 208, 63,1)];
+    
+    //add the alertView to super view
+    [viewController.parentViewController.view addSubview:alertView];
+    
+    
+    //generate the UITapGestureRecognizer for alertView that means when user tap this the @selector will be actived
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:viewController action:selector];
+    tap.numberOfTapsRequired = 1;
+    [alertView addGestureRecognizer:tap];
+
+    //by using animation to  display the alertView
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        alertView.frame =CGRectMake(0, viewController.view.frame.size.height-89, viewController.view.frame.size.width, 40.00f);
+    } completion:nil];
+
+    }
+}
+
+
 
 
 

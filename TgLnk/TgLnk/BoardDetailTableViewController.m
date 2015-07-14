@@ -15,6 +15,13 @@
 @implementation BoardDetailTableViewController
 
 
+-(void)completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone{
+    
+   // NSDictionary *addDict= [NSDictionary alloc] initWithObjectsAndKeys:@"PIMG",postUIImage,@"PNAME",postTitle,@""
+
+}
+
+
 -(void)loginDismissed{
 
     [self performSegueWithIdentifier:@"boardPostSegue" sender:self];
@@ -22,7 +29,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    
   [super viewWillAppear:animated];
+
 }
 - (IBAction)composePost:(id)sender {
     if ([DatabaseModel queryUserLoginStatus]) {
@@ -38,26 +47,41 @@
     
 }
 
+
 - (void)viewDidLoad {
   [super viewDidLoad];
+  
+    //set the title for this view
   self.title = @"Notes";
-  self.boardTitle.text = self.noticeBoradsAndPostsDictionary[@"BNAME"];
-  self.boardOwner.text = self.noticeBoradsAndPostsDictionary[@"UNICKNAME"];
+    
+    //set the board title
+  self.boardTitle.text = self.boardTitleValue;
+    //set the board's own name
+  self.boardOwner.text = self.boardOwnerValue;
+    //set the board id
   self.boardCode.text = [NSString
-      stringWithFormat:@"%@", self.noticeBoradsAndPostsDictionary[@"BID"]];
+      stringWithFormat:@"%@", self.boardCodeValue];
+    //set the board QR image
   [SystemUIViewControllerModel
-   imageCache:self.boardImage:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]:0];
+   imageCache:self.boardImage:self.boardImageValue:0];
+    
+    //set the owner image
+    [SystemUIViewControllerModel
+     imageCache:[SystemUIViewControllerModel circleImage:self.ownerImage :0]:self.ownerImageValue:0];
+    
   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
+    
+    //set the tap and enable on the boardImage
     UITapGestureRecognizer *tapGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(tapBoardImageDetected)];
-    
     tapGesture.numberOfTapsRequired = 1;
     [self.boardImage setUserInteractionEnabled:YES];
     [self.boardImage addGestureRecognizer:tapGesture];
 
     
+    //set the board following button
      self.boardFollow = [SystemUIViewControllerModel styleButton:self.boardFollow cornerRadius:6.0f borderWidth:1.0f borderColor:[RGB2UICOLOR(245, 245, 245,1) CGColor]];
     
     
@@ -66,12 +90,11 @@
 
 -(void)tapBoardImageDetected{
     NSMutableArray *photos = [[NSMutableArray alloc] init];
-    NSLog(@"%@",@"1");
     
     
-    IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DOMAIN_NAME,[NSURL URLWithString:self.noticeBoradsAndPostsDictionary[@"BIMAGE"]]]]];
+    IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",DOMAIN_NAME,[NSURL URLWithString:self.boardImageValue]]]];
 
-    photo.caption = self.noticeBoradsAndPostsDictionary[@"BNAME"];
+    photo.caption = self.boardTitleValue;
     
     [photos addObject:photo];
     
@@ -103,10 +126,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
   // Return the number of rows in the section.
-  return [self.noticeBoradsAndPostsDictionary[@"POSTS"] count];
+  return [self.postsArray count];
 }
 
 - (IBAction)followingAction:(id)sender {
+    
+    
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -117,16 +143,17 @@
 
   [SystemUIViewControllerModel
       imageCache:cell.
-       postImage:self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][
-                                                                              @"PIMG"]:0];
+       postImage:self.postsArray[indexPath.row][@"PIMG"]:0];
 
   cell.postTitle.text =
-      self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][@"PNAME"];
+      self.postsArray[indexPath.row][@"PNAME"];
   cell.postDate.text =
-      self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][@"PDATE"];
+      self.postsArray[indexPath.row][@"PDATE"];
   cell.postTime.text =
-      self.noticeBoradsAndPostsDictionary[@"POSTS"][indexPath.row][@"PTIME"];
-
+      self.postsArray[indexPath.row][@"PTIME"];
+    //set the poster image
+    [SystemUIViewControllerModel
+     imageCache:[SystemUIViewControllerModel circleImage:cell.posterImage :0]:self.postsArray[indexPath.row][@"UAVATAR"]:1];
   UITapGestureRecognizer *tapGesture =
       [[UITapGestureRecognizer alloc] initWithTarget:self
                                               action:@selector(tapDetected:)];
@@ -144,15 +171,13 @@
   // Create an array to store IDMPhoto objects
   NSMutableArray *photos = [[NSMutableArray alloc] init];
     
-    NSLog(@"%@",self.noticeBoradsAndPostsDictionary[@"POSTS"]);
-  for (int i = 0; i < [self.noticeBoradsAndPostsDictionary[@"POSTS"] count];
+  for (int i = 0; i < [self.postsArray count];
        i++) {
     NSString *urlStr =
         [NSString stringWithFormat:@"%@%@", DOMAIN_NAME,
-                                   self.noticeBoradsAndPostsDictionary[
-                                       @"POSTS"][i][@"PIMG"]];
+                                   self.postsArray[i][@"PIMG"]];
     IDMPhoto *photo = [IDMPhoto photoWithURL:[NSURL URLWithString:urlStr]];
-    photo.caption = self.noticeBoradsAndPostsDictionary[@"POSTS"][i][@"PNAME"];
+    photo.caption = self.postsArray[i][@"PNAME"];
 
     [photos addObject:photo];
   }
@@ -215,7 +240,7 @@ array, and add a new row to the table view
   if ([segue.identifier isEqualToString:@"boardPostSegue"]) {
     BoardPostTableViewController *bPCtr =
         (BoardPostTableViewController *)segue.destinationViewController;
-    bPCtr.boardID = self.noticeBoradsAndPostsDictionary[@"BID"];
+    bPCtr.boardID = self.boardCodeValue;
   }
     
     

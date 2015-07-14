@@ -15,5 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTimeGap;
 @property (weak, nonatomic) IBOutlet UILabel *postTime;
 @property (weak, nonatomic) IBOutlet UILabel *postDate;
+@property (weak, nonatomic) IBOutlet UIImageView *posterImage;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *likeNumber;
+@property (weak, nonatomic) IBOutlet UIImageView *like;
 @end

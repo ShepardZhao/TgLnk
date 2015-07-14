@@ -7,60 +7,87 @@ var express = require('express'),
     connectionPool = require('mysqlConnectionPool'),
     eventProxy = require('eventproxy');
 
-//get noticeBoard list and find the
+//get noticeBoard list
 router
     .get('/noticeBoard', function (req, res, next) {
         var getRequestType = req.query.requestType,
+            getUserID = req.query.userid,
             ep = new eventProxy(),
             noticeBoardArray = [],
+            followingArray = [],
             postsArray = [];
         //query board only
-        connectionPool.CRUD('SELECT  BD.BID, BD.BNAME, BD.BTIME, BD.BVIEW_STATUS, BD.BIMAGE,BD.BACTIVE_CODE,BD.BGPS,U.UID,U.UNICKNAME,U.UEMAIL,U.UAVATAR,U.ULOGIN_TIME FROM NOTICEBOARD_T AS BD INNER JOIN USER_T AS U ON BD.UID = U.UID', null, function (result) {
-            if (result.success == 0) {
+        connectionPool.CRUD('SELECT  BD.BID, BD.BNAME, BD.BTIME, BD.BVIEW_STATUS, BD.BIMAGE,BD.BACTIVE_CODE,BD.BGPS,U.UID,U.UNICKNAME,U.UEMAIL,U.UAVATAR,U.ULOGIN_TIME FROM NOTICEBOARD_T AS BD INNER JOIN USER_T AS U ON BD.UID = U.UID WHERE BD.BVIEW_STATUS !=0', null, function (result) {
+            if (result.success === 0) {
                 console.log('Error to fetch board : %s', result.error);
             }
-            else if (result.success == 1) {
+            else if (result.success === 1) {
                 console.log('Has successfully fetch the noticeBoard');
                 noticeBoardArray = result.getresult;
 
+                for (var x=0;x<noticeBoardArray.length;x++){
+                    connectionPool.CRUD('SELECT * FROM FOLLOW_T WHERE UID=? AND BID=?',[getUserID,noticeBoardArray[x].BID],function(result){
+                        if(result.success === 0){
+                            console.log('query following status error and reason is : %s', result.error);
+                        }
+                        else if (result.success === 1){
+                            if (result.getresult.length >0){
+                                followingArray.push({bid:result.getresult.BID,uid:result.getresult.UID,follow_status:'true'});
+                            }
+                        }
+                        ep.emit('syn');
+                    });
+                }
+
                 //loop the notice board and find posts
                 for (var i = 0; i < noticeBoardArray.length; i++) {
-
-                    connectionPool.CRUD('SELECT * FROM POST_T WHERE BID =?', [noticeBoardArray[i].BID], function (result) {
-                        if (result.success == 0) {
+                    connectionPool.CRUD('SELECT * FROM POST_T WHERE BID =? ORDER BY PDATE DESC LIMIT 0,5 ', [noticeBoardArray[i].BID], function (result) {
+                        if (result.success === 0) {
                             console.log('Error to fetch posts : %s', result.error);
                         }
-                        else if (result.success == 1) {
+                        else if (result.success === 1) {
                             console.log('Has successfully fetch the posts');
-
                             postsArray.push(result.getresult);
-
                         }
                         ep.emit('syn');
                     });
                 }
 
 
-                ep.after('syn', noticeBoardArray.length, function () {
+                ep.after('syn', noticeBoardArray.length*2, function () {
                     if (noticeBoardArray.length > 0) {
-                        var merged = postsArray.reduce(function (prev, next) {
+
+                        var mergedPosts = postsArray.reduce(function (prev, next) {
                             return prev.concat(next);
                         });
 
                         //append the posts into noticeboard
                         for (var i = 0; i < noticeBoardArray.length; i++) {
                             noticeBoardArray[i].POSTS = [];
+                            noticeBoardArray[i].FOLLOW_STATUS='false';
 
-                            for (var x = 0; x < merged.length; x++) {
-                                if (noticeBoardArray[i].BID === merged[x].BID) {
-                                    noticeBoardArray[i].POSTS.push(merged[x]);
+                            //find the follow status and append it if find it then set up true,
+                            //other wise do nothing
+                            for (var z=0;z<followingArray.length;z++){
+                                if(followingArray[z].bid === noticeBoardArray[i].BID){
+                                    noticeBoardArray[i].FOLLOW_STATUS='true';
+                                }
+                            }
+
+                            //append the posts to the noticeboard according to the index
+                            for (var x = 0; x < mergedPosts.length; x++) {
+                                if (noticeBoardArray[i].BID === mergedPosts[x].BID) {
+                                    noticeBoardArray[i].POSTS.push(mergedPosts[x]);
                                 }
                             }
                         }
                     }
-                    if (getRequestType === 'json') {
+
+                    console.log(getRequestType);
+
+                    if (getRequestType === 'json') {//json for mobile
                         res.json(rules.getResponseJson('true', noticeBoardArray, '1'));
-                    } else if (getRequestType === 'render') {
+                    } else if (getRequestType === 'render') {//render for web
                         res.render('noticeBoardPage', {noticeBoard: noticeBoardArray});
 
                     }
@@ -78,10 +105,10 @@ router
 
         //query board
         connectionPool.CRUD('SELECT * FROM NOTICEBOARD_T WHERE BID=?', [getQueryID], function (result) {
-            if (result.success == 0) {
+            if (result.success === 0) {
                 console.log('Error to fetch board : %s', result.error);
             }
-            else if (result.success == 1) {
+            else if (result.success === 1) {
                 console.log('Has successfully fetch the board from %s', getQueryID);
                 if (result.getresult.length > 0) {
                     res.json(rules.getResponseJson('true', result.getresult[0], '1'));
@@ -102,10 +129,10 @@ router
             getActiveCode = req.body.activeCode;
 
         connectionPool.CRUD('UPDATE NOTICEBOARD_T SET BVIEW_STATUS=? WHERE BID=? AND BACTIVE_CODE=?', ['1', getBoardID, getActiveCode], function (result) {
-            if (result.success == 0) {
+            if (result.success === 0) {
                 console.log('Error to active board : %s', result.error);
             }
-            else if (result.success == 1) {
+            else if (result.success === 1) {
                 if (result.getresult.affectedRows > 0) {
                     res.json(rules.getResponseJson('true', 'be successfully active', '1'));
 
@@ -129,7 +156,7 @@ router
 
         //get the all noticeboards first
         connectionPool.CRUD('SELECT * FROM NOTICEBOARD_T WHERE BID = ?', null, function (result) {
-            if (result.success == 0) {
+            if (result.success === 0) {
                 console.log('Error to fetch noticesBoards : %s', result.error);
             }
             else if (result.success == 1) {
@@ -140,10 +167,10 @@ router
 
         //get the one of inside posts for each noticeboard
         connectionPool.CRUD('SELECT * FROM POST_T', null, function (result) {
-            if (result.success == 0) {
+            if (result.success === 0) {
                 console.log('Error to fetch posts: %s', result.error);
             }
-            else if (result.success == 1) {
+            else if (result.success === 1) {
                 getAllPosts.push(result.getresult);
             }
             ep.emit('syn');

@@ -10,45 +10,10 @@ var cookieSession = require('cookie-session');
 var session =require('express-session');
 
 
+/**
+ * configure
+ */
 
-// here to temp use array prototype
-Array.prototype.equals = function (array) {
-  // if the other array is a falsy value, return
-  if (!array)
-    return false;
-
-  // compare lengths - can save a lot of time
-  if (this.length != array.length)
-    return false;
-
-  for (var i = 0, l=this.length; i < l; i++) {
-    // Check if we have nested arrays
-    if (this[i] instanceof Array && array[i] instanceof Array) {
-      // recurse into the nested arrays
-      if (!this[i].equals(array[i]))
-        return false;
-    }
-    else if (this[i] != array[i]) {
-      // Warning - two different object instances will never be equal: {x:20} != {x:20}
-      return false;
-    }
-  }
-  return true;
-};
-
-Array.prototype.uniqueArray = function()
-{
-  var n = {},r=[]; //n为hash表，r为临时数组
-  for(var i = 0; i < this.length; i++) //遍历当前数组
-  {
-    if (!n[this[i]]) //如果hash表中没有当前项
-    {
-      n[this[i]] = true; //存入hash表
-      r.push(this[i]); //把当前数组的当前项push到临时数组里面
-    }
-  }
-  return r;
-}
 app.engine('.html', ejs.__express); //chang the ejs engine that identified as html
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -60,6 +25,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(multer());
 app.use(session({ secret: 'oM_p3WWn6J7gCCgUeYsXsZPKPe',resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }}))
+
+
+/**
+ * account router
+ * @type {router|exports|module.exports}
+ */
+var account_router = require('./routes/account_router');
+app.post('/account/updatePassword',account_router);
+app.get('/account/updatePassword',account_router);
+app.put('/account/updatePassword',account_router);
 
 
 /**
@@ -112,6 +87,18 @@ app.get('/user/contact',contact_router);
 app.post('/user/contact',contact_router);
 app.put('/user/contact',contact_router);
 app.delete('/user/contact',contact_router);
+
+
+/**
+ * follow router
+ * @type {router|exports|module.exports}
+ */
+var follow_router = require('./routes/follow_router');
+app.post('/active/following',follow_router);
+app.delete('/active/following',follow_router);
+
+
+
 
 
 

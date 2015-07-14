@@ -13,8 +13,6 @@ var express = require('express'),
  *  POST API
  */
 
-
-
 router
     //image post api
     .post('/postNote/submitImage', function (req, res, next) {
@@ -64,7 +62,6 @@ router
 
     //post a post api
     .post('/postNote', function (req, res, next) {
-
         var getNoticeBoardID = req.body.boardID,
             getPostID = 'P' + rules.getUniqueID(),
             getUserID = req.body.userID,
@@ -72,8 +69,9 @@ router
             getPostImageSrc = req.body.postImageSrc,
             getPostEmail = req.body.postEmail,
             getTempTimeAndDate = rules.getCurrentTime().split(' '),
-            getCurrentTime = new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3"),
+            getCurrentTime = new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3").toString(),
             getCurrentDate = getTempTimeAndDate[0],
+            getCurrentFullTime = rules.getCurrentTime(),
             getPostPhone = req.body.postPhone,
             getSession = req.session,
             getMode = req.body.mode;
@@ -82,9 +80,8 @@ router
                 newFileName = 'upload' + rules.getUniqueID() + '.jpg',
                 target_path = path.join(__dirname, '../public/images/asserts/' + newFileName),
                 getPostImageSrc = '/images/asserts/' + newFileName;
-
-
             // move file
+
             fs.rename(tmp_path, target_path, function (err) {
                 if (err) throw err;
                 // delete temp file,
@@ -92,14 +89,14 @@ router
                     if (err) {
                         throw err;
                     } else {
-                        connectionPool.CRUD('INSERT INTO POST_T (PID,UID,BID,PNAME,PIMG,PTIME,PDATE,PEMAIL,PPHONE) VALUES (?,?,?,?,?,?,?,?,?)', [getPostID, getUserID, getNoticeBoardID, getPostDesc, getPostImageSrc, getCurrentTime, getCurrentDate, getPostEmail, getPostPhone], function (result) {
+                        console.log(getCurrentTime);
+                        connectionPool.CRUD('INSERT INTO POST_T (PID,UID,BID,PNAME,PIMG,PTIME,PDATE,PEMAIL,PPHONE,PFULLTIME) VALUES (?,?,?,?,?,?,?,?,?,?)', [getPostID, getUserID, getNoticeBoardID, getPostDesc, getPostImageSrc, getCurrentTime, getCurrentDate, getPostEmail, getPostPhone,getCurrentFullTime], function (result) {
                             if (result.success == 0) {
                                 console.log('Error to insert post data into db : %s', result.error);
                             }
                             else if (result.success == 1) {
                                 if (result.getresult.affectedRows > 0) {
                                     res.json({success: 'true', imageUrl: '/images/asserts/' + newFileName});
-
                                 }
                             }
                         });
@@ -109,7 +106,7 @@ router
         }
         else if (getMode === 'web') {
             //insert the data into the db, then here we go
-            connectionPool.CRUD('INSERT INTO POST_T (PID,UID,BID,PNAME,PIMG,PTIME,PDATE,PEMAIL,PPHONE) VALUES (?,?,?,?,?,?,?,?,?)', [getPostID, getUserID, getNoticeBoardID, getPostDesc, getPostImageSrc, getCurrentTime, getCurrentDate, getPostEmail, getPostPhone], function (result) {
+            connectionPool.CRUD('INSERT INTO POST_T (PID,UID,BID,PNAME,PIMG,PTIME,PDATE,PEMAIL,PPHONE,PFULLTIME) VALUES (?,?,?,?,?,?,?,?,?,?)', [getPostID, getUserID, getNoticeBoardID, getPostDesc, getPostImageSrc, getCurrentTime, getCurrentDate, getPostEmail, getPostPhone,getCurrentFullTime], function (result) {
                 if (result.success == 0) {
                     console.log('Error to insert post data into db : %s', result.error);
                 }
@@ -130,10 +127,7 @@ router
                                 }
                             }
                         }
-
-
                         res.json({success: 1});
-
                     }
                 }
             });

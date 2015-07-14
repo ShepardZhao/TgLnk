@@ -11,14 +11,13 @@
 @implementation DatabaseModel
 
 + (id)dbConnection {
+
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:DATABASE_FILENAME];
     //NSLog(@"%@",writableDBPath);
-  FMDatabase *db = [FMDatabase databaseWithPath:writableDBPath];
-
-    
-  return db;
+    FMDatabase *db = [FMDatabase databaseWithPath:writableDBPath];
+    return db;
 }
 
 + (void)createTables {
@@ -78,14 +77,15 @@
     if (existedUID) {
       // update
       if (![db executeUpdate:
-                   @"UPDATE USER_T SET UNICKNAME=?,UEMAIL=?,ULOGIN_TIME=?, UAVATAR = ?, LOGINSTATUS=?, UPHONE=? WHERE UID=?",
+                   @"UPDATE USER_T SET UNICKNAME=?,UEMAIL=?,ULOGIN_TIME=?, UAVATAR = ?, LOGINSTATUS=?, UPHONE=? ,UQR_CODE =? WHERE UID=?",
                    [NSString stringWithString:userInfo[@"UNICKNAME"]],
                    [NSString stringWithString:userInfo[@"UEMAIL"]],
                    [NSString stringWithString:userInfo[@"ULOGIN_TIME"]],
                     userInfo[@"UAVATAR"],[NSNumber numberWithInt:1],
                     userInfo[@"UPHONE"],
+                    [NSString stringWithString:userInfo[@"UQR_CODE"]],
                    [NSString stringWithString:userInfo[@"UID"]]]) {
-        NSLog(@"%@", db.lastErrorMessage);
+                   NSLog(@"%@", db.lastErrorMessage);
       }
 
     } else {
@@ -93,15 +93,16 @@
       // insert new record
       if (![db executeUpdate:
                    @"INSERT INTO USER_T "
-                   @"(UID,UNICKNAME,UEMAIL,UAVATAR,ULOGIN_TIME,LOGINSTATUS,UPHONE) VALUES "
-                   @"(?,?,?,?,?,?,?)",
+                   @"(UID,UNICKNAME,UEMAIL,UAVATAR,ULOGIN_TIME,LOGINSTATUS,UPHONE,UQR_CODE) VALUES "
+                   @"(?,?,?,?,?,?,?,?)",
                    [NSString stringWithString:userInfo[@"UID"]],
                    [NSString stringWithString:userInfo[@"UNICKNAME"]],
                    [NSString stringWithString:userInfo[@"UEMAIL"]],
                     userInfo[@"UAVATAR"],
                    [NSString stringWithString:userInfo[@"ULOGIN_TIME"]],
                    [NSNumber numberWithInt:1],
-                    userInfo[@"UPHONE"]
+                    userInfo[@"UPHONE"],
+                   [NSString stringWithString:userInfo[@"UQR_CODE"]]
 ]) {
         NSLog(@"%@", db.lastErrorMessage);
       }
@@ -109,12 +110,6 @@
   }
   [db close];
 }
-
-
-
-
-
-
 
 
 /**
@@ -326,6 +321,7 @@
             [userQuery setObject:[s stringForColumn:@"UEMAIL"] forKey:@"UEMAIL"];
             [userQuery setObject:[s stringForColumn:@"ULOGIN_TIME"] forKey:@"ULOGIN_TIME"];
             [userQuery setObject:[s stringForColumn:@"UPHONE"] forKey:@"UPHONE"];
+            [userQuery setObject:[s stringForColumn:@"UQR_CODE"] forKey:@"UQR_CODE"];
             if ([s columnIsNull:@"UAVATAR"]) {
                 [userQuery setObject:@"None" forKey:@"UAVATAR"];
             }
@@ -394,6 +390,9 @@
     return isUpdated;
 
 }
+
+
+
 
 
 @end

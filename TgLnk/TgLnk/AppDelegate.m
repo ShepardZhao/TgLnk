@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Parse/Parse.h>
+
 
 @interface AppDelegate ()
 
@@ -20,12 +22,62 @@
   // Override point for customization after application launch.
   [self appInitalSetting];
 
-  // facebook
-  return [[FBSDKApplicationDelegate sharedInstance] application:application
-                                  didFinishLaunchingWithOptions:launchOptions];
-
+    [self pushNotifictionSetting:application];
+    
   return YES;
 }
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+
+    [PFPush handlePush:userInfo];
+
+}
+
+/*
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
+    
+    [PFPush handlePush:userInfo];
+    
+    if(application.applicationState == UIApplicationStateInactive) {
+        
+        NSLog(@"Inactive");
+        
+        //Show the view with the content of the push
+        completionHandler(UIBackgroundFetchResultNewData);
+        
+        
+    } else if (application.applicationState == UIApplicationStateBackground) {
+        
+        NSLog(@"Background");
+        
+        //Refresh the local model
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+        
+    } else {
+        
+        NSLog(@"Active");
+        
+        //Show an in-app banner
+        
+        completionHandler(UIBackgroundFetchResultNewData);
+        
+    }
+    
+    
+}
+
+
+
+*/
 
 - (void)applicationWillResignActive:(UIApplication *)application {
   // Sent when the application is about to move from active to inactive state.
@@ -73,9 +125,29 @@
 }
 
 
+
+- (void)pushNotifictionSetting:(UIApplication*)application{
+    // Override point for customization after application launch.
+    [Parse setApplicationId:@"Y9AS9A6JRZv4gxCJKuTW907cWJ8vUMOiDviQzWwJ"
+                  clientKey:@"ZUDj3UYXFyn8GVuKphfQ5ksQgDn7qvy58DLH9Inh"];
+    
+    // Register for Push Notitications
+    UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [application registerUserNotificationSettings:settings];
+    [application registerForRemoteNotifications];
+
+
+
+}
+
+
 - (void)appInitalSetting {
   // nav
-  [[UINavigationBar appearance] setBarTintColor:RGB2UICOLOR(90, 200, 250, 1.0)];
+  [[UINavigationBar appearance] setBarTintColor:RGB2UICOLOR(26, 188, 156, 0.5)];
   [[UINavigationBar appearance]
       setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                [UIColor whiteColor],
@@ -92,6 +164,7 @@
         NSForegroundColorAttributeName : [UIColor whiteColor]
       } forState:UIControlStateNormal];
 
+    
     [[UITabBar appearance] setTintColor:RGB2UICOLOR(52, 152, 219, 1.0)];
   [[UITabBar appearance] setBarTintColor:RGB2UICOLOR(255, 255, 255, 0.5)];
 

@@ -11,61 +11,70 @@
 @interface BoardsTableViewController (){
     int selectNoticeBoradIndex;
     NSDictionary *boardArray;
-    BOOL isQR;
 }
 
 @end
 
 @implementation BoardsTableViewController
-
-
--(void) completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone{
-    NSLog(@"%@",@"1");
-
-
+- (IBAction)segmentBtn:(id)sender {
+    //check segment
+    if (self.segemented.selectedSegmentIndex == 1){
+        [self performSegueWithIdentifier:@"explorerSegue" sender:self];
+    }
+    else if (self.segemented.selectedSegmentIndex == 2){
+        [self performSegueWithIdentifier:@"followSegue" sender:self];
+    }
 }
 
 
-- (void)loadNewData
-{
-
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        [self.tableView.header endRefreshing];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self fetchLatestNoticeBoradsDataSources];
- 
-        });
-        
-        
+- (void)loadNewData{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self fetchLatestNoticeBoradsDataSources];
     });
-    
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    //loading the content from the db
-    self.dataSource = [[DatabaseModel queryBoard] copy];
-    [self.tableView reloadData];
+
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    //initial the tablview
+    
+    if ([NetworkCheckModel isNetworkConnection]) {
+        [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];//pull down to refresh
+        [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+        [self.tableView.header beginRefreshing];
+    }
+    else{
+        self.dataSource = [[DatabaseModel queryBoard] copy];
+        [self.tableView reloadData];
+    }
+
+
+}
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-    //here to check current network, if wifi, then
-    if ([NetworkCheckModel isNetworkConnection]) {
-        //get the data from remote server
-        [self fetchLatestNoticeBoradsDataSources];
-    }
-   
-    [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
-    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];//pull down to refresh
+  [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
+  self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
+    if (![DatabaseModel queryUserLoginStatus]) {
+        [SystemUIViewControllerModel setAlertBanner:self message:@"Attention!, you're not login yet. Click to login" selector:@selector(alertLogin)];
+    }
     
-    //initial the tablview
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
+
+
+-(void)alertLogin{
+    [self performSegueWithIdentifier:@"boardLoginCheckSegue" sender:self];
+}
+
+
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
@@ -78,49 +87,55 @@
  */
 -(void) fetchLatestNoticeBoradsDataSources{
     
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
-    self.HUD.delegate = self;
-    self.HUD.labelText = @"updating...";
+    NSString *uid;
+    if ([DatabaseModel queryUserLoginStatus]) {
+        uid = [[NSString alloc] initWithString:[DatabaseModel queryUserInfo][@"UID"]];
+    }
+    else{
+        uid =@"null";
+    }
+    
     [WebServicesNsObject
      GET_HTTP_METHOD:
-     NOTICESBOARD_URL:nil:0
+     NOTICESBOARD_URL:@{@"requestType":@"json",@"userid":uid}:0
      onCompletion:^(NSDictionary *getReuslt) {
-         
+
          dispatch_async(dispatch_get_main_queue(), ^(void){
              if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
                  
                  //use the restful server API first
                  self.dataSource = getReuslt[@"message"];
-                
+                 
+            
                  //dispatch the data second
                   dispatch_async(dispatch_get_main_queue(), ^{
                   [DatabaseModel createOrUpdateBoardTable:getReuslt[@"message"]];
                   [self.tableView reloadData];
+                  [self.tableView.header endRefreshing];
 
                   });
              }
              else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"]isEqualToString:@"0"]){
-                 self.HUD.labelText = getReuslt[@"message"];
+                 //self.HUD.labelText = getReuslt[@"message"];
+                 [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:nil];
              }
              
              else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
-                 self.HUD.labelText = getReuslt[@"message"];
+                 //self.HUD.labelText = getReuslt[@"message"];
+                 [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:nil];
              
              }
-             
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 [self.HUD hide:YES afterDelay:3];
-             });
-
 
          });
          
         
      }];
-    
 
 }
+
+
+
+
 
 
 #pragma mark - Table view data source
@@ -143,19 +158,28 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 dequeueReusableCellWithIdentifier:@"boardsPostsCellIdentifier"
 forIndexPath:indexPath];
     
-    
+    //notice board name
     cell.noticeBoradName.text = self.dataSource[indexPath.row][@"BNAME"];
+    
+    //notice board id
     cell.noticeBoardNumber.text = [NSString stringWithFormat:@"%@",self.dataSource[indexPath.row][@"BID"]];
+   
+    //the number of posts for this noticeboard
     cell.posterNumber.text =  [NSString stringWithFormat:@"Posts: %lu",(unsigned long)[self.dataSource[indexPath.row][@"POSTS"] count] ];
+    //cell image
     [SystemUIViewControllerModel imageCache:cell.noticeBoardQRImage :self.dataSource[indexPath.row][@"BIMAGE"]:0];
     
+    //add UITapGestureRecognizer on this notice board
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected:)];
-    
     tapGesture.numberOfTapsRequired=1;
     cell.noticeBoardQRImage.tag =indexPath.row;
     [cell.noticeBoardQRImage setUserInteractionEnabled:YES];
     [cell.noticeBoardQRImage addGestureRecognizer:tapGesture];
     cell.noticeBoardQRImage.userInteractionEnabled = YES;
+    
+    //pass the noticeboard with current indexPath.row to the table cell
+    cell.cellContent = self.dataSource[indexPath.row];
+    
     
     return cell;
 }
@@ -183,10 +207,8 @@ forIndexPath:indexPath];
     browser.displayActionButton = YES;
     browser.displayArrowButton = NO;
     browser.displayCounterLabel = YES;
-
     
     [self presentViewController:browser animated:YES completion:nil];
-
 
 }
 
@@ -202,6 +224,15 @@ forIndexPath:indexPath];
 }
 
 
+
+-(void)getClickedStatus:(BOOL)status{
+    
+    if (status) {
+        self.segemented.selectedSegmentIndex = 0;
+    }
+
+
+}
 
 
 /*
@@ -251,20 +282,20 @@ array, and add a new row to the table view
 // preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
+    if ([segue.identifier isEqualToString:@"explorerSegue"]) {
+        ExplorerBoardViewController *exCtr = (ExplorerBoardViewController*) segue.destinationViewController;
+        exCtr.mapViewDelegate = self;
+    }
     
     if([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]){
         BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
-        if (isQR) {
-            bDContr.noticeBoradsAndPostsDictionary = boardArray;
-        }
-        else{
-            bDContr.noticeBoradsAndPostsDictionary = self.dataSource[selectNoticeBoradIndex];
-
-        }
-        
-        
-     
-        
+        bDContr.boardTitleValue = self.dataSource[selectNoticeBoradIndex][@"BNAME"];
+        bDContr.boardCodeValue = self.dataSource[selectNoticeBoradIndex][@"BID"];
+        bDContr.boardImageValue = self.dataSource[selectNoticeBoradIndex][@"BIMAGE"];
+        bDContr.boardOwnerValue = self.dataSource[selectNoticeBoradIndex][@"UNICKNAME"];
+        bDContr.boardFollow = self.dataSource[selectNoticeBoradIndex][@"FOLLOW_STATUS"];
+        bDContr.ownerImageValue = self.dataSource[selectNoticeBoradIndex][@"UAVATAR"];
+        bDContr.postsArray = self.dataSource[selectNoticeBoradIndex][@"POSTS"];
     }
     
     if ([segue.identifier isEqualToString:@"activeBoardSegue"]) {
@@ -274,9 +305,6 @@ array, and add a new row to the table view
     }
 }
 
-#pragma login button action
-- (IBAction)loginAction:(id)sender {
-}
 
 #pragma qr button action
 - (IBAction)qrScanAction:(id)sender {
@@ -311,18 +339,20 @@ array, and add a new row to the table view
              self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
              self.HUD.delegate = self;
              self.HUD.labelText = @"Scan Completed";
-             [self.HUD hide:YES afterDelay:2];
+             [self.HUD hide:YES afterDelay:1];
     
              self.qrAddress = result;
              
-             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                  
                  if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
                      [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
                      
                  } else {
-                     [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
+                  [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel" :@"Go"];
+                 
                  }
+                 
                  
              });
            
@@ -350,7 +380,6 @@ array, and add a new row to the table view
                  else if ([getReuslt[@"message"][@"BVIEW_STATUS"] isEqualToNumber:[NSNumber numberWithInt:1]]){
                      //jump to detail page
                      boardArray = getReuslt[@"message"];
-                     isQR = YES;
                      [self performSegueWithIdentifier:@"showDetailNoticeBoardSegue" sender:self];
                  
                  }
@@ -379,5 +408,10 @@ array, and add a new row to the table view
 - (void)readerDidCancel:(QRCodeReaderViewController *)reader {
   [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+
+
+
+
 
 @end

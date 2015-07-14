@@ -47,4 +47,10 @@
 
 //return scaled and compressed image
 +(NSData*) compressUIImage:(UIImage*)image quality:(double)quality scaledToSize:(CGSize)newSize;
+
+//alert banner
++(void) setAlertBanner:(UIViewController *)viewController message : (NSString *)message selector : (SEL)selector;
+
+
+
 @end

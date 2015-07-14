@@ -10,7 +10,7 @@
 #import "QRCodeReaderDelegate.h"
 #import "QRCodeReaderViewController.h"
 #import "SystemUIViewControllerModel.h"
-#import "BoardWebViewViewController.h"
+#import "WebViewViewController.h"
 #import "SysNsObject.h"
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"

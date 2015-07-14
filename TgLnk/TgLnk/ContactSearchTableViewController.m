@@ -16,28 +16,23 @@
 
 @implementation ContactSearchTableViewController
 
+#pragma viewDidLoad
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-
-    currentUserID = [DatabaseModel queryUserInfo][@"UID"];
+   currentUserID = [DatabaseModel queryUserInfo][@"UID"];
    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    
-    
-    
-    
+   self.title = @"Search";
 }
 
+
+#pragma viewDidAppear
 - (void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.contactSearchBar becomeFirstResponder];
 }
 
+
+#pragma search button clicked
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar resignFirstResponder];
@@ -46,6 +41,8 @@
         [self searchAction:searchBar.text];
     });
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -61,6 +61,11 @@
     [useremail setText:self.userInfo[@"UEMAIL"]];
     
     
+    //set user qr
+    NSLog(@"%@",self.userInfo[@"UQR_CODE"]);
+    [SystemUIViewControllerModel imageCache:self.userQR :self.userInfo[@"UQR_CODE"]:1];
+
+    
     //add to view
     [self.view addSubview:username];
     [self.view addSubview:userID];
@@ -138,7 +143,6 @@
     
     uiImageView.image = [[UIImage alloc] initWithData:tmpData];
 
-    NSLog(@"%@",tmpData);
     //here to upload the user avatar
     
     [WebServicesNsObject uploadImageNormal:tmpData paramters:nsDictTemp baseUrl:USER_AVATAR_URL onCompletion:^(NSDictionary *getReuslt) {
@@ -218,6 +222,12 @@
     if (indexPath.section == 2 && indexPath.row == 0) {
         [self performSegueWithIdentifier:@"accountManageSegue" sender:self];
     }
+    
+    if (indexPath.section == 0 && indexPath.row ==2) {
+        [self performSegueWithIdentifier:@"userQrCodeDetailSegue" sender:self];
+    }
+    
+    
 }
 
 

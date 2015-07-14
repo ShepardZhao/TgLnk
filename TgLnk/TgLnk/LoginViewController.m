@@ -12,8 +12,8 @@
 
 @end
 
-
 @implementation LoginViewController
+
 @synthesize delegate;
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -22,7 +22,11 @@
 }
 
 
+- (IBAction)forgetPassBtn:(id)sender {
 
+    [self performSegueWithIdentifier:@"forgetPasswordSegue" sender:self];
+
+}
 -(void) loginSubmit{
 
     if ([self.loginEmailText.text isEqualToString:@""]) {
@@ -53,6 +57,7 @@
                      
                      //save the login user information into NSDefault and sqlite db, call sqlite db set and created
                      
+                     NSLog(@"%@",getReuslt[@"message"]);
                      [DatabaseModel createOrUpdateUserTable:getReuslt[@"message"]];
                      
                      [NsUserDefaultModel setUserDefault:getReuslt[@"message"] :@"userInfoLibrary"];
@@ -61,7 +66,7 @@
                      self.HUD.labelText = @"Login Completed!";
 
                      [self.view endEditing:YES];
-                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
                          
                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -150,6 +155,16 @@
 }
 
 
+-(void)viewDidAppear:(BOOL)animated{
+
+    [super viewDidAppear:animated];
+    
+    [self.loginEmailText becomeFirstResponder];
+    
+
+}
+
+
 
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -208,7 +223,7 @@
 
 /**
  *keyboard over the textfield
- **/
+ 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
   [self animateTextField:textField up:YES];
 }
@@ -220,7 +235,7 @@
 - (void)animateTextField:(UITextField *)textField up:(BOOL)up {
     int movementDistance = 110;     // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
-   /*
+   
     if ([[SysNsObject getDeviceName] isEqualToString:@"iPhone4,1"]) {
         movementDistance =40;
     }
@@ -230,7 +245,7 @@
     else if ([[SysNsObject getDeviceName] isEqualToString:@"iPhone7,2"] || [[SysNsObject getDeviceName] isEqualToString:@"iPhone7,1"]) {
         movementDistance =160;
     }
-    */
+ 
     
   int movement = (up ? -movementDistance : movementDistance);
 
@@ -240,8 +255,7 @@
   self.view.frame = CGRectOffset(self.view.frame, 0, movement);
   [UIView commitAnimations];
 }
-/**
- *end
+
  **/
 
 @end

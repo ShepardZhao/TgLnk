@@ -40,7 +40,9 @@
     
 }
 
+
 -(void)executePostAction{
+    
     [self.view endEditing:YES];
     uploadStaus =YES;
     NSMutableArray *selectImages = [[NSMutableArray alloc] init];
@@ -53,7 +55,8 @@
     
         [WebServicesNsObject uploadImageByProgressBar:self :selectImages :@{@"userID":[NsUserDefaultModel getUserIDFromCurrentSession],@"boardID":self.boardID,@"postDesc":self.postTitle.text,@"postEmail":self.posterEmail.text,@"postPhone":self.posterPhone.text,@"mode":@"mobile"} :NOTICESBOARD_POST onCompletion:^(NSDictionary *dictionary) {
             if ([dictionary[@"success"] isEqualToString:@"true"]) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [delegate completePost:self.postTitle.text postUIImage:self.postImage.image postEmail:self.posterEmail.text postPhone:self.posterPhone.text];
                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
                 });
                 
@@ -62,9 +65,6 @@
         }];
     
     });
-   
-    
-
 }
 
 
@@ -75,15 +75,12 @@
 
 - (void)imagePickerDidSelectImage:(UIImage *)image {
     
-    
         RSKImageCropViewController *imageCropVC = [[RSKImageCropViewController alloc] initWithImage:[SystemUIViewControllerModel fixOrientation:image] cropMode:RSKImageCropModeSquare];
     imageCropVC.delegate = self;
     imageCropVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:imageCropVC animated:YES];
     [self.navigationController hidesBottomBarWhenPushed];
-    
 
-    
 }
 
 
@@ -99,44 +96,9 @@
                    didCropImage:(UIImage *)croppedImage
                   usingCropRect:(CGRect)cropRect
 {
-    
-    
     //here to resize and compress the uiimage
-    
     NSData *tmpData = [SystemUIViewControllerModel compressUIImage:croppedImage quality:0.5 scaledToSize:CGSizeMake(POST_IMAGE_WIDTH, POST_IMAGE_HEIGHT)];
-    
-    NSDictionary* nsDictTemp = [[NSDictionary alloc] initWithObjectsAndKeys:self.userInfo[@"UID"],@"UID", nil];
-    
     self.postImage.image = [[UIImage alloc] initWithData:tmpData];
-    
-    //here to upload the user avatar
-    
-    [WebServicesNsObject uploadImageNormal:tmpData paramters:nsDictTemp baseUrl:USER_AVATAR_URL onCompletion:^(NSDictionary *getReuslt) {
-        if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
-            // if remote image has been upload successfully
-            [delegate completePost:self.postTitle.text postUIImage:self.postImage.image postEmail:self.posterEmail.text postPhone:self.posterPhone.text];
-        
-        
-        }
-        else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
-            // if the remote upload failure
-            // alert
-            [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :@"Cancel":@"Try it again"];
-            
-            
-            
-        }
-        else if([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
-            // if the network error
-            // alert
-            [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"] :@"Notices" :self :@"Cancel":@"Try it again"];
-            
-        }
-        
-    }];
-
-    
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -164,7 +126,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.userInfo = [DatabaseModel queryUserInfo];
+    self.userInfo = [[NSDictionary alloc] initWithDictionary:[DatabaseModel queryUserInfo]];
     
     
     [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
@@ -174,8 +136,12 @@
     tapGesture.numberOfTapsRequired=1;
     [self.postImage addGestureRecognizer:tapGesture];
     
+    [self.postTitle setPlaceholder:@"i.e The free discount of shopping card"];
     
+    [self.posterEmail setPlaceholder:self.userInfo[@"UEMAIL"]];
     
+    [self.posterPhone setPlaceholder:self.userInfo[@"UPHONE"]];
+ 
 }
     
 

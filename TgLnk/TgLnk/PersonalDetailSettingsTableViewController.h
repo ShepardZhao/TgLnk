@@ -16,6 +16,7 @@
 #import "SystemUIViewControllerModel.h"
 @interface PersonalDetailSettingsTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate>
 @property (retain,nonatomic) NSDictionary *userInfo;
+@property (weak, nonatomic) IBOutlet UIImageView *userQR;
 
 @property (weak, nonatomic) IBOutlet UILabel *numberOfNoticeBorad;
 
