@@ -16,23 +16,37 @@
 
 @implementation ContactTableViewController
 
+
+#pragma mark delegate method from LoginViewController
+-(void)loginDismissed{
+    [self refreshTableView];
+}
+
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
 }
+
+
+-(void)refreshTableView{
+    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(netWorkDisplayContact)];//pull down to refresh
+    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self.tableView.header beginRefreshing];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     if ([DatabaseModel queryUserLoginStatus]) {
-        [self netWorkDisplayContact];
-    }else{
+        [self refreshTableView];
+        }else{
         [self performSegueWithIdentifier:@"contactLoginSegue" sender:self];
     }
-    
-
 }
+
+
 - (IBAction)searchBtn:(id)sender {
     // if login
     if ([DatabaseModel queryUserLoginStatus]) {
@@ -41,7 +55,7 @@
     }
     // if not login
     else{
-        [self performSegueWithIdentifier:@"addUserSearchSegue" sender:self];
+        [self performSegueWithIdentifier:@"contactLoginSegue" sender:self];
     
     }
     
@@ -52,32 +66,44 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)netWorkDisplayContact{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.parentViewController.view animated:YES];
-    self.HUD.labelText = @"Loading...";
 
+-(void)alertLogin{
+    [self performSegueWithIdentifier:@"contactLoginSegue" sender:self];
+}
+
+
+-(void)netWorkDisplayContact{
+    if (![DatabaseModel queryUserLoginStatus]) {
+        contactList = [[NSMutableArray alloc] init];
+        [self.tableView.header endRefreshing];
+        [self.tableView reloadData];
+
+        [SystemUIViewControllerModel setAlertBanner:self message:@"Attention!, you're not login yet. Click to login" selector:@selector(alertLogin)];
+    }
+    else{
+        
     [WebServicesNsObject
      GET_HTTP_METHOD:
      CONTACT_SEARCH:@{@"sUser":[DatabaseModel queryUserInfo][@"UID"],@"stype":@"getAll"}:0
      onCompletion:^(NSDictionary *getReuslt) {
          if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
              contactList = getReuslt[@"message"];
+             [self.tableView reloadData];
+             [self.tableView.header endRefreshing];
+             
+             [SystemUIViewControllerModel setAlertBanner:self message:@"" selector:@selector(alertLogin)];
+
+             
          }
          else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]){
-             [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"]:@"Notices":self:@"OK":nil];
+             [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:@selector(alertLogin)];
+
          }
          else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]){
-             [SystemUIViewControllerModel aLertViewDisplay:getReuslt[@"message"]:@"Notices":self:@"OK":nil];
-         }
+             [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:@selector(alertLogin)];         }
          
-         dispatch_async(dispatch_get_main_queue(), ^(void){
-             [self.HUD hide:YES];
-             [self.tableView reloadData];
-        
-         });
-
-     }];
-
+    }];
+}
 
 }
 
@@ -141,7 +167,14 @@
 #pragma mark - Navigation
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- 
+    if ([segue.identifier isEqualToString:@"contactLoginSegue"]) {
+        LoginViewController *logCtl = (LoginViewController *)segue.destinationViewController;
+        logCtl.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"searchContactSegue"]){
+        
+    }
+    
 }
 
 
@@ -179,7 +212,6 @@
          self.qrAddress = result;
          
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-             
              if (![SysNsObject getHTTPValidationByNSRegularExpression:result]) {
                  [SystemUIViewControllerModel aLertViewDisplay:result :@"Notices" :self :@"Cancel":@"Copy"];
                  

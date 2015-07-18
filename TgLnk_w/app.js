@@ -64,10 +64,11 @@ app.put('/noticeBoard/active',board_router);
  * post router
  * @type {router|exports|module.exports}
  */
-var postNote_router = require('./routes/postNote_router');
-app.get('/postNote',postNote_router);
-app.post('/postNote',postNote_router);
-app.post('/postNote/submitImage',postNote_router);
+var post_router = require('./routes/post_router');
+app.get('/post',post_router);
+app.post('/post',post_router);
+
+//app.post('/postNote/submitImage',post_router);
 
 /**
  * target router
@@ -96,11 +97,6 @@ app.delete('/user/contact',contact_router);
 var follow_router = require('./routes/follow_router');
 app.post('/active/following',follow_router);
 app.delete('/active/following',follow_router);
-
-
-
-
-
 
 
 

@@ -16,7 +16,7 @@
 
 @protocol BoardPostTableViewControllerDelegate <NSObject>
 
--(void)completePost:(NSString *)postTitle postUIImage:(UIImage *)postUIImage postEmail:(NSString *)postEmail postPhone:(NSString *)postPhone;
+-(void)completePost:(NSDictionary *)dictionary;
 
 @end
 @interface BoardPostTableViewController : UITableViewController<JSImagePickerViewControllerDelegate,RSKImageCropViewControllerDelegate>{

@@ -15,6 +15,7 @@
 @implementation LoginViewController
 
 @synthesize delegate;
+
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self setTitle:@"Welcome"];
@@ -209,7 +210,7 @@
     if (textField.tag == 0 && textField.returnKeyType == UIReturnKeyNext) {
         [self.loginPassText becomeFirstResponder];
     }
-    if (textField.tag ==1 && textField.returnKeyType == UIReturnKeyGo) {
+    if (textField.tag ==1 && textField.returnKeyType == UIReturnKeyDone) {
         [textField resignFirstResponder];
         [self loginSubmit];
         

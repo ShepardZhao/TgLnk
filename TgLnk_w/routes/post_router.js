@@ -14,8 +14,9 @@ var express = require('express'),
  */
 
 router
+    /*
     //image post api
-    .post('/postNote/submitImage', function (req, res, next) {
+    .post('/post/submitImage', function (req, res, next) {
         var tmp_path = req.files.uploadedImageBtn.path,
             newFileName = 'upload' + rules.getUniqueID() + '.' + req.files.uploadedImageBtn.extension,
             target_path = path.join(__dirname, '../public/images/asserts/' + newFileName),
@@ -43,25 +44,40 @@ router
             });
         });
     })
+    */
 
-    //get post api
-    .get('/postNote', function (req, res, next) {
-        var getUserID = req.query.userID;
-        connectionPool.CRUD('SELECT * FROM POST_T WHERE UID = ?', [getUserID], function (result) {
+
+    //get post api according to user id
+    .get('/post', function (req, res, next) {
+        var getType = req.query.type,
+            getID = req.query.requestID, //may be boardID or userID
+            setQueryID;
+        //there are two type of requesting, one is the requesting from requestByBoard
+        if (getType === 'requestByBoard'){
+            setQueryID = 'BID';
+        }
+        //another is the requesting from requestByUser
+        else if (getType === 'requestByUser'){
+            setQueryID = 'UID';
+
+        }
+
+        connectionPool.CRUD('SELECT * FROM POST_T WHERE '+setQueryID+' = ? ORDER BY PFULLTIME DESC', [getID], function (result) {
             if (result.success == 0) {
-                console.log('Error to get post for user %s, and reason is : %s', getUserID, result.error);
+                console.log('Error to get post for user %s, and reason is : %s', getID, result.error);
                 res.json(rules.getResponseJson('false', 'Error to get post', '0'));
             }
             else if (result.success == 1) {
-                console.log('Successfully get the user post');
+                console.log('Successfully get the post via board id');
                 res.json(rules.getResponseJson('true', result.getresult, '1'));
             }
         });
+
     })
 
 
-    //post a post api
-    .post('/postNote', function (req, res, next) {
+    //post api that user can submit a post directly
+    .post('/post', function (req, res, next) {
         var getNoticeBoardID = req.body.boardID,
             getPostID = 'P' + rules.getUniqueID(),
             getUserID = req.body.userID,
@@ -69,7 +85,7 @@ router
             getPostImageSrc = req.body.postImageSrc,
             getPostEmail = req.body.postEmail,
             getTempTimeAndDate = rules.getCurrentTime().split(' '),
-            getCurrentTime = new Date().toLocaleTimeString().replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3").toString(),
+            getCurrentTime = new Date().toLocaleTimeString().toString(),
             getCurrentDate = getTempTimeAndDate[0],
             getCurrentFullTime = rules.getCurrentTime(),
             getPostPhone = req.body.postPhone,
@@ -89,14 +105,14 @@ router
                     if (err) {
                         throw err;
                     } else {
-                        console.log(getCurrentTime);
                         connectionPool.CRUD('INSERT INTO POST_T (PID,UID,BID,PNAME,PIMG,PTIME,PDATE,PEMAIL,PPHONE,PFULLTIME) VALUES (?,?,?,?,?,?,?,?,?,?)', [getPostID, getUserID, getNoticeBoardID, getPostDesc, getPostImageSrc, getCurrentTime, getCurrentDate, getPostEmail, getPostPhone,getCurrentFullTime], function (result) {
                             if (result.success == 0) {
                                 console.log('Error to insert post data into db : %s', result.error);
+                                res.json(rules.getResponseJson('false', 'Error to get post', '0'));
                             }
                             else if (result.success == 1) {
                                 if (result.getresult.affectedRows > 0) {
-                                    res.json({success: 'true', imageUrl: '/images/asserts/' + newFileName});
+                                    res.json(rules.getResponseJson('true', {PPHONE:getPostPhone,PID:getPostID,PNAME:getPostDesc,BID:getNoticeBoardID,PEMAIL:getPostEmail,PFULLTIME:getCurrentFullTime,PIMG: '/images/asserts/' + newFileName,PDATE:getCurrentDate,PTIME:getCurrentTime}, '1'));
                                 }
                             }
                         });

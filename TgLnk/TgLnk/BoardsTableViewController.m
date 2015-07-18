@@ -16,6 +16,15 @@
 @end
 
 @implementation BoardsTableViewController
+
+
+-(void) loginDismissed{
+
+    if ([DatabaseModel queryUserLoginStatus]) {
+        [SystemUIViewControllerModel setAlertBanner:self message:@"" selector:@selector(alertLogin)];
+    }
+}
+
 - (IBAction)segmentBtn:(id)sender {
     //check segment
     if (self.segemented.selectedSegmentIndex == 1){
@@ -24,6 +33,7 @@
     else if (self.segemented.selectedSegmentIndex == 2){
         [self performSegueWithIdentifier:@"followSegue" sender:self];
     }
+  
 }
 
 
@@ -37,7 +47,6 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-
 }
 
 
@@ -46,26 +55,31 @@
     //initial the tablview
     
     if ([NetworkCheckModel isNetworkConnection]) {
-        [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];//pull down to refresh
-        [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
-        [self.tableView.header beginRefreshing];
+        [self refreshTableviewHeader];
     }
     else{
         self.dataSource = [[DatabaseModel queryBoard] copy];
         [self.tableView reloadData];
     }
-
-
+    
+    if (![DatabaseModel queryUserLoginStatus]) {
+        [SystemUIViewControllerModel setAlertBanner:self message:@"Attention!, you're not login yet. Click to login" selector:@selector(alertLogin)];
+    }
 }
+
+-(void)refreshTableviewHeader{
+    [self.tableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];//pull down to refresh
+    [self.tableView setContentOffset:CGPointMake(0, -70) animated:YES];
+    [self.tableView.header beginRefreshing];
+}
+
 
 - (void)viewDidLoad {
   [super viewDidLoad];
   [SystemUIViewControllerModel hideBottomHairline:self.navigationController.navigationBar];
   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
-    if (![DatabaseModel queryUserLoginStatus]) {
-        [SystemUIViewControllerModel setAlertBanner:self message:@"Attention!, you're not login yet. Click to login" selector:@selector(alertLogin)];
-    }
+  
+    
     
 }
 
@@ -105,8 +119,6 @@
                  
                  //use the restful server API first
                  self.dataSource = getReuslt[@"message"];
-                 
-            
                  //dispatch the data second
                   dispatch_async(dispatch_get_main_queue(), ^{
                   [DatabaseModel createOrUpdateBoardTable:getReuslt[@"message"]];
@@ -132,10 +144,6 @@
      }];
 
 }
-
-
-
-
 
 
 #pragma mark - Table view data source
@@ -165,7 +173,7 @@ forIndexPath:indexPath];
     cell.noticeBoardNumber.text = [NSString stringWithFormat:@"%@",self.dataSource[indexPath.row][@"BID"]];
    
     //the number of posts for this noticeboard
-    cell.posterNumber.text =  [NSString stringWithFormat:@"Posts: %lu",(unsigned long)[self.dataSource[indexPath.row][@"POSTS"] count] ];
+    cell.posterNumber.text = [[NSString alloc] initWithFormat:@"Posts: %@",self.dataSource[indexPath.row][@"NUMBEROFPOSTS"] ];
     //cell image
     [SystemUIViewControllerModel imageCache:cell.noticeBoardQRImage :self.dataSource[indexPath.row][@"BIMAGE"]:0];
     
@@ -180,12 +188,104 @@ forIndexPath:indexPath];
     //pass the noticeboard with current indexPath.row to the table cell
     cell.cellContent = self.dataSource[indexPath.row];
     
+    //do the following button, if the following status is equal true
+    if ([self.dataSource[indexPath.row][@"FOLLOW_STATUS"] isEqualToString:@"true"]) {
+        [cell.followOrUnFollowBtn setTitle:@"Following" forState:UIControlStateNormal];
+        [cell.followOrUnFollowBtn setBackgroundColor:RGB2UICOLOR(231, 76, 60,1.0)];
+        [cell.followOrUnFollowBtn setTitleColor:RGB2UICOLOR(255, 255, 255,1.0) forState:UIControlStateNormal];
+    }
+    else {
+        [cell.followOrUnFollowBtn setTitle:@"Follow" forState:UIControlStateNormal];
+        [cell.followOrUnFollowBtn setBackgroundColor:RGB2UICOLOR(231, 231, 231,1.0)];
+        [cell.followOrUnFollowBtn setTitleColor:RGB2UICOLOR(255, 255, 255,1.0) forState:UIControlStateNormal];
+        
+    }
     
+    
+    
+    [cell.followOrUnFollowBtn setTag:indexPath.row];
+    
+    [cell.followOrUnFollowBtn addTarget:self action:@selector(followBtn:) forControlEvents:UIControlEventTouchUpInside];
+    
+
     return cell;
 }
 
 
+//set the action for follow button
+-(void)followBtn:(UIButton *)butotn{
 
+    UIButton *btn = (UIButton*)butotn;
+    NSDictionary *getCurrentArrayByPostion = self.dataSource[btn.tag];
+    
+    if ([DatabaseModel queryUserLoginStatus]) {
+    
+        if ([getCurrentArrayByPostion[@"FOLLOW_STATUS"] isEqualToString:@"true"]) {
+            //here to cancle follow status
+            [self submitFollowingStautsToServer:getCurrentArrayByPostion:NO];
+            NSLog(@"%@",@"here to cancle follow status");
+        }
+        else{
+            //set the following status
+            [self submitFollowingStautsToServer:getCurrentArrayByPostion:YES];
+            NSLog(@"%@",@"set the following status");
+        }
+    }
+    else {
+        [self performSegueWithIdentifier:@"boardLoginCheckSegue" sender:self];
+    
+    }
+}
+
+
+//submit the following status to remove
+-(void)submitFollowingStautsToServer:(NSDictionary*)dict : (BOOL)followStaus{
+    
+    NSDictionary *paramter = [[NSDictionary alloc] initWithObjectsAndKeys:dict[@"BID"],@"bid",[DatabaseModel queryUserInfo][@"UID"],@"uid" ,nil];
+    
+    
+    //if followStatus is YES, then set the follwing status
+    if (followStaus) {
+    
+        [WebServicesNsObject POST_HTTP_METHOD:NOTICEBOARD_FOLLOW :paramter :0 onCompletion:^(NSDictionary *getReuslt) {
+           
+            if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
+             
+                //here to set successfully status
+                [self refreshTableviewHeader];
+            }
+            else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]) {
+                [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:@selector(alertLogin)];
+
+                
+            }
+            else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]) {
+                [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:nil];
+
+            }
+        }];
+    }
+    //if followStatus is NO, then cancle the following status
+    else{
+
+        [WebServicesNsObject DELETE_HTTP_METHOD:NOTICEBOARD_FOLLOW :paramter :0 onCompletion:^(NSDictionary *getReuslt) {
+            
+            if ([getReuslt[@"success"] isEqualToString:@"true"] && [getReuslt[@"statusCode"] isEqualToString:@"1"]) {
+                
+                //here to set successfully status
+                [self refreshTableviewHeader];
+            }
+            else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"0"]) {
+                [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:@selector(alertLogin)];
+            }
+            else if ([getReuslt[@"success"] isEqualToString:@"false"] && [getReuslt[@"statusCode"] isEqualToString:@"3"]) {
+                [SystemUIViewControllerModel setAlertBanner:self message:getReuslt[@"message"] selector:nil];
+            }
+        
+        }];
+
+    }
+}
 
 
 - (void)tapDetected:(UIGestureRecognizer *)sender{
@@ -217,21 +317,15 @@ forIndexPath:indexPath];
 #pragma Table view delegate select
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     selectNoticeBoradIndex = (int)indexPath.row;
-    
     [self performSegueWithIdentifier:@"showDetailNoticeBoardSegue" sender:self];
 }
 
 
-
 -(void)getClickedStatus:(BOOL)status{
-    
     if (status) {
         self.segemented.selectedSegmentIndex = 0;
     }
-
-
 }
 
 
@@ -289,13 +383,14 @@ array, and add a new row to the table view
     
     if([segue.identifier isEqualToString:@"showDetailNoticeBoardSegue"]){
         BoardDetailTableViewController *bDContr = (BoardDetailTableViewController*) segue.destinationViewController;
+        bDContr.requestType = @"requestByBoard";
+        bDContr.requestID = self.dataSource[selectNoticeBoradIndex][@"BID"];
         bDContr.boardTitleValue = self.dataSource[selectNoticeBoradIndex][@"BNAME"];
         bDContr.boardCodeValue = self.dataSource[selectNoticeBoradIndex][@"BID"];
         bDContr.boardImageValue = self.dataSource[selectNoticeBoradIndex][@"BIMAGE"];
         bDContr.boardOwnerValue = self.dataSource[selectNoticeBoradIndex][@"UNICKNAME"];
-        bDContr.boardFollow = self.dataSource[selectNoticeBoradIndex][@"FOLLOW_STATUS"];
+        bDContr.boardFillowValue = self.dataSource[selectNoticeBoradIndex][@"FOLLOW_STATUS"];
         bDContr.ownerImageValue = self.dataSource[selectNoticeBoradIndex][@"UAVATAR"];
-        bDContr.postsArray = self.dataSource[selectNoticeBoradIndex][@"POSTS"];
     }
     
     if ([segue.identifier isEqualToString:@"activeBoardSegue"]) {
@@ -303,6 +398,12 @@ array, and add a new row to the table view
         bAContr.boardArray = boardArray;
         
     }
+    if ([segue.identifier isEqualToString:@"boardLoginCheckSegue"]) {
+        LoginViewController *logCtr = (LoginViewController *)segue.destinationViewController;
+        logCtr.delegate = self;
+    }
+    
+    
 }
 
 

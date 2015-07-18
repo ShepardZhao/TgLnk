@@ -47,11 +47,14 @@
 
 #define NOTICESBOARD_URL DOMAIN_NAME@"noticeBoard" //noticeBoard url
 
-#define NOTICESBOARD_POST DOMAIN_NAME@"postNote" //post url
+#define NOTICESBOARD_POST DOMAIN_NAME@"post" //post api that can be requested by board id, or user id
 
 #define NOTICESBOARD_STATUS_QUERY DOMAIN_NAME@"noticeBoard/query" //noticeboard status query
 
 #define NOTICESBOARD_ACTIVE DOMAIN_NAME@"noticeBoard/active"  //active and update noticeboard status
+
+#define NOTICEBOARD_FOLLOW DOMAIN_NAME@"active/following" //set the following or unfollowing
+
 
 #define INDENT() [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
 

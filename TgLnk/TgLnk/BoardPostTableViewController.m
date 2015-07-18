@@ -53,10 +53,10 @@
  
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
     
-        [WebServicesNsObject uploadImageByProgressBar:self :selectImages :@{@"userID":[NsUserDefaultModel getUserIDFromCurrentSession],@"boardID":self.boardID,@"postDesc":self.postTitle.text,@"postEmail":self.posterEmail.text,@"postPhone":self.posterPhone.text,@"mode":@"mobile"} :NOTICESBOARD_POST onCompletion:^(NSDictionary *dictionary) {
+        [WebServicesNsObject uploadImageByProgressBar:self.parentViewController :selectImages :@{@"userID":[DatabaseModel queryUserInfo][@"UID"],@"boardID":self.boardID,@"postDesc":self.postTitle.text,@"postEmail":self.posterEmail.text,@"postPhone":self.posterPhone.text,@"mode":@"mobile"} :NOTICESBOARD_POST onCompletion:^(NSDictionary *dictionary) {
             if ([dictionary[@"success"] isEqualToString:@"true"]) {
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [delegate completePost:self.postTitle.text postUIImage:self.postImage.image postEmail:self.posterEmail.text postPhone:self.posterPhone.text];
+                    [delegate completePost:dictionary[@"message"]];
                     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:1] animated:YES];
                 });
                 
@@ -119,8 +119,6 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.postTitle becomeFirstResponder];
-
-
 }
 
 - (void)viewDidLoad {
@@ -141,6 +139,9 @@
     [self.posterEmail setPlaceholder:self.userInfo[@"UEMAIL"]];
     
     [self.posterPhone setPlaceholder:self.userInfo[@"UPHONE"]];
+    
+    
+    self.title = @"Post";
  
 }
     

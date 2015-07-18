@@ -54,9 +54,9 @@
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     self.HUD.labelText = @"Activated";
 
-                    [self.HUD hide:YES afterDelay:2];
+                    [self.HUD hide:YES afterDelay:1];
                     
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         //head to detail board controller
                         
                         [self performSegueWithIdentifier:@"gotToBoardDetailSegue" sender:self];
@@ -95,8 +95,8 @@
     
     if ([segue.identifier isEqualToString:@"gotToBoardDetailSegue"]) {
         BoardDetailTableViewController *boardCtrl = (BoardDetailTableViewController *)segue.destinationViewController;
-        
-        
+        boardCtrl.requestType = @"requestByBoard";
+        boardCtrl.requestID = self.boardArray[@"BID"];
         
     }
     

@@ -9,20 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "BoardDetailTableViewCell.h"
 #import "SystemUIViewControllerModel.h"
-#import "LoginViewController.h"
 #import "BoardPostTableViewController.h"
 #import "IDMPhotoBrowser.h"
 #import "DatabaseModel.h"
 #import "BoardPostTableViewController.h"
-@interface BoardDetailTableViewController : UITableViewController<LoginViewControllerDelegate,IDMPhotoBrowserDelegate,BoardPostTableViewControllerDelegate>
+#import "UITableView+FDTemplateLayoutCell.h"
+#import "MJRefresh.h"
 
-@property (strong,nonatomic) NSMutableArray *postsArray;
+
+
+@interface BoardDetailTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,IDMPhotoBrowserDelegate,BoardPostTableViewControllerDelegate>
+//here is the request items, that will request the requestType and requestID
+@property (strong,nonatomic) NSString *requestType;
+@property (strong,nonatomic) NSString *requestID;
+
+
+//here is the board basic information
 @property (strong,nonatomic) NSString *boardTitleValue;
 @property (strong,nonatomic) NSString *boardOwnerValue;
 @property (strong,nonatomic) NSString *boardCodeValue;
 @property (strong,nonatomic) NSString *boardImageValue;
-@property BOOL follow;
 @property (strong,nonatomic) NSString *ownerImageValue;
+@property (strong,nonatomic) NSString *boardFillowValue;
 
 
 

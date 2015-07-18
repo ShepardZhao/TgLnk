@@ -16,9 +16,12 @@
 #import "ContactTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "WebServicesNsObject.h"
+#import "LoginViewController.h"
+#import "MJRefresh.h"
+#import "NetworkCheckModel.h"
 
 
-@interface ContactTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+@interface ContactTableViewController : UITableViewController<QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,LoginViewControllerDelegate>
 @property (weak,nonatomic) NSString *qrAddress;
 @property (retain ,nonatomic) MBProgressHUD *HUD;
 

@@ -23,7 +23,7 @@
 #import "BoardActiveViewController.h"
 #import "ExplorerBoardViewController.h"
 
-@interface BoardsTableViewController : UITableViewController<IDMPhotoBrowserDelegate,QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate>
+@interface BoardsTableViewController : UITableViewController<IDMPhotoBrowserDelegate,QRCodeReaderDelegate,UIAlertViewDelegate,MBProgressHUDDelegate,LoginViewControllerDelegate>
 @property (weak,nonatomic) NSString *qrAddress;
 @property DatabaseModel *db;
 @property (strong, nonatomic) NSMutableArray *dataSource;

@@ -220,7 +220,7 @@
  */
 +(void) uploadImageByProgressBar:(UIViewController*)UiViewControllerDelegate :(NSMutableArray*) imageDataArray : (NSDictionary*)paramters :(NSString*)baseUrl onCompletion:(RequestDictionaryCompletionHandler)complete{
     
-    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:UiViewControllerDelegate.parentViewController.view animated:YES];
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:UiViewControllerDelegate.view animated:YES];
     HUD.labelText = @"uploading...";
     HUD.mode = MBProgressHUDModeAnnularDeterminate;
     
@@ -262,12 +262,12 @@
             HUD.detailsLabelText = nil;
             //GCD delay executes
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:UiViewControllerDelegate.parentViewController.view animated:YES];
+                [MBProgressHUD hideHUDForView:UiViewControllerDelegate.view animated:YES];
                 
             });
         });
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [MBProgressHUD hideHUDForView:UiViewControllerDelegate.parentViewController.view animated:YES];
+        [MBProgressHUD hideHUDForView:UiViewControllerDelegate.view animated:YES];
     }];
     
     

@@ -174,6 +174,12 @@
 #define COCOAPODS_VERSION_MINOR_UINavigationBar_Addition 0
 #define COCOAPODS_VERSION_PATCH_UINavigationBar_Addition 0
 
+// UITableView+FDTemplateLayoutCell
+#define COCOAPODS_POD_AVAILABLE_UITableView_FDTemplateLayoutCell
+#define COCOAPODS_VERSION_MAJOR_UITableView_FDTemplateLayoutCell 1
+#define COCOAPODS_VERSION_MINOR_UITableView_FDTemplateLayoutCell 3
+#define COCOAPODS_VERSION_PATCH_UITableView_FDTemplateLayoutCell 0
+
 // VGParallaxHeader
 #define COCOAPODS_POD_AVAILABLE_VGParallaxHeader
 #define COCOAPODS_VERSION_MAJOR_VGParallaxHeader 0
